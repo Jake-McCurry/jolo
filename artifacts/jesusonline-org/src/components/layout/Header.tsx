@@ -34,14 +34,14 @@ export function Header() {
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        scrolled ? "bg-white/90 backdrop-blur-md shadow-sm py-3" : "bg-white py-5"
+        scrolled ? "bg-secondary/95 backdrop-blur-md shadow-sm py-3" : "bg-secondary py-5"
       )}
     >
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center gap-1 z-50">
-            <span className="text-2xl font-extrabold text-secondary tracking-tight">Jesus</span>
-            <span className="text-2xl font-light text-primary">Online</span>
+            <span className="text-2xl font-extrabold text-white tracking-tight">Jesus</span>
+            <span className="text-2xl font-light text-white/90">Online</span>
           </Link>
 
           {/* Desktop Nav */}
@@ -52,7 +52,7 @@ export function Header() {
                 href={link.href}
                 className={cn(
                   "text-sm font-semibold uppercase tracking-wider transition-colors hover:text-primary",
-                  location === link.href ? "text-primary" : "text-secondary"
+                  location === link.href ? "text-primary" : "text-white/70"
                 )}
                 data-testid={`nav-${link.label.toLowerCase().replace(/\s+/g, "-")}`}
               >
@@ -63,7 +63,7 @@ export function Header() {
 
           {/* Mobile Toggle */}
           <button
-            className="lg:hidden z-50 p-2 text-secondary hover:text-primary transition-colors"
+            className="lg:hidden z-50 p-2 text-white hover:text-primary transition-colors"
             onClick={() => setIsOpen(!isOpen)}
             data-testid="button-mobile-menu"
           >
@@ -75,7 +75,7 @@ export function Header() {
       {/* Mobile Nav */}
       <div
         className={cn(
-          "fixed inset-0 bg-white z-40 transition-transform duration-300 ease-in-out flex flex-col items-center justify-center gap-8 lg:hidden",
+          "fixed inset-0 bg-secondary z-40 transition-transform duration-300 ease-in-out flex flex-col items-center justify-center gap-8 lg:hidden",
           isOpen ? "translate-y-0" : "-translate-y-full"
         )}
       >
@@ -85,7 +85,7 @@ export function Header() {
             href={link.href}
             className={cn(
               "text-2xl font-bold transition-colors hover:text-primary",
-              location === link.href ? "text-primary" : "text-secondary"
+              location === link.href ? "text-primary" : "text-white"
             )}
             data-testid={`mobile-nav-${link.label.toLowerCase().replace(/\s+/g, "-")}`}
           >

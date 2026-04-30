@@ -33,25 +33,28 @@ export default function DiscoverEvidence() {
         description="Examine the scientific and historical evidence for God and Jesus Christ."
       />
 
-      <div className="pt-32 pb-20 bg-slate-50 min-h-screen">
-        <div className="container mx-auto px-4 max-w-5xl">
-          
+      {/* Header Band */}
+      <div className="bg-secondary pt-32 pb-16">
+        <div className="container mx-auto px-4 max-w-5xl text-center">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-center mb-16"
           >
-            <div className="w-16 h-16 bg-blue-100 text-primary rounded-full flex items-center justify-center mx-auto mb-6">
+            <div className="w-16 h-16 bg-primary/20 text-primary rounded-none flex items-center justify-center mx-auto mb-6">
               <ShieldCheck size={32} />
             </div>
-            <h1 className="text-4xl md:text-5xl font-extrabold text-secondary tracking-tight mb-6">
+            <h1 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-6">
               Discover Evidence
             </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-xl text-white/80 max-w-2xl mx-auto">
               Faith doesn't require checking your brain at the door. Examine the historical, logical, and scientific evidence for yourself.
             </p>
           </motion.div>
+        </div>
+      </div>
 
+      <div className="py-20 bg-background min-h-[50vh]">
+        <div className="container mx-auto px-4 max-w-5xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
             {articles.map((article, i) => (
               <motion.a
@@ -63,17 +66,22 @@ export default function DiscoverEvidence() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="group block bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all"
+                className="group flex flex-col bg-card p-8 rounded-lg border border-white/5 hover:bg-[#1a334d] transition-all"
                 data-testid={`article-evidence-${i}`}
               >
-                <h3 className="text-2xl font-bold text-secondary mb-3 group-hover:text-primary transition-colors">
+                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-primary transition-colors">
                   {article.title}
                 </h3>
-                <p className="text-muted-foreground mb-6">
+                <p className="text-white/70 mb-8">
                   {article.description}
                 </p>
-                <div className="flex items-center text-primary font-semibold">
-                  Read Article <ExternalLink size={16} className="ml-2" />
+                <div className="mt-auto">
+                  <div className="inline-block px-3 py-1 bg-[#3B82C4]/20 text-[#4A9ECC] text-xs font-bold tracking-widest uppercase mb-4 border border-[#3B82C4]/30">
+                    FACTS FOR FAITH
+                  </div>
+                  <div className="flex items-center text-primary font-semibold">
+                    Read Article <ExternalLink size={16} className="ml-2" />
+                  </div>
                 </div>
               </motion.a>
             ))}
@@ -89,7 +97,7 @@ export default function DiscoverEvidence() {
               href="https://jesusonline.com/discover-evidence/"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-8 py-4 bg-white text-secondary font-bold rounded-full border-2 border-gray-200 hover:border-secondary transition-colors w-full sm:w-auto text-center"
+              className="px-8 py-4 bg-transparent text-primary font-bold rounded-none border-2 border-primary hover:bg-primary/10 transition-colors w-full sm:w-auto text-center"
               data-testid="btn-more-evidence"
             >
               Explore More Evidence
@@ -98,7 +106,7 @@ export default function DiscoverEvidence() {
               href="https://app.jesusonline.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-8 py-4 bg-primary text-white font-bold rounded-full btn-shadow hover:bg-blue-600 transition-colors w-full sm:w-auto text-center"
+              className="px-8 py-4 bg-primary text-white font-bold rounded-none border-2 border-primary hover:bg-primary/90 transition-colors w-full sm:w-auto text-center"
               data-testid="btn-app-evidence"
             >
               Go Deeper in the App
