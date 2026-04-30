@@ -7,25 +7,21 @@ const SURVEY_OPTIONS = [
   {
     label: "No, I didn't pray the prayer.",
     href: "/xp/no-i-didnt-pray",
-    yes: false,
     testid: "survey-no-didnt-pray",
   },
   {
     label: "Yes, I prayed and received Jesus into my life.",
     href: "/xp/yes-i-received-jesus",
-    yes: true,
     testid: "survey-yes-received-jesus",
   },
   {
     label: "Yes, I prayed and rededicated my life to Jesus.",
     href: "/xp/yes-i-rededicated",
-    yes: true,
     testid: "survey-yes-rededicated",
   },
   {
     label: "No, I have already received Jesus in my life.",
     href: "/xp/no-already-received",
-    yes: false,
     testid: "survey-no-already-received",
   },
 ];
@@ -40,19 +36,14 @@ export default function KingdomnomicsGiftOfHeaven() {
 
       <div className="min-h-screen bg-gray-50">
         {/* Page title band */}
-        <div className="bg-secondary text-white py-10 px-4 text-center">
-          <motion.p
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-            className="text-xs font-bold uppercase tracking-widest text-primary mb-2"
-          >
-            Kingdomnomics
-          </motion.p>
+        <div
+          className="text-white py-12 px-4 text-center"
+          style={{ background: "linear-gradient(135deg, #063690 0%, #0095FF 100%)" }}
+        >
           <motion.h1
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
+            transition={{ duration: 0.5 }}
             className="text-3xl md:text-4xl font-extrabold"
           >
             The Gift of Heaven
@@ -103,12 +94,7 @@ export default function KingdomnomicsGiftOfHeaven() {
                   <Link href={opt.href}>
                     <button
                       data-testid={opt.testid}
-                      className={[
-                        "w-full flex items-center justify-between gap-3 px-5 py-4 rounded-full font-semibold text-left transition-all duration-200",
-                        opt.yes
-                          ? "bg-primary text-white hover:bg-[#0080e0] shadow-[rgb(117,186,255)_0px_7px_31px_0px]"
-                          : "bg-white text-secondary border-2 border-gray-200 hover:border-primary hover:text-primary",
-                      ].join(" ")}
+                      className="w-full flex items-center justify-between gap-3 px-5 py-4 rounded-full font-semibold text-left transition-all duration-200 bg-white text-secondary border-2 border-gray-200 hover:border-primary hover:text-primary"
                     >
                       <span>{opt.label}</span>
                       <ChevronRight size={18} className="flex-shrink-0" />

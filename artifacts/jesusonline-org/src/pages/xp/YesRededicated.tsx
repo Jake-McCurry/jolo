@@ -32,7 +32,7 @@ export default function YesRededicated() {
       <SEO title="The Next 3 Steps" description="You rededicated your life to Jesus. Here are your next steps." />
 
       <div className="min-h-screen bg-gray-50">
-        <div className="bg-secondary text-white py-12 px-4 text-center">
+        <div className="text-white py-12 px-4 text-center" style={{ background: "linear-gradient(135deg, #063690 0%, #0095FF 100%)" }}>
           <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-xs font-bold uppercase tracking-widest text-primary mb-3">
             A Fresh Start
           </motion.p>

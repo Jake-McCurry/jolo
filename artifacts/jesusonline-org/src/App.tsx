@@ -24,7 +24,7 @@ function SimpleFooter() {
   const isXP = location.startsWith("/xp");
   return (
     <footer className="text-center py-6 text-xs text-gray-400 border-t border-gray-100 bg-white">
-      © JesusOnline Ministry &nbsp;·&nbsp;{" "}
+      © JesusOnline Ministries &nbsp;·&nbsp;{" "}
       {isXP ? (
         <a href="https://app.jesusonline.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary">app.jesusonline.com</a>
       ) : (
