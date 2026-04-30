@@ -1,24 +1,13 @@
-import { Switch, Route, Router as WouterRouter, useLocation } from "wouter";
+import { Switch, Route, Router as WouterRouter, useLocation, Redirect } from "wouter";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { Header } from "@/components/layout/Header";
 import { LPHeader } from "@/components/layout/LPHeader";
 import { XPHeader } from "@/components/layout/XPHeader";
-import { Footer } from "@/components/layout/Footer";
 
-// Main pages
-import Home from "@/pages/Home";
-import DiscoverEvidence from "@/pages/DiscoverEvidence";
-import ReceiveJesus from "@/pages/ReceiveJesus";
-import FollowJesus from "@/pages/FollowJesus";
-import ForeverLoved from "@/pages/ForeverLoved";
-import GodIsHope from "@/pages/GodIsHope";
-import NotFound from "@/pages/not-found";
-
-// LP funnel pages
+// LP funnel entry
 import KingdomnomicsGiftOfHeaven from "@/pages/lp/KingdomnomicsGiftOfHeaven";
 
-// XP experience pages
+// XP survey response pages
 import NoDidntPray from "@/pages/xp/NoDidntPray";
 import YesReceivedJesus from "@/pages/xp/YesReceivedJesus";
 import YesRededicated from "@/pages/xp/YesRededicated";
@@ -26,9 +15,23 @@ import NoAlreadyReceived from "@/pages/xp/NoAlreadyReceived";
 
 function LayoutHeader() {
   const [location] = useLocation();
-  if (location.startsWith("/lp")) return <LPHeader />;
   if (location.startsWith("/xp")) return <XPHeader />;
-  return <Header />;
+  return <LPHeader />;
+}
+
+function SimpleFooter() {
+  const [location] = useLocation();
+  const isXP = location.startsWith("/xp");
+  return (
+    <footer className="text-center py-6 text-xs text-gray-400 border-t border-gray-100 bg-white">
+      © JesusOnline Ministry &nbsp;·&nbsp;{" "}
+      {isXP ? (
+        <a href="https://app.jesusonline.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary">app.jesusonline.com</a>
+      ) : (
+        <a href="https://jesusonline.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary">jesusonline.com</a>
+      )}
+    </footer>
+  );
 }
 
 function Router() {
@@ -37,27 +40,27 @@ function Router() {
       <LayoutHeader />
       <main className="flex-1">
         <Switch>
-          {/* Main site pages */}
-          <Route path="/" component={Home} />
-          <Route path="/discover-evidence" component={DiscoverEvidence} />
-          <Route path="/receive-jesus" component={ReceiveJesus} />
-          <Route path="/follow-jesus" component={FollowJesus} />
-          <Route path="/forever-loved" component={ForeverLoved} />
-          <Route path="/god-is-hope" component={GodIsHope} />
+          {/* Root redirects to the LP */}
+          <Route path="/">
+            <Redirect to="/lp/kingdomnomics-gift-of-heaven" />
+          </Route>
 
-          {/* /lp/ landing pages — jesusonline.com nav */}
+          {/* LP landing page */}
           <Route path="/lp/kingdomnomics-gift-of-heaven" component={KingdomnomicsGiftOfHeaven} />
 
-          {/* /xp/ experience pages — app.jesusonline.com nav */}
+          {/* XP survey response pages */}
           <Route path="/xp/no-i-didnt-pray" component={NoDidntPray} />
           <Route path="/xp/yes-i-received-jesus" component={YesReceivedJesus} />
           <Route path="/xp/yes-i-rededicated" component={YesRededicated} />
           <Route path="/xp/no-already-received" component={NoAlreadyReceived} />
 
-          <Route component={NotFound} />
+          {/* Catch-all → LP */}
+          <Route>
+            <Redirect to="/lp/kingdomnomics-gift-of-heaven" />
+          </Route>
         </Switch>
       </main>
-      <Footer />
+      <SimpleFooter />
     </div>
   );
 }

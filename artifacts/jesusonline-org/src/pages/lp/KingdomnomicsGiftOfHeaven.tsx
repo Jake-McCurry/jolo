@@ -7,25 +7,25 @@ const SURVEY_OPTIONS = [
   {
     label: "No, I didn't pray the prayer.",
     href: "/xp/no-i-didnt-pray",
-    variant: "outline" as const,
+    yes: false,
     testid: "survey-no-didnt-pray",
   },
   {
     label: "Yes, I prayed and received Jesus into my life.",
     href: "/xp/yes-i-received-jesus",
-    variant: "primary" as const,
+    yes: true,
     testid: "survey-yes-received-jesus",
   },
   {
     label: "Yes, I prayed and rededicated my life to Jesus.",
     href: "/xp/yes-i-rededicated",
-    variant: "primary" as const,
+    yes: true,
     testid: "survey-yes-rededicated",
   },
   {
     label: "No, I have already received Jesus in my life.",
     href: "/xp/no-already-received",
-    variant: "outline" as const,
+    yes: false,
     testid: "survey-no-already-received",
   },
 ];
@@ -34,48 +34,39 @@ export default function KingdomnomicsGiftOfHeaven() {
   return (
     <>
       <SEO
-        title="The Gift of Heaven — Kingdomnomics"
-        description="Watch The Gift of Heaven and discover what God is offering you. A message from JesusOnline."
+        title="The Gift of Heaven"
+        description="Watch The Gift of Heaven and let us know where you are on your journey with God."
       />
 
-      <div className="min-h-screen bg-[#E8EDEF] pt-20">
-        {/* Page Header */}
-        <div className="bg-secondary text-white py-12 px-4">
-          <div className="container mx-auto max-w-3xl text-center">
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4 }}
-              className="text-xs font-bold uppercase tracking-widest text-primary mb-3"
-            >
-              Kingdomnomics
-            </motion.p>
-            <motion.h1
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-4xl md:text-5xl font-extrabold mb-4"
-            >
-              The Gift of Heaven
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-white/70 text-lg max-w-xl mx-auto"
-            >
-              Watch the video below, then let us know where you are on your journey with God.
-            </motion.p>
-          </div>
+      <div className="min-h-screen bg-gray-50">
+        {/* Page title band */}
+        <div className="bg-secondary text-white py-10 px-4 text-center">
+          <motion.p
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            className="text-xs font-bold uppercase tracking-widest text-primary mb-2"
+          >
+            Kingdomnomics
+          </motion.p>
+          <motion.h1
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-3xl md:text-4xl font-extrabold"
+          >
+            The Gift of Heaven
+          </motion.h1>
         </div>
 
-        <div className="container mx-auto max-w-3xl px-4 py-12">
-          {/* YouTube Embed */}
+        <div className="max-w-2xl mx-auto px-4 py-10">
+
+          {/* YouTube embed */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="w-full rounded-lg overflow-hidden shadow-xl bg-secondary mb-10"
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="w-full rounded-xl overflow-hidden shadow-lg bg-gray-900 mb-8"
             style={{ aspectRatio: "16/9" }}
             data-testid="video-gift-of-heaven"
           >
@@ -88,59 +79,59 @@ export default function KingdomnomicsGiftOfHeaven() {
             />
           </motion.div>
 
-          {/* Survey Section */}
+          {/* Survey */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="bg-white rounded-lg shadow-md p-8"
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="bg-white rounded-xl shadow-md p-8"
             data-testid="section-survey"
           >
-            <h2 className="text-xl font-bold text-secondary text-center mb-2">
+            <p className="text-center text-secondary font-bold text-lg mb-1">
               After watching the video, please share your response below.
-            </h2>
-            <p className="text-center text-gray-500 text-sm mb-8">Select the statement that best describes where you are.</p>
+            </p>
+            <p className="text-center text-gray-400 text-sm mb-7">Select the statement that describes you.</p>
 
-            <div className="flex flex-col gap-4">
-              {SURVEY_OPTIONS.map((option) => (
-                <Link key={option.href} href={option.href}>
-                  <motion.button
-                    whileHover={{ scale: 1.01 }}
-                    whileTap={{ scale: 0.99 }}
-                    data-testid={option.testid}
-                    className={[
-                      "w-full flex items-center justify-between gap-4 px-6 py-4 font-semibold text-left transition-all duration-200",
-                      option.variant === "primary"
-                        ? "bg-primary text-white hover:bg-primary/90"
-                        : "bg-white text-secondary border-2 border-secondary/20 hover:border-primary hover:text-primary",
-                    ].join(" ")}
-                  >
-                    <span>{option.label}</span>
-                    <ChevronRight size={20} className="flex-shrink-0" />
-                  </motion.button>
-                </Link>
+            <div className="flex flex-col gap-3">
+              {SURVEY_OPTIONS.map((opt, i) => (
+                <motion.div
+                  key={opt.href}
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.4, delay: 0.4 + i * 0.07 }}
+                >
+                  <Link href={opt.href}>
+                    <button
+                      data-testid={opt.testid}
+                      className={[
+                        "w-full flex items-center justify-between gap-3 px-5 py-4 rounded-full font-semibold text-left transition-all duration-200",
+                        opt.yes
+                          ? "bg-primary text-white hover:bg-[#0080e0] shadow-[rgb(117,186,255)_0px_7px_31px_0px]"
+                          : "bg-white text-secondary border-2 border-gray-200 hover:border-primary hover:text-primary",
+                      ].join(" ")}
+                    >
+                      <span>{opt.label}</span>
+                      <ChevronRight size={18} className="flex-shrink-0" />
+                    </button>
+                  </Link>
+                </motion.div>
               ))}
             </div>
           </motion.div>
 
-          {/* Transcript Link */}
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="text-center mt-6 text-sm text-gray-500"
-          >
+          {/* Transcript */}
+          <p className="text-center mt-5 text-sm text-gray-400">
             Prefer to read?{" "}
             <a
               href="https://apicontent.jesusonline.com/uncategorized/82010-t-kingdomnomics-the-gift-of-heaven"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-primary hover:underline font-medium"
+              className="text-primary hover:underline"
               data-testid="link-transcript"
             >
-              Click here to read the video transcript
+              Read the video transcript
             </a>
-          </motion.p>
+          </p>
         </div>
       </div>
     </>

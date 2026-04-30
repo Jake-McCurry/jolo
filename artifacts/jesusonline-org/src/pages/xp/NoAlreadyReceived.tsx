@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 import { SEO } from "@/components/ui/SEO";
-import { BookOpen, ExternalLink, Globe, Compass } from "lucide-react";
+import { BookOpen, ExternalLink } from "lucide-react";
 
-const LANGUAGE_OPTIONS = [
+const LANGUAGES = [
   { label: "বাংলায় পড়ুন (Bengali)", href: "https://apicontent.jesusonline.com/uncategorized/89507-read-this-app-in-bengali" },
   { label: "اقرأ بالعربية (Arabic)", href: "https://apicontent.jesusonline.com/uncategorized/89505-read-this-app-in-arabic" },
   { label: "អានជាភាសាខ្មែរ (Khmer)", href: "https://apicontent.jesusonline.com/uncategorized/89559-read-this-app-in-khmer" },
@@ -20,66 +20,42 @@ const APP_LINKS = [
 export default function NoAlreadyReceived() {
   return (
     <>
-      <SEO
-        title="Welcome — Already a Believer"
-        description="You're already part of God's family. Discover resources to help you grow deeper in your faith."
-      />
+      <SEO title="The Next 3 Steps" description="You're already part of God's family. Here are resources to help you grow." />
 
-      <div className="min-h-screen bg-[#E8EDEF] pt-20">
-        <div className="bg-secondary text-white py-14 px-4">
-          <div className="container mx-auto max-w-2xl text-center">
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.4 }}
-              className="text-primary text-sm font-bold uppercase tracking-widest mb-4"
-            >
-              Welcome Back
-            </motion.p>
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-3xl md:text-5xl font-extrabold mb-5"
-            >
-              You're already part of God's family!
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="text-white/70 text-lg max-w-lg mx-auto"
-            >
-              Keep growing. Explore the resources below to go deeper in your walk with God.
-            </motion.p>
-          </div>
+      <div className="min-h-screen bg-gray-50">
+        <div className="bg-secondary text-white py-12 px-4 text-center">
+          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-xs font-bold uppercase tracking-widest text-primary mb-3">
+            Welcome Back
+          </motion.p>
+          <motion.h1
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-3xl md:text-4xl font-extrabold"
+          >
+            The Next 3 Steps&hellip;
+          </motion.h1>
         </div>
 
-        <div className="container mx-auto max-w-2xl px-4 py-12 space-y-8">
+        <div className="max-w-2xl mx-auto px-4 py-10 space-y-6">
 
           {/* Step 1 — Languages */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="bg-white rounded-lg shadow-md p-8"
+            className="bg-white rounded-xl shadow-md p-8"
           >
-            <div className="flex items-center gap-3 mb-5">
-              <span className="w-8 h-8 bg-primary text-white text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
-              <h2 className="text-xl font-bold text-secondary">Read this JO App in your language.</h2>
-            </div>
+            <h2 className="text-lg font-bold text-secondary mb-5 flex items-center gap-3">
+              <span className="w-8 h-8 rounded-full bg-primary text-white text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+              Read this JO App in your language.
+            </h2>
             <div className="flex flex-col gap-3">
-              {LANGUAGE_OPTIONS.map((lang) => (
-                <a
-                  key={lang.href}
-                  href={lang.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3 text-primary font-semibold hover:underline text-sm"
-                  data-testid={`link-lang-${lang.label.split(" ")[0].toLowerCase()}`}
-                >
-                  <Globe size={15} className="flex-shrink-0" />
-                  {lang.label}
+              {LANGUAGES.map((lang) => (
+                <a key={lang.href} href={lang.href} target="_blank" rel="noopener noreferrer"
+                  className="text-primary font-semibold hover:underline text-sm flex items-center gap-2"
+                  data-testid={`link-lang-${lang.label.split(" ")[0].toLowerCase()}`}>
+                  <span>&gt;&gt;</span> {lang.label}
                 </a>
               ))}
             </div>
@@ -87,65 +63,50 @@ export default function NoAlreadyReceived() {
 
           {/* Step 2 — Book */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="bg-secondary text-white rounded-lg shadow-md p-8"
+            className="bg-white rounded-xl shadow-md p-8"
           >
-            <div className="flex items-center gap-3 mb-5">
-              <span className="w-8 h-8 bg-primary text-white text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
-              <h2 className="text-xl font-bold">Discover the immediate benefits of being a Child of God.</h2>
-            </div>
-            <p className="text-white/70 mb-6 text-sm leading-relaxed">
-              By inviting Jesus into your life, not only were you given eternal life in Heaven but also spiritual resources for living here on earth now.
+            <h2 className="text-lg font-bold text-secondary mb-3 flex items-center gap-3">
+              <span className="w-8 h-8 rounded-full bg-primary text-white text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+              Discover the immediate benefits of being a Child of God.
+            </h2>
+            <p className="text-gray-500 text-sm mb-6 leading-relaxed">
+              By inviting Jesus into your life, not only were you given Eternal life in Heaven but also spiritual resources for living here on earth now.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <a
-                href="https://apicontent.jesusonline.com/books/60100-the-adventure-of-living-with-jesus-book"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 bg-primary text-white font-bold px-6 py-3 hover:bg-primary/90 transition-colors"
-                data-testid="link-read-book-app"
-              >
-                <BookOpen size={16} />
-                Read Book in App
+            <div className="flex flex-col sm:flex-row gap-3">
+              <a href="https://apicontent.jesusonline.com/books/60100-the-adventure-of-living-with-jesus-book"
+                target="_blank" rel="noopener noreferrer"
+                className="btn-primary flex items-center gap-2 text-sm" data-testid="link-read-book">
+                <BookOpen size={15} /> Read Book in App
               </a>
-              <a
-                href="https://jesusonline.com/wp-content/uploads/Adventure-of-Living-w-Jesus-161216.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 border-2 border-white/30 text-white font-bold px-6 py-3 hover:border-primary hover:text-primary transition-colors"
-                data-testid="link-download-pdf"
-              >
-                <ExternalLink size={16} />
-                Download Book PDF
+              <a href="https://jesusonline.com/wp-content/uploads/Adventure-of-Living-w-Jesus-161216.pdf"
+                target="_blank" rel="noopener noreferrer"
+                className="flex items-center gap-2 border-2 border-primary text-primary font-bold px-5 py-3 rounded-full hover:bg-primary hover:text-white transition-colors text-sm"
+                data-testid="link-download-pdf">
+                <ExternalLink size={15} /> Download Book PDF
               </a>
             </div>
           </motion.div>
 
           {/* Step 3 — App */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="bg-white rounded-lg shadow-md p-8"
+            className="bg-white rounded-xl shadow-md p-8"
           >
-            <div className="flex items-center gap-3 mb-5">
-              <span className="w-8 h-8 bg-primary text-white text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
-              <h2 className="text-xl font-bold text-secondary">Explore the JO Web App to find out what God offers you.</h2>
-            </div>
+            <h2 className="text-lg font-bold text-secondary mb-5 flex items-center gap-3">
+              <span className="w-8 h-8 rounded-full bg-primary text-white text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+              Explore the JO Web App to find out what God offers you.
+            </h2>
             <div className="flex flex-col gap-3">
               {APP_LINKS.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3 text-primary font-semibold hover:underline text-sm"
-                  data-testid={`link-app-${link.label.toLowerCase().replace(/\s+/g, "-")}`}
-                >
-                  <Compass size={15} className="flex-shrink-0" />
-                  {link.label}
+                <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer"
+                  className="text-primary font-semibold hover:underline text-sm flex items-center gap-2"
+                  data-testid={`link-app-${link.label.split(" ")[0].toLowerCase()}`}>
+                  <span>&gt;&gt;</span> {link.label}
                 </a>
               ))}
             </div>
