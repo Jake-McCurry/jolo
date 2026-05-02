@@ -34,6 +34,7 @@ export function YouTubeFacade({ videoId, title, className = "" }: Props) {
         alt={title}
         loading="eager"
         decoding="async"
+        fetchPriority="high"
       />
       <div className="yt-play">
         <svg width="68" height="48" viewBox="0 0 68 48" xmlns="http://www.w3.org/2000/svg">
