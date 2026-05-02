@@ -22,11 +22,12 @@ export function YouTubeFacade({ videoId, title, className = "" }: Props) {
   }
 
   return (
-    <div
-      className={`yt-facade w-full h-full ${className}`}
+    <button
+      type="button"
+      className={`yt-facade w-full h-full border-0 p-0 ${className}`}
       onClick={() => setActive(true)}
-      role="button"
-      aria-label={`Play ${title}`}
+      onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && setActive(true)}
+      aria-label={`Play video: ${title}`}
     >
       <img
         src={`https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`}
@@ -40,6 +41,6 @@ export function YouTubeFacade({ videoId, title, className = "" }: Props) {
           <polygon points="26,14 52,24 26,34" fill="white" />
         </svg>
       </div>
-    </div>
+    </button>
   );
 }

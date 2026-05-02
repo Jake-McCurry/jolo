@@ -25,7 +25,7 @@ export default function YesReceivedJesus() {
 
   return (
     <>
-      <SEO title="You Received Jesus!" description="You just invited Jesus into your life. Discover your next steps." />
+      <SEO title="You Received Jesus!" description="You just invited Jesus into your life. Discover your next steps." path="/xp/yes-i-received-jesus" />
 
       <div className="min-h-screen bg-gray-50">
         <div className="text-white py-12 px-4 text-center" style={{ background: "linear-gradient(135deg, #063690 0%, #0095FF 100%)" }}>

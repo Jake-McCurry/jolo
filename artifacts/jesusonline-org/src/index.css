@@ -115,6 +115,11 @@ body {
   transform: translateY(-1px);
 }
 
+/* Respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .fade-up, .fade-in { animation: none; opacity: 1; }
+}
+
 /* Lightweight CSS animations — replaces framer-motion */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(14px); }
@@ -164,4 +169,8 @@ body {
 }
 .yt-facade:hover .yt-play svg {
   transform: scale(1.1);
+}
+.yt-facade:focus-visible {
+  outline: 3px solid #0095FF;
+  outline-offset: 2px;
 }

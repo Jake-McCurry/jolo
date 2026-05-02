@@ -19,7 +19,7 @@ const APP_LINKS = [
 export default function NoAlreadyReceived() {
   return (
     <>
-      <SEO title="The Next 3 Steps" description="You're already part of God's family. Here are resources to help you grow." />
+      <SEO title="The Next 3 Steps" description="You're already part of God's family. Here are resources to help you grow." path="/xp/no-already-received" />
 
       <div className="min-h-screen bg-gray-50">
         <div className="text-white py-12 px-4 text-center" style={{ background: "linear-gradient(135deg, #063690 0%, #0095FF 100%)" }}>

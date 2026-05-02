@@ -15,7 +15,7 @@ export default function NoDidntPray() {
 
   return (
     <>
-      <SEO title="The Next 3 Steps" description="We're here for you. Share your thoughts and discover what God offers." />
+      <SEO title="The Next 3 Steps" description="We're here for you. Share your thoughts and discover what God offers." path="/xp/no-i-didnt-pray" />
 
       <div className="min-h-screen bg-gray-50">
         <div className="text-white py-12 px-4 text-center" style={{ background: "linear-gradient(135deg, #063690 0%, #0095FF 100%)" }}>
