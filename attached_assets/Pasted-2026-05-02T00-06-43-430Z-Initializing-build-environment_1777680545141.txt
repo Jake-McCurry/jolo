@@ -1,0 +1,87 @@
+2026-05-02T00:06:43.430Z	Initializing build environment...
+2026-05-02T00:06:45.095Z	Success: Finished initializing build environment
+2026-05-02T00:06:45.598Z	Cloning repository...
+2026-05-02T00:06:47.063Z	Restoring from dependencies cache
+2026-05-02T00:06:47.067Z	Restoring from build output cache
+2026-05-02T00:06:48.133Z	Detected the following tools from environment: pnpm@10.26.1, nodejs@22.16.0
+2026-05-02T00:06:49.496Z	Installing project dependencies: pnpm install --frozen-lockfile
+2026-05-02T00:06:50.074Z	Scope: all 9 workspace projects
+2026-05-02T00:06:50.171Z	Lockfile is up to date, resolution step is skipped
+2026-05-02T00:06:50.257Z	Progress: resolved 1, reused 0, downloaded 0, added 0
+2026-05-02T00:06:50.320Z	Packages: +486
+2026-05-02T00:06:50.321Z	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2026-05-02T00:06:51.258Z	Progress: resolved 486, reused 0, downloaded 45, added 9
+2026-05-02T00:06:52.258Z	Progress: resolved 486, reused 0, downloaded 221, added 99
+2026-05-02T00:06:53.305Z	Progress: resolved 486, reused 0, downloaded 281, added 120
+2026-05-02T00:06:54.298Z	Progress: resolved 486, reused 0, downloaded 295, added 124
+2026-05-02T00:06:55.300Z	Progress: resolved 486, reused 0, downloaded 296, added 124
+2026-05-02T00:06:56.301Z	Progress: resolved 486, reused 0, downloaded 393, added 160
+2026-05-02T00:06:57.302Z	Progress: resolved 486, reused 0, downloaded 480, added 184
+2026-05-02T00:06:58.301Z	Progress: resolved 486, reused 0, downloaded 486, added 396
+2026-05-02T00:06:58.499Z	Progress: resolved 486, reused 0, downloaded 486, added 486, done
+2026-05-02T00:06:58.710Z	.../esbuild@0.27.3/node_modules/esbuild postinstall$ node install.js
+2026-05-02T00:06:58.797Z	.../esbuild@0.27.3/node_modules/esbuild postinstall: Done
+2026-05-02T00:06:59.160Z	
+2026-05-02T00:06:59.161Z	devDependencies:
+2026-05-02T00:06:59.161Z	+ prettier 3.8.1
+2026-05-02T00:06:59.161Z	+ typescript 5.9.3
+2026-05-02T00:06:59.161Z	
+2026-05-02T00:06:59.222Z	. preinstall$ sh -c 'rm -f package-lock.json yarn.lock; case "$npm_config_user_agent" in pnpm/*) ;; *) echo "Use pnpm instead" >&2; exit 1 ;; esac'
+2026-05-02T00:06:59.237Z	. preinstall: Done
+2026-05-02T00:06:59.379Z	Done in 9.7s using pnpm v10.26.1
+2026-05-02T00:06:59.591Z	Executing user build command: pnpm --filter @workspace/jesusonline-org run build:cf
+2026-05-02T00:07:00.046Z	
+2026-05-02T00:07:00.047Z	> @workspace/jesusonline-org@0.0.0 build:cf /opt/buildhome/repo/artifacts/jesusonline-org
+2026-05-02T00:07:00.047Z	> BASE_PATH=/ PORT=3000 NODE_ENV=production vite build --config vite.config.ts
+2026-05-02T00:07:00.047Z	
+2026-05-02T00:07:00.456Z	vite v7.3.2 building client environment for production...
+2026-05-02T00:07:00.542Z	transforming...
+2026-05-02T00:07:01.043Z	src/components/ui/tooltip.tsx (2:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+2026-05-02T00:07:04.502Z	✓ 2125 modules transformed.
+2026-05-02T00:07:04.891Z	rendering chunks...
+2026-05-02T00:07:04.901Z	computing gzip size...
+2026-05-02T00:07:04.921Z	dist/public/index.html                   0.74 kB │ gzip:   0.41 kB
+2026-05-02T00:07:04.921Z	dist/public/assets/index-DtwZ63Ud.css   99.90 kB │ gzip:  16.49 kB
+2026-05-02T00:07:04.922Z	dist/public/assets/index-D6UOaSqj.js   425.42 kB │ gzip: 135.38 kB
+2026-05-02T00:07:04.922Z	✓ built in 4.42s
+2026-05-02T00:07:04.989Z	Success: Build command completed
+2026-05-02T00:07:05.162Z	Executing user deploy command: npx wrangler versions upload
+2026-05-02T00:07:06.293Z	npm warn exec The following package was not found and will be installed: wrangler@4.87.0
+2026-05-02T00:07:14.739Z	
+2026-05-02T00:07:14.739Z	 ⛅️ wrangler 4.87.0
+2026-05-02T00:07:14.739Z	───────────────────
+2026-05-02T00:07:14.774Z	
+2026-05-02T00:07:14.840Z	✘ [ERROR] Missing entry-point to Worker script or to assets directory
+2026-05-02T00:07:14.841Z	
+2026-05-02T00:07:14.841Z	  
+2026-05-02T00:07:14.841Z	  If there is code to deploy, you can either:
+2026-05-02T00:07:14.841Z	  - Specify an entry-point to your Worker script via the command line (ex: `npx wrangler versions upload src/index.ts`)
+2026-05-02T00:07:14.841Z	  - Or create a "wrangler.jsonc" file containing:
+2026-05-02T00:07:14.841Z	  
+2026-05-02T00:07:14.841Z	  ```
+2026-05-02T00:07:14.841Z	  {
+2026-05-02T00:07:14.841Z	    "name": "worker-name",
+2026-05-02T00:07:14.841Z	    "compatibility_date": "2026-05-02",
+2026-05-02T00:07:14.841Z	    "main": "src/index.ts"
+2026-05-02T00:07:14.841Z	  }
+2026-05-02T00:07:14.841Z	  ```
+2026-05-02T00:07:14.841Z	  
+2026-05-02T00:07:14.842Z	  
+2026-05-02T00:07:14.842Z	  If are uploading a directory of assets, you can either:
+2026-05-02T00:07:14.842Z	  - Specify the path to the directory of assets via the command line: (ex: `npx wrangler versions upload --assets=./dist`)
+2026-05-02T00:07:14.842Z	  - Or create a "wrangler.jsonc" file containing:
+2026-05-02T00:07:14.842Z	  
+2026-05-02T00:07:14.842Z	  ```
+2026-05-02T00:07:14.842Z	  {
+2026-05-02T00:07:14.842Z	    "name": "worker-name",
+2026-05-02T00:07:14.842Z	    "compatibility_date": "2026-05-02",
+2026-05-02T00:07:14.842Z	    "assets": {
+2026-05-02T00:07:14.842Z	      "directory": "./dist"
+2026-05-02T00:07:14.842Z	    }
+2026-05-02T00:07:14.842Z	  }
+2026-05-02T00:07:14.842Z	  ```
+2026-05-02T00:07:14.842Z	  
+2026-05-02T00:07:14.842Z	
+2026-05-02T00:07:14.843Z	
+2026-05-02T00:07:14.979Z	🪵  Logs were written to "/opt/buildhome/.config/.wrangler/logs/wrangler-2026-05-02_00-07-14_380.log"
+2026-05-02T00:07:15.131Z	Failed: error occurred while running deploy command
