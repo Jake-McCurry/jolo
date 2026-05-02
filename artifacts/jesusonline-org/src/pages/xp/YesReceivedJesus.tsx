@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { useEffect } from "react";
 import { SEO } from "@/components/ui/SEO";
 import { ChevronRight } from "lucide-react";
@@ -13,6 +12,8 @@ const FOLLOW_UPS = [
   { label: "More Questions?", href: "https://apicontent.jesusonline.com/uncategorized/88427-more-questions" },
 ];
 
+const DELAYS = ["d-300", "d-350", "d-400", "d-450", "d-500", "d-550", "d-600"];
+
 export default function YesReceivedJesus() {
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -24,43 +25,23 @@ export default function YesReceivedJesus() {
 
   return (
     <>
-      <SEO title="You Received Jesus!" description="You just invited Jesus into your life. Discover your next steps." />
+      <SEO title="You Received Jesus!" description="You just invited Jesus into your life. Discover your next steps." path="/xp/yes-i-received-jesus" />
 
       <div className="min-h-screen bg-gray-50">
         <div className="text-white py-12 px-4 text-center" style={{ background: "linear-gradient(135deg, #063690 0%, #0095FF 100%)" }}>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.4 }}
-            className="text-xs font-bold uppercase tracking-widest text-primary mb-3"
-          >
+          <p className="fade-in text-xs font-bold uppercase tracking-widest text-primary mb-3">
             A Life-Changing Moment
-          </motion.p>
-          <motion.h1
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-3xl md:text-4xl font-extrabold max-w-xl mx-auto"
-          >
+          </p>
+          <h1 className="fade-up d-100 text-3xl md:text-4xl font-extrabold max-w-xl mx-auto">
             You Received Jesus into Your Life!
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.25 }}
-            className="text-white/70 mt-3 text-base max-w-md mx-auto"
-          >
+          </h1>
+          <p className="fade-in d-250 text-white/70 mt-3 text-base max-w-md mx-auto">
             You just invited Jesus into your life to be your Lord and Savior!
-          </motion.p>
+          </p>
         </div>
 
         <div className="max-w-2xl mx-auto px-4 py-10">
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="bg-white rounded-xl shadow-md p-8"
-          >
+          <div className="fade-up d-200 bg-white rounded-xl shadow-md p-8">
             <p className="text-secondary font-semibold mb-1">
               Select the statement below that best matches your current thoughts and feelings —
             </p>
@@ -68,23 +49,20 @@ export default function YesReceivedJesus() {
 
             <div className="flex flex-col gap-3">
               {FOLLOW_UPS.map((q, i) => (
-                <motion.a
+                <a
                   key={q.href}
                   href={q.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: 0.3 + i * 0.06 }}
-                  className="flex items-center justify-between gap-3 px-5 py-4 rounded-full border-2 border-gray-200 text-secondary font-semibold hover:border-primary hover:text-primary transition-colors text-sm"
+                  className={`fade-up ${DELAYS[i]} flex items-center justify-between gap-3 px-5 py-4 rounded-full border-2 border-gray-200 text-secondary font-semibold hover:border-primary hover:text-primary transition-colors text-sm`}
                   data-testid={`link-followup-${i}`}
                 >
                   <span>"{q.label}"</span>
                   <ChevronRight size={16} className="flex-shrink-0" />
-                </motion.a>
+                </a>
               ))}
             </div>
-          </motion.div>
+          </div>
 
           <div className="text-center mt-8">
             <a

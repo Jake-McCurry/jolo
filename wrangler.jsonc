@@ -1,0 +1,13 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "jolo-staging",
+  "compatibility_date": "2026-05-01",
+  "workers_dev": true,
+  "assets": {
+    "directory": "./artifacts/jesusonline-org/dist/public",
+    "not_found_handling": "single-page-application"
+  },
+  "observability": {
+    "enabled": true
+  }
+}
