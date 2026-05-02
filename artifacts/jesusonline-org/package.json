@@ -74,5 +74,10 @@
     "vite": "catalog:",
     "wouter": "^3.3.5",
     "zod": "catalog:"
+  },
+  "dependencies": {
+    "@fontsource-variable/open-sans": "^5.2.7",
+    "@preact/preset-vite": "^2.10.5",
+    "preact": "^10.29.1"
   }
 }
