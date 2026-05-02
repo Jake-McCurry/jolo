@@ -1,6 +1,6 @@
-import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { SEO } from "@/components/ui/SEO";
+import { YouTubeFacade } from "@/components/ui/YouTubeFacade";
 import { ChevronRight } from "lucide-react";
 
 const SURVEY_OPTIONS = [
@@ -26,6 +26,8 @@ const SURVEY_OPTIONS = [
   },
 ];
 
+const DELAYS = ["d-400", "d-450", "d-500", "d-550"];
+
 export default function KingdomnomicsGiftOfHeaven() {
   return (
     <>
@@ -35,47 +37,30 @@ export default function KingdomnomicsGiftOfHeaven() {
       />
 
       <div className="min-h-screen bg-gray-50">
-        {/* Page title band */}
         <div
           className="text-white py-12 px-4 text-center"
           style={{ background: "linear-gradient(135deg, #063690 0%, #0095FF 100%)" }}
         >
-          <motion.h1
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-3xl md:text-4xl font-extrabold"
-          >
+          <h1 className="fade-up text-3xl md:text-4xl font-extrabold">
             The Gift of Heaven
-          </motion.h1>
+          </h1>
         </div>
 
         <div className="max-w-2xl mx-auto px-4 py-10">
 
-          {/* YouTube embed */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.15 }}
-            className="w-full rounded-xl overflow-hidden shadow-lg bg-gray-900 mb-8"
+          <div
+            className="fade-up d-150 w-full rounded-xl overflow-hidden shadow-lg bg-gray-900 mb-8"
             style={{ aspectRatio: "16/9" }}
             data-testid="video-gift-of-heaven"
           >
-            <iframe
-              className="w-full h-full"
-              src="https://www.youtube.com/embed/XB7wGTnYeaE?rel=0&modestbranding=1"
+            <YouTubeFacade
+              videoId="XB7wGTnYeaE"
               title="The Gift of Heaven — JesusOnline"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
             />
-          </motion.div>
+          </div>
 
-          {/* Survey */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="bg-white rounded-xl shadow-md p-8"
+          <div
+            className="fade-up d-300 bg-white rounded-xl shadow-md p-8"
             data-testid="section-survey"
           >
             <p className="text-center text-secondary font-bold text-lg mb-1">
@@ -85,12 +70,7 @@ export default function KingdomnomicsGiftOfHeaven() {
 
             <div className="flex flex-col gap-3">
               {SURVEY_OPTIONS.map((opt, i) => (
-                <motion.div
-                  key={opt.href}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.4, delay: 0.4 + i * 0.07 }}
-                >
+                <div key={opt.href} className={`fade-up ${DELAYS[i]}`}>
                   <Link href={opt.href}>
                     <button
                       data-testid={opt.testid}
@@ -100,12 +80,11 @@ export default function KingdomnomicsGiftOfHeaven() {
                       <ChevronRight size={18} className="flex-shrink-0" />
                     </button>
                   </Link>
-                </motion.div>
+                </div>
               ))}
             </div>
-          </motion.div>
+          </div>
 
-          {/* Transcript */}
           <p className="text-center mt-5 text-sm text-gray-400">
             Prefer to read?{" "}
             <a

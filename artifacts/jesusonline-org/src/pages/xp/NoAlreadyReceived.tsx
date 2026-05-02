@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { SEO } from "@/components/ui/SEO";
 import { BookOpen, ExternalLink } from "lucide-react";
 
@@ -24,28 +23,15 @@ export default function NoAlreadyReceived() {
 
       <div className="min-h-screen bg-gray-50">
         <div className="text-white py-12 px-4 text-center" style={{ background: "linear-gradient(135deg, #063690 0%, #0095FF 100%)" }}>
-          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-xs font-bold uppercase tracking-widest text-primary mb-3">
-            Welcome Back
-          </motion.p>
-          <motion.h1
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-3xl md:text-4xl font-extrabold"
-          >
+          <p className="fade-in text-xs font-bold uppercase tracking-widest text-primary mb-3">Welcome Back</p>
+          <h1 className="fade-up d-100 text-3xl md:text-4xl font-extrabold">
             The Next 3 Steps&hellip;
-          </motion.h1>
+          </h1>
         </div>
 
         <div className="max-w-2xl mx-auto px-4 py-10 space-y-6">
 
-          {/* Step 1 — Languages */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="bg-white rounded-xl shadow-md p-8"
-          >
+          <div className="fade-up d-100 bg-white rounded-xl shadow-md p-8">
             <h2 className="text-lg font-bold text-secondary mb-5 flex items-center gap-3">
               <span className="w-8 h-8 rounded-full bg-primary text-white text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
               Read this JO App in your language.
@@ -59,15 +45,9 @@ export default function NoAlreadyReceived() {
                 </a>
               ))}
             </div>
-          </motion.div>
+          </div>
 
-          {/* Step 2 — Book */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="bg-white rounded-xl shadow-md p-8"
-          >
+          <div className="fade-up d-200 bg-white rounded-xl shadow-md p-8">
             <h2 className="text-lg font-bold text-secondary mb-3 flex items-center gap-3">
               <span className="w-8 h-8 rounded-full bg-primary text-white text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
               Discover the immediate benefits of being a Child of God.
@@ -88,15 +68,9 @@ export default function NoAlreadyReceived() {
                 <ExternalLink size={15} /> Download Book PDF
               </a>
             </div>
-          </motion.div>
+          </div>
 
-          {/* Step 3 — App */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="bg-white rounded-xl shadow-md p-8"
-          >
+          <div className="fade-up d-300 bg-white rounded-xl shadow-md p-8">
             <h2 className="text-lg font-bold text-secondary mb-5 flex items-center gap-3">
               <span className="w-8 h-8 rounded-full bg-primary text-white text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
               Explore the JO Web App to find out what God offers you.
@@ -110,7 +84,7 @@ export default function NoAlreadyReceived() {
                 </a>
               ))}
             </div>
-          </motion.div>
+          </div>
 
         </div>
       </div>
