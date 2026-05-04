@@ -29,26 +29,29 @@ export default function YesReceivedJesus() {
 
       <div className="min-h-screen bg-gray-50">
         <div className="max-w-2xl mx-auto px-4 py-10">
-          <div className="fade-up d-200 bg-white rounded-xl shadow-md p-8">
-            <p className="text-secondary font-semibold mb-1">
-              Select the statement below that best matches your current thoughts and feelings —
-            </p>
-            <p className="text-gray-400 text-sm mb-7">You'll discover answers to your questions!</p>
-
-            <div className="flex flex-col gap-3">
-              {FOLLOW_UPS.map((q, i) => (
-                <a
-                  key={q.href}
-                  href={q.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`fade-up ${DELAYS[i]} flex items-center justify-between gap-3 px-5 py-4 rounded-full border-2 border-gray-200 text-secondary font-semibold hover:border-primary hover:text-primary transition-colors text-sm`}
-                  data-testid={`link-followup-${i}`}
-                >
-                  <span>"{q.label}"</span>
-                  <ChevronRight size={16} className="flex-shrink-0" />
-                </a>
-              ))}
+          <div className="fade-up d-200 bg-white rounded-xl shadow-md overflow-hidden">
+            <div className="bg-[#e8f4ff] px-8 pt-6 pb-4 border-b border-blue-100">
+              <p className="text-secondary font-semibold">
+                Select the statement below that best matches your current thoughts and feelings —
+              </p>
+              <p className="text-gray-400 text-sm mt-1">You'll discover answers to your questions!</p>
+            </div>
+            <div className="p-8">
+              <div className="flex flex-col gap-3">
+                {FOLLOW_UPS.map((q, i) => (
+                  <a
+                    key={q.href}
+                    href={q.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`fade-up ${DELAYS[i]} flex items-center justify-between gap-3 px-5 py-4 rounded-full border-2 border-gray-200 text-secondary font-semibold hover:border-primary hover:text-primary transition-colors text-sm`}
+                    data-testid={`link-followup-${i}`}
+                  >
+                    <span>"{q.label}"</span>
+                    <ChevronRight size={16} className="flex-shrink-0" />
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
 
