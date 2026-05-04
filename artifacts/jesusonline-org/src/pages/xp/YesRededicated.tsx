@@ -76,12 +76,12 @@ export default function YesRededicated() {
           <div className="fade-up d-300 bg-white rounded-xl shadow-md overflow-hidden">
             <div className="bg-[#e8f4ff] px-8 pt-6 pb-4 flex items-center gap-3 border-b border-blue-100">
               <span className="w-8 h-8 rounded-full bg-primary text-white text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
-              <h2 className="text-lg font-bold text-secondary">Explore the JO Web App to find out what God offers you.</h2>
+              <h2 className="text-lg font-bold text-secondary">Find What You Want</h2>
             </div>
             <div className="p-8 flex justify-center">
               <a href="https://app.jesusonline.com/find-what-you-want" target="_blank" rel="noopener noreferrer"
                 className="btn-primary inline-block" data-testid="link-app-find">
-                Find What You Want
+                Explore Now
               </a>
             </div>
           </div>
