@@ -13,14 +13,16 @@ const LP_NAV_LINKS: NavLink[] = [
   { label: "Translate & Resources", href: "https://jesusonline.com/translate-resources/" },
 ];
 
+const TEXT = "#063690";
+
 function JoloIcon() {
   return (
     <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <circle cx="18" cy="18" r="18" fill="#0095FF" />
-      <circle cx="18" cy="18" r="11" fill="#063690" />
-      <circle cx="18" cy="18" r="4" fill="#0095FF" />
-      <path d="M18 7 A11 11 0 0 1 29 18" stroke="#0095FF" strokeWidth="2.5" strokeLinecap="round" fill="none" />
-      <path d="M18 29 A11 11 0 0 1 7 18" stroke="#0095FF" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+      <circle cx="18" cy="18" r="18" fill="#063690" />
+      <circle cx="18" cy="18" r="11" fill="#0095FF" />
+      <circle cx="18" cy="18" r="4" fill="#063690" />
+      <path d="M18 7 A11 11 0 0 1 29 18" stroke="#063690" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+      <path d="M18 29 A11 11 0 0 1 7 18" stroke="#063690" strokeWidth="2.5" strokeLinecap="round" fill="none" />
     </svg>
   );
 }
@@ -52,11 +54,12 @@ export function SiteNav({ logoHref, links = LP_NAV_LINKS }: SiteNavProps) {
             href={logoHref}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2.5 focus-visible:outline-2 focus-visible:outline-white rounded"
+            className="flex items-center gap-2.5 rounded"
+            style={{ outlineColor: TEXT }}
             aria-label="JesusOnline — go to main site"
           >
             <JoloIcon />
-            <span className="text-white font-extrabold text-lg tracking-widest uppercase leading-none select-none">
+            <span style={{ color: TEXT }} className="font-extrabold text-lg tracking-widest uppercase leading-none select-none">
               JesusOnline
             </span>
           </a>
@@ -66,11 +69,12 @@ export function SiteNav({ logoHref, links = LP_NAV_LINKS }: SiteNavProps) {
             aria-expanded={open}
             aria-controls="site-nav-drawer"
             aria-label={open ? "Close menu" : "Open menu"}
-            className="flex flex-col justify-center items-center w-10 h-10 gap-[5px] rounded focus-visible:outline-2 focus-visible:outline-white"
+            className="flex flex-col justify-center items-center w-10 h-10 gap-[5px] rounded"
+            style={{ outlineColor: TEXT }}
           >
-            <span style={{ background: "white" }} className={`block h-0.5 w-6 rounded-full transition-all duration-200 origin-center ${open ? "rotate-45 translate-y-[7px]" : ""}`} />
-            <span style={{ background: "white" }} className={`block h-0.5 w-6 rounded-full transition-all duration-200 ${open ? "opacity-0 scale-x-0" : ""}`} />
-            <span style={{ background: "white" }} className={`block h-0.5 w-6 rounded-full transition-all duration-200 origin-center ${open ? "-rotate-45 -translate-y-[7px]" : ""}`} />
+            <span style={{ background: TEXT }} className={`block h-0.5 w-6 rounded-full transition-all duration-200 origin-center ${open ? "rotate-45 translate-y-[7px]" : ""}`} />
+            <span style={{ background: TEXT }} className={`block h-0.5 w-6 rounded-full transition-all duration-200 ${open ? "opacity-0 scale-x-0" : ""}`} />
+            <span style={{ background: TEXT }} className={`block h-0.5 w-6 rounded-full transition-all duration-200 origin-center ${open ? "-rotate-45 -translate-y-[7px]" : ""}`} />
           </button>
         </div>
       </header>
@@ -93,15 +97,16 @@ export function SiteNav({ logoHref, links = LP_NAV_LINKS }: SiteNavProps) {
           open ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0 pointer-events-none"
         }`}
       >
-        <ul className="max-w-5xl mx-auto px-5 py-4 flex flex-col divide-y divide-white/20">
+        <ul className="max-w-5xl mx-auto px-5 py-4 flex flex-col" style={{ borderColor: TEXT + "33" }}>
           {links.map((link) => (
-            <li key={link.href}>
+            <li key={link.href} style={{ borderBottom: `1px solid ${TEXT}33` }}>
               <a
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setOpen(false)}
-                className="block py-3.5 text-white font-semibold text-base tracking-wide hover:opacity-75 transition-opacity focus-visible:outline-2 focus-visible:outline-white"
+                style={{ color: TEXT }}
+                className="block py-3.5 font-semibold text-base tracking-wide hover:opacity-70 transition-opacity"
               >
                 {link.label}
               </a>
