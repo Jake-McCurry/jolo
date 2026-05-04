@@ -40,24 +40,31 @@ export default function NoAlreadyReceived() {
             </div>
           </div>
 
-          <div className="fade-up d-200 bg-white rounded-xl shadow-md p-8">
-            <h2 className="text-lg font-bold text-secondary mb-3 flex items-center gap-3">
+          <div className="fade-up d-200 bg-white rounded-xl shadow-md overflow-hidden">
+            <div className="bg-[#e8f4ff] px-8 pt-6 pb-4 flex items-center gap-3 border-b border-blue-100">
               <span className="w-8 h-8 rounded-full bg-primary text-white text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
-              Discover the immediate benefits of being a Child of God.
-            </h2>
-            <p className="text-gray-500 text-sm mb-6 leading-relaxed">
-              By inviting Jesus into your life, not only were you given Eternal life in Heaven but also spiritual resources for living here on earth now.
-            </p>
-            <img
-              src="https://apicontent.jesusonline.com/wp-content/uploads/2020/08/Adventure-of-Living-with-Jesus-791x1024.jpg"
-              alt="The Adventure of Living with Jesus"
-              className="w-32 rounded-lg shadow-md mb-5"
-            />
-            <a href="https://apicontent.jesusonline.com/books/60100-the-adventure-of-living-with-jesus-book"
-              target="_blank" rel="noopener noreferrer"
-              className="btn-primary inline-flex items-center gap-2 text-sm" data-testid="link-read-book">
-              <BookOpen size={15} /> Read Book in App
-            </a>
+              <h2 className="text-lg font-bold text-secondary">Discover the immediate benefits of being a Child of God.</h2>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-8 p-8 items-center sm:items-start">
+              <div className="flex-shrink-0">
+                <img
+                  src="https://apicontent.jesusonline.com/wp-content/uploads/2020/08/Adventure-of-Living-with-Jesus-791x1024.jpg"
+                  alt="The Adventure of Living with Jesus"
+                  className="w-44 rounded-xl shadow-lg"
+                />
+              </div>
+              <div className="flex flex-col justify-center">
+                <p className="text-base font-semibold text-secondary mb-1">The Adventure of Living with Jesus</p>
+                <p className="text-gray-500 text-sm mb-6 leading-relaxed">
+                  By inviting Jesus into your life, not only were you given Eternal life in Heaven but also spiritual resources for living here on earth now.
+                </p>
+                <a href="https://apicontent.jesusonline.com/books/60100-the-adventure-of-living-with-jesus-book"
+                  target="_blank" rel="noopener noreferrer"
+                  className="btn-primary inline-flex items-center gap-2 text-sm self-start" data-testid="link-read-book">
+                  <BookOpen size={15} /> Read Book in App
+                </a>
+              </div>
+            </div>
           </div>
 
           <div className="fade-up d-300 bg-white rounded-xl shadow-md p-8">
