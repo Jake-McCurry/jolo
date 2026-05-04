@@ -56,7 +56,7 @@ export function SiteNav({ logoHref }: SiteNavProps) {
 
   return (
     <>
-      <header style={{ background: "#063690" }} className="w-full sticky top-0 z-40 shadow-md">
+      <header style={{ background: "#0095ff" }} className="w-full sticky top-0 z-40 shadow-md">
         <div className="max-w-5xl mx-auto px-5 h-14 flex items-center justify-between">
           <a
             href={logoHref}
@@ -107,7 +107,7 @@ export function SiteNav({ logoHref }: SiteNavProps) {
         id="site-nav-drawer"
         role="navigation"
         aria-label="Site navigation"
-        style={{ background: "#063690", top: "56px" }}
+        style={{ background: "#0095ff", top: "56px" }}
         className={`fixed left-0 right-0 z-30 shadow-xl transition-all duration-200 ease-out overflow-hidden ${
           open ? "max-h-[400px] opacity-100" : "max-h-0 opacity-0 pointer-events-none"
         }`}
