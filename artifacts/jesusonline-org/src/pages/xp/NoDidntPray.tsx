@@ -1,5 +1,4 @@
 import { SEO } from "@/components/ui/SEO";
-import { useState } from "react";
 import { ExternalLink, BookOpen } from "lucide-react";
 
 const STORY_URL = "https://jesusonline.com/comment-jolo-gift/";
@@ -12,8 +11,6 @@ const APP_LINKS = [
 ];
 
 export default function NoDidntPray() {
-  const [story, setStory] = useState("");
-
   return (
     <>
       <SEO title="The Next 3 Steps" description="We're here for you. Share your thoughts and discover what God offers." path="/xp/no-i-didnt-pray" />
@@ -26,22 +23,15 @@ export default function NoDidntPray() {
               <span className="w-8 h-8 rounded-full bg-primary text-white text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
               Tell us what you are thinking or feeling.
             </h2>
-            <textarea
-              rows={2}
-              value={story}
-              onChange={(e) => setStory(e.target.value)}
-              placeholder="In 1 or 2 sentences please share how this has impacted you."
-              className="w-full border-2 border-gray-200 focus:border-primary outline-none rounded-lg p-4 text-gray-700 resize-none transition-colors text-sm"
-              data-testid="input-story"
-            />
-            <button
-              onClick={() => window.open(STORY_URL, "_blank", "noopener,noreferrer")}
-              disabled={!story.trim()}
-              className="mt-4 btn-primary disabled:opacity-40 disabled:cursor-not-allowed disabled:shadow-none"
+            <a
+              href={STORY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary inline-block"
               data-testid="button-submit-story"
             >
               Share Your Story
-            </button>
+            </a>
           </div>
 
           <div className="fade-up d-200 bg-white rounded-xl shadow-md p-8">
