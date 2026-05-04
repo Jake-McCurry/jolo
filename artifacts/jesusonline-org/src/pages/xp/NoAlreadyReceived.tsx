@@ -11,12 +11,6 @@ const LANGUAGES = [
   { label: "Other Languages", href: "https://app.jesusonline.com/series/286" },
 ];
 
-const APP_LINKS = [
-  { label: "Find What You Want", href: "https://app.jesusonline.com/find-what-you-want" },
-  { label: "Select a Devotional Series", href: "https://app.jesusonline.com/category/2/21" },
-  { label: "Read the NET Bible", href: "https://app.jesusonline.com/reader" },
-  { label: "Discover Tips for Growth as a Believer", href: "https://app.jesusonline.com/series/277" },
-];
 
 export default function NoAlreadyReceived() {
   return (
@@ -75,16 +69,11 @@ export default function NoAlreadyReceived() {
               <span className="w-8 h-8 rounded-full bg-primary text-white text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
               <h2 className="text-lg font-bold text-secondary">Explore the JO Web App to find out what God offers you.</h2>
             </div>
-            <div className="p-8">
-              <div className="flex flex-col gap-3">
-                {APP_LINKS.map((link) => (
-                  <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer"
-                    className="text-primary font-semibold hover:underline text-sm flex items-center gap-2"
-                    data-testid={`link-app-${link.label.split(" ")[0].toLowerCase()}`}>
-                    <span>&gt;&gt;</span> {link.label}
-                  </a>
-                ))}
-              </div>
+            <div className="p-8 flex justify-center">
+              <a href="https://app.jesusonline.com/find-what-you-want" target="_blank" rel="noopener noreferrer"
+                className="btn-primary inline-block" data-testid="link-app-find">
+                Find What You Want
+              </a>
             </div>
           </div>
 
