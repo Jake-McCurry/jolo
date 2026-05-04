@@ -19,5 +19,5 @@ const XP_NAV_LINKS: NavLink[] = [
 ];
 
 export function XPHeader() {
-  return <SiteNav logoHref={`${APP_BASE}/home`} links={XP_NAV_LINKS} />;
+  return <SiteNav logoHref={`${APP_BASE}/find-what-you-want`} links={XP_NAV_LINKS} />;
 }
