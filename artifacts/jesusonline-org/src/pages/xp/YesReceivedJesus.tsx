@@ -54,13 +54,13 @@ export default function YesReceivedJesus() {
 
           <div className="text-center mt-8">
             <a
-              href="https://app.jesusonline.com/home"
+              href="https://app.jesusonline.com/find-what-you-want"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary"
               data-testid="link-explore-app"
             >
-              Explore Everything in the JesusOnline App
+              Want More?
             </a>
           </div>
         </div>
