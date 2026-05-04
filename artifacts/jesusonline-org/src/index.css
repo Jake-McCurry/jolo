@@ -105,7 +105,9 @@ body {
   box-shadow: rgb(117, 186, 255) 0px 7px 31px 0px;
   font-weight: 700;
   padding: 14px 32px;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   transition: all 0.2s;
 }
 .btn-primary:hover {
