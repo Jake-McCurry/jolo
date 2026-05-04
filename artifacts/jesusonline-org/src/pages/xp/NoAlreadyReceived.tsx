@@ -1,5 +1,5 @@
 import { SEO } from "@/components/ui/SEO";
-import { BookOpen, ExternalLink } from "lucide-react";
+import { BookOpen } from "lucide-react";
 
 const LANGUAGES = [
   { label: "বাংলায় পড়ুন (Bengali)", href: "https://apicontent.jesusonline.com/uncategorized/89507-read-this-app-in-bengali" },
@@ -48,19 +48,16 @@ export default function NoAlreadyReceived() {
             <p className="text-gray-500 text-sm mb-6 leading-relaxed">
               By inviting Jesus into your life, not only were you given Eternal life in Heaven but also spiritual resources for living here on earth now.
             </p>
-            <div className="flex flex-col sm:flex-row gap-3">
-              <a href="https://apicontent.jesusonline.com/books/60100-the-adventure-of-living-with-jesus-book"
-                target="_blank" rel="noopener noreferrer"
-                className="btn-primary flex items-center gap-2 text-sm" data-testid="link-read-book">
-                <BookOpen size={15} /> Read Book in App
-              </a>
-              <a href="https://jesusonline.com/wp-content/uploads/Adventure-of-Living-w-Jesus-161216.pdf"
-                target="_blank" rel="noopener noreferrer"
-                className="flex items-center gap-2 border-2 border-primary text-primary font-bold px-5 py-3 rounded-full hover:bg-primary hover:text-white transition-colors text-sm"
-                data-testid="link-download-pdf">
-                <ExternalLink size={15} /> Download Book PDF
-              </a>
-            </div>
+            <img
+              src="https://apicontent.jesusonline.com/wp-content/uploads/2020/08/Adventure-of-Living-with-Jesus-791x1024.jpg"
+              alt="The Adventure of Living with Jesus"
+              className="w-32 rounded-lg shadow-md mb-5"
+            />
+            <a href="https://apicontent.jesusonline.com/books/60100-the-adventure-of-living-with-jesus-book"
+              target="_blank" rel="noopener noreferrer"
+              className="btn-primary inline-flex items-center gap-2 text-sm" data-testid="link-read-book">
+              <BookOpen size={15} /> Read Book in App
+            </a>
           </div>
 
           <div className="fade-up d-300 bg-white rounded-xl shadow-md p-8">
