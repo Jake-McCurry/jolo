@@ -27,7 +27,7 @@ export default function NoDidntPray() {
               Tell us what you are thinking or feeling.
             </h2>
             <textarea
-              rows={5}
+              rows={2}
               value={story}
               onChange={(e) => setStory(e.target.value)}
               placeholder="In 1 or 2 sentences please share how this has impacted you."
