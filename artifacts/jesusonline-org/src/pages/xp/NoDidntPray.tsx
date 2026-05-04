@@ -31,7 +31,7 @@ export default function NoDidntPray() {
                   rows={5}
                   value={story}
                   onChange={(e) => setStory(e.target.value)}
-                  placeholder="Share your thoughts here..."
+                  placeholder="In 1 or 2 sentences please share how this has impacted you."
                   className="w-full border-2 border-gray-200 focus:border-primary outline-none rounded-lg p-4 text-gray-700 resize-none transition-colors text-sm"
                   data-testid="input-story"
                 />
