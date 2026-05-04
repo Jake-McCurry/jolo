@@ -18,12 +18,6 @@ export default function NoDidntPray() {
       <SEO title="The Next 3 Steps" description="We're here for you. Share your thoughts and discover what God offers." path="/xp/no-i-didnt-pray" />
 
       <div className="min-h-screen bg-gray-50">
-        <div className="text-white py-12 px-4 text-center" style={{ background: "linear-gradient(135deg, #063690 0%, #0095FF 100%)" }}>
-          <h1 className="fade-up text-3xl md:text-4xl font-extrabold">
-            The Next 3 Steps&hellip;
-          </h1>
-        </div>
-
         <div className="max-w-2xl mx-auto px-4 py-10 space-y-6">
 
           <div className="fade-up d-100 bg-white rounded-xl shadow-md p-8">

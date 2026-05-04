@@ -28,18 +28,6 @@ export default function YesReceivedJesus() {
       <SEO title="You Received Jesus!" description="You just invited Jesus into your life. Discover your next steps." path="/xp/yes-i-received-jesus" />
 
       <div className="min-h-screen bg-gray-50">
-        <div className="text-white py-12 px-4 text-center" style={{ background: "linear-gradient(135deg, #063690 0%, #0095FF 100%)" }}>
-          <p className="fade-in text-xs font-bold uppercase tracking-widest text-primary mb-3">
-            A Life-Changing Moment
-          </p>
-          <h1 className="fade-up d-100 text-3xl md:text-4xl font-extrabold max-w-xl mx-auto">
-            You Received Jesus into Your Life!
-          </h1>
-          <p className="fade-in d-250 text-white/70 mt-3 text-base max-w-md mx-auto">
-            You just invited Jesus into your life to be your Lord and Savior!
-          </p>
-        </div>
-
         <div className="max-w-2xl mx-auto px-4 py-10">
           <div className="fade-up d-200 bg-white rounded-xl shadow-md p-8">
             <p className="text-secondary font-semibold mb-1">

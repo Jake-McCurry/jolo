@@ -31,13 +31,6 @@ export default function YesRededicated() {
       <SEO title="The Next 3 Steps" description="You rededicated your life to Jesus. Here are your next steps." path="/xp/yes-i-rededicated" />
 
       <div className="min-h-screen bg-gray-50">
-        <div className="text-white py-12 px-4 text-center" style={{ background: "linear-gradient(135deg, #063690 0%, #0095FF 100%)" }}>
-          <p className="fade-in text-xs font-bold uppercase tracking-widest text-primary mb-3">A Fresh Start</p>
-          <h1 className="fade-up d-100 text-3xl md:text-4xl font-extrabold">
-            The Next 3 Steps&hellip;
-          </h1>
-        </div>
-
         <div className="max-w-2xl mx-auto px-4 py-10 space-y-6">
 
           <div className="fade-up d-100 bg-white rounded-xl shadow-md p-8">
