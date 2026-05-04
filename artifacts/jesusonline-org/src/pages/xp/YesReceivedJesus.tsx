@@ -28,34 +28,34 @@ export default function YesReceivedJesus() {
       <SEO title="You Received Jesus!" description="You just invited Jesus into your life. Discover your next steps." path="/xp/yes-i-received-jesus" />
 
       <div className="min-h-screen bg-gray-50">
-        <div className="max-w-2xl mx-auto px-4 py-10">
-          <div className="fade-up d-200 bg-white rounded-xl shadow-md overflow-hidden">
-            <div className="bg-[#e8f4ff] px-8 pt-6 pb-4 border-b border-blue-100">
-              <p className="text-secondary font-semibold">
+        <div className="max-w-xl mx-auto px-4 py-5">
+          <div className="fade-up d-200 bg-white rounded-xl shadow-sm overflow-hidden">
+            <div className="bg-[#e8f4ff] px-5 pt-4 pb-3 border-b border-blue-100">
+              <p className="text-secondary font-semibold text-sm">
                 Select the statement below that best matches your current thoughts and feelings —
               </p>
-              <p className="text-gray-400 text-sm mt-1">You'll discover answers to your questions!</p>
+              <p className="text-gray-400 text-xs mt-0.5">You'll discover answers to your questions!</p>
             </div>
-            <div className="p-8">
-              <div className="flex flex-col gap-3">
+            <div className="px-5 py-4">
+              <div className="flex flex-col gap-2">
                 {FOLLOW_UPS.map((q, i) => (
                   <a
                     key={q.href}
                     href={q.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`fade-up ${DELAYS[i]} flex items-center justify-between gap-3 px-5 py-4 rounded-full border-2 border-gray-200 text-secondary font-semibold hover:border-primary hover:text-primary transition-colors text-sm`}
+                    className={`fade-up ${DELAYS[i]} flex items-center justify-between gap-3 px-4 py-3 rounded-full border-2 border-gray-200 text-secondary font-semibold hover:border-primary hover:text-primary transition-colors text-sm`}
                     data-testid={`link-followup-${i}`}
                   >
                     <span>"{q.label}"</span>
-                    <ChevronRight size={16} className="flex-shrink-0" />
+                    <ChevronRight size={15} className="flex-shrink-0" />
                   </a>
                 ))}
               </div>
             </div>
           </div>
 
-          <div className="text-center mt-8">
+          <div className="text-center mt-4">
             <a
               href="https://app.jesusonline.com/find-what-you-want"
               target="_blank"
