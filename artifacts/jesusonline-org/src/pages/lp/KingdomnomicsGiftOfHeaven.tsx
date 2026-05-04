@@ -81,18 +81,6 @@ export default function KingdomnomicsGiftOfHeaven() {
             </div>
           </div>
 
-          <p className="text-center mt-5 text-sm text-gray-400">
-            Prefer to read?{" "}
-            <a
-              href="https://apicontent.jesusonline.com/uncategorized/82010-t-kingdomnomics-the-gift-of-heaven"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-primary hover:underline"
-              data-testid="link-transcript"
-            >
-              Read the video transcript
-            </a>
-          </p>
         </div>
       </div>
     </>
