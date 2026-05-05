@@ -10,13 +10,13 @@ const SURVEY_OPTIONS = [
     testid: "survey-no-didnt-pray",
   },
   {
-    label: "Yes, I prayed and received Jesus into my life.",
+    label: "Yes, I received Jesus into my life.",
     href: "/xp/yes-i-received-jesus",
     testid: "survey-yes-received-jesus",
     extraClass: "gtm-conversion-received-christ",
   },
   {
-    label: "Yes, I prayed and rededicated my life to Jesus.",
+    label: "Yes, I rededicated my life to Jesus.",
     href: "/xp/yes-i-rededicated",
     testid: "survey-yes-rededicated",
   },
