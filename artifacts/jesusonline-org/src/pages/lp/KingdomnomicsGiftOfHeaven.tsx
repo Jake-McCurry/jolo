@@ -39,14 +39,14 @@ export default function KingdomnomicsGiftOfHeaven() {
       />
 
       <div className="min-h-screen bg-gray-50">
-        <div className="max-w-2xl mx-auto px-4 py-10">
+        <div className="max-w-2xl mx-auto px-4 py-5 sm:py-10">
 
-          <h1 className="fade-up text-2xl md:text-3xl font-extrabold text-secondary text-center mb-6">
+          <h1 className="fade-up text-xl sm:text-3xl font-extrabold text-secondary text-center mb-4 sm:mb-6">
             The Gift of Heaven
           </h1>
 
           <div
-            className="fade-up d-150 w-full rounded-xl overflow-hidden shadow-lg bg-gray-900 mb-8"
+            className="fade-up d-150 w-full rounded-xl overflow-hidden shadow-lg bg-gray-900 mb-4 sm:mb-8"
             style={{ aspectRatio: "16/9" }}
             data-testid="video-gift-of-heaven"
           >
@@ -57,24 +57,24 @@ export default function KingdomnomicsGiftOfHeaven() {
           </div>
 
           <div
-            className="fade-up d-300 bg-white rounded-xl shadow-md p-8"
+            className="fade-up d-300 bg-white rounded-xl shadow-md p-4 sm:p-8"
             data-testid="section-survey"
           >
-            <p className="text-center text-secondary font-bold text-lg mb-1">
+            <p className="text-center text-secondary font-bold text-sm sm:text-lg mb-1">
               After watching the video, please share your response below.
             </p>
-            <p className="text-center text-gray-400 text-sm mb-7">Select the statement that describes you.</p>
+            <p className="text-center text-gray-400 text-xs sm:text-sm mb-4 sm:mb-7">Select the statement that describes you.</p>
 
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-2 sm:gap-3">
               {SURVEY_OPTIONS.map((opt, i) => (
                 <div key={opt.href} className={`fade-up ${DELAYS[i]}`}>
                   <Link href={opt.href}>
                     <button
                       data-testid={opt.testid}
-                      className={`w-full flex items-center justify-between gap-3 px-5 py-4 rounded-full font-semibold text-left transition-all duration-200 bg-white text-secondary border-2 border-gray-200 hover:border-primary hover:text-primary${opt.extraClass ? ` ${opt.extraClass}` : ""}`}
+                      className={`w-full flex items-center justify-between gap-2 px-4 py-3 sm:px-5 sm:py-4 rounded-full font-semibold text-xs sm:text-sm text-left transition-all duration-200 bg-white text-secondary border-2 border-gray-200 hover:border-primary hover:text-primary${opt.extraClass ? ` ${opt.extraClass}` : ""}`}
                     >
                       <span>{opt.label}</span>
-                      <ChevronRight size={18} className="flex-shrink-0" />
+                      <ChevronRight size={15} className="flex-shrink-0" />
                     </button>
                   </Link>
                 </div>
