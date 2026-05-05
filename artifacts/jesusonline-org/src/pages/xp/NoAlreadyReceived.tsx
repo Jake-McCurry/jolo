@@ -54,7 +54,7 @@ export default function NoAlreadyReceived() {
                   Inviting Jesus into your life, not only gives you eternal life in heaven but also spiritual resources for living here on earth.
                 </p>
                 <a href={BOOK_PDF} target="_blank" rel="noopener noreferrer"
-                  className="btn-primary inline-flex items-center gap-2 text-sm self-start" data-testid="link-read-book">
+                  className="btn-primary inline-flex items-center gap-2 text-sm self-center" data-testid="link-read-book">
                   <Download size={14} /> Download Book
                 </a>
               </div>
