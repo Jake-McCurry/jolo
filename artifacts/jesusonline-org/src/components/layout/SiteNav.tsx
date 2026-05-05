@@ -15,17 +15,6 @@ const LP_NAV_LINKS: NavLink[] = [
 
 const TEXT = "#063690";
 
-function JoloIcon() {
-  return (
-    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <circle cx="18" cy="18" r="18" fill="#063690" />
-      <circle cx="18" cy="18" r="11" fill="#0095FF" />
-      <circle cx="18" cy="18" r="4" fill="#063690" />
-      <path d="M18 7 A11 11 0 0 1 29 18" stroke="#063690" strokeWidth="2.5" strokeLinecap="round" fill="none" />
-      <path d="M18 29 A11 11 0 0 1 7 18" stroke="#063690" strokeWidth="2.5" strokeLinecap="round" fill="none" />
-    </svg>
-  );
-}
 
 interface SiteNavProps {
   logoHref: string;
@@ -58,10 +47,7 @@ export function SiteNav({ logoHref, links = LP_NAV_LINKS }: SiteNavProps) {
             style={{ outlineColor: TEXT }}
             aria-label="JesusOnline — go to main site"
           >
-            <JoloIcon />
-            <span style={{ color: TEXT }} className="font-extrabold text-lg tracking-widest uppercase leading-none select-none">
-              JesusOnline
-            </span>
+            <img src="/logo.png" alt="JesusOnline" className="h-8 w-auto" />
           </a>
 
           <button
