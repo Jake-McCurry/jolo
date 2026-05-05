@@ -46,7 +46,7 @@ export default function NoAlreadyReceived() {
               <img
                 src="https://apicontent.jesusonline.com/wp-content/uploads/2020/08/Adventure-of-Living-with-Jesus-791x1024.jpg"
                 alt="The Adventure of Living with Jesus"
-                className="w-28 rounded-lg shadow-md flex-shrink-0"
+                className="h-20 w-auto rounded-lg shadow-md flex-shrink-0"
               />
               <div className="flex flex-col justify-center">
                 <p className="text-sm font-semibold text-secondary mb-1">The Adventure of Living with Jesus</p>
