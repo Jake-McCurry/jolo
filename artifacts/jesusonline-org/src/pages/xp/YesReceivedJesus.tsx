@@ -3,13 +3,13 @@ import { SEO } from "@/components/ui/SEO";
 import { ChevronRight } from "lucide-react";
 
 const FOLLOW_UPS = [
-  { label: "How do I know this is real?", href: "https://apicontent.jesusonline.com/uncategorized/88421-how-do-i-know-this-is-real" },
-  { label: "What do I do now?", href: "https://apicontent.jesusonline.com/uncategorized/88422-what-do-i-do-now" },
-  { label: "I want to know Jesus better.", href: "https://apicontent.jesusonline.com/uncategorized/88423-i-want-to-know-jesus-more" },
-  { label: "How should I handle my current relationships?", href: "https://apicontent.jesusonline.com/uncategorized/88424-how-should-i-handle-my-current-relationships" },
-  { label: "I'm afraid...", href: "https://apicontent.jesusonline.com/uncategorized/88425-im-afraid" },
-  { label: "I have questions about church.", href: "https://apicontent.jesusonline.com/uncategorized/88426-i-have-questions-about-church" },
-  { label: "More Questions?", href: "https://apicontent.jesusonline.com/uncategorized/88427-more-questions" },
+  { label: "How do I know this is real?", href: "https://app.jesusonline.com/post/88421-how-do-i-know-this-is-real" },
+  { label: "What do I do now?", href: "https://app.jesusonline.com/post/88422-what-do-i-do-now" },
+  { label: "I want to know Jesus better.", href: "https://app.jesusonline.com/post/88423-i-want-to-know-jesus-more" },
+  { label: "How should I handle my current relationships?", href: "https://app.jesusonline.com/post/88424-how-should-i-handle-my-current-relationships" },
+  { label: "I'm afraid...", href: "https://app.jesusonline.com/post/88425-im-afraid" },
+  { label: "I have questions about church.", href: "https://app.jesusonline.com/post/88426-i-have-questions-about-church" },
+  { label: "More Questions?", href: "https://app.jesusonline.com/post/88427-more-questions" },
 ];
 
 const DELAYS = ["d-300", "d-350", "d-400", "d-450", "d-500", "d-550", "d-600"];
