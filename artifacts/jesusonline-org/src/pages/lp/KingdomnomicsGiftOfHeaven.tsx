@@ -13,6 +13,7 @@ const SURVEY_OPTIONS = [
     label: "Yes, I prayed and received Jesus into my life.",
     href: "/xp/yes-i-received-jesus",
     testid: "survey-yes-received-jesus",
+    extraClass: "gtm-conversion-received-christ",
   },
   {
     label: "Yes, I prayed and rededicated my life to Jesus.",
@@ -70,7 +71,7 @@ export default function KingdomnomicsGiftOfHeaven() {
                   <Link href={opt.href}>
                     <button
                       data-testid={opt.testid}
-                      className="w-full flex items-center justify-between gap-3 px-5 py-4 rounded-full font-semibold text-left transition-all duration-200 bg-white text-secondary border-2 border-gray-200 hover:border-primary hover:text-primary"
+                      className={`w-full flex items-center justify-between gap-3 px-5 py-4 rounded-full font-semibold text-left transition-all duration-200 bg-white text-secondary border-2 border-gray-200 hover:border-primary hover:text-primary${opt.extraClass ? ` ${opt.extraClass}` : ""}`}
                     >
                       <span>{opt.label}</span>
                       <ChevronRight size={18} className="flex-shrink-0" />
