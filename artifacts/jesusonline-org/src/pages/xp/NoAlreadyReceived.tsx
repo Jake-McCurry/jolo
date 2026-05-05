@@ -1,15 +1,8 @@
 import { SEO } from "@/components/ui/SEO";
 import { Download } from "lucide-react";
 
+const STORY_URL = "https://jesusonline.com/comment-jolo-gift/";
 const BOOK_PDF = "https://jesusonline.com/wp-content/uploads/Adventure-of-Living-w-Jesus-161216.pdf";
-
-const LANGUAGES = [
-  { label: "বাংলায় পড়ুন (Bengali)", href: "https://apicontent.jesusonline.com/uncategorized/89507-read-this-app-in-bengali" },
-  { label: "اقرأ بالعربية (Arabic)", href: "https://apicontent.jesusonline.com/uncategorized/89505-read-this-app-in-arabic" },
-  { label: "អានជាភាសាខ្មែរ (Khmer)", href: "https://apicontent.jesusonline.com/uncategorized/89559-read-this-app-in-khmer" },
-  { label: "Baca dalam Bahasa Indonesia", href: "https://apicontent.jesusonline.com/uncategorized/89545-read-this-app-in-indonesian" },
-  { label: "Other Languages", href: "https://app.jesusonline.com/series/286" },
-];
 
 export default function NoAlreadyReceived() {
   return (
@@ -22,18 +15,13 @@ export default function NoAlreadyReceived() {
           <div className="fade-up d-100 bg-white rounded-xl shadow-sm overflow-hidden">
             <div className="bg-[#e8f4ff] px-5 pt-4 pb-3 flex items-center gap-3 border-b border-blue-100">
               <span className="w-7 h-7 rounded-full bg-primary text-white text-xs font-bold flex items-center justify-center flex-shrink-0">1</span>
-              <h2 className="text-base font-bold text-secondary">Read this JO App in your language.</h2>
+              <h2 className="text-base font-bold text-secondary">Tell us what you are thinking or feeling.</h2>
             </div>
-            <div className="px-5 py-4">
-              <div className="flex flex-col gap-2">
-                {LANGUAGES.map((lang) => (
-                  <a key={lang.href} href={lang.href} target="_blank" rel="noopener noreferrer"
-                    className="text-primary font-semibold hover:underline text-sm flex items-center gap-2"
-                    data-testid={`link-lang-${lang.label.split(" ")[0].toLowerCase()}`}>
-                    <span>&gt;&gt;</span> {lang.label}
-                  </a>
-                ))}
-              </div>
+            <div className="px-5 py-4 flex justify-center">
+              <a href={STORY_URL} target="_blank" rel="noopener noreferrer"
+                className="btn-primary inline-block" data-testid="button-submit-story">
+                Share Your Story
+              </a>
             </div>
           </div>
 
