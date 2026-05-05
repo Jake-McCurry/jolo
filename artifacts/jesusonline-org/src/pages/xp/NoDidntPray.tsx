@@ -30,7 +30,7 @@ export default function NoDidntPray() {
               <span className="w-7 h-7 rounded-full bg-primary text-white text-xs font-bold flex items-center justify-center flex-shrink-0">2</span>
               <h2 className="text-base font-bold text-secondary">Discover the immediate benefits of being a Child of God.</h2>
             </div>
-            <div className="flex flex-row gap-5 px-5 py-4 items-start">
+            <div className="flex flex-row gap-5 px-5 pt-4 pb-3 items-start">
               <img
                 src="https://apicontent.jesusonline.com/wp-content/uploads/2020/08/Adventure-of-Living-with-Jesus-791x1024.jpg"
                 alt="The Adventure of Living with Jesus"
@@ -38,14 +38,16 @@ export default function NoDidntPray() {
               />
               <div className="flex flex-col justify-center">
                 <p className="text-sm font-semibold text-secondary mb-1">The Adventure of Living with Jesus</p>
-                <p className="text-gray-500 text-xs mb-3 leading-relaxed">
+                <p className="text-gray-500 text-xs leading-relaxed">
                   Inviting Jesus into your life, not only gives you eternal life in heaven but also spiritual resources for living here on earth.
                 </p>
-                <a href={BOOK_PDF} target="_blank" rel="noopener noreferrer"
-                  className="btn-primary inline-flex items-center gap-2 text-sm self-center" data-testid="link-read-book">
-                  <Download size={14} /> Download Book
-                </a>
               </div>
+            </div>
+            <div className="px-5 pb-4 flex justify-center">
+              <a href={BOOK_PDF} target="_blank" rel="noopener noreferrer"
+                className="btn-primary inline-flex items-center gap-2 text-sm" data-testid="link-read-book">
+                <Download size={14} /> Download Book
+              </a>
             </div>
           </div>
 
