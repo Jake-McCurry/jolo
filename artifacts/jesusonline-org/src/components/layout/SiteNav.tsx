@@ -83,7 +83,7 @@ export function SiteNav({ logoHref, links = LP_NAV_LINKS }: SiteNavProps) {
           open ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0 pointer-events-none"
         }`}
       >
-        <ul className="max-w-5xl mx-auto px-5 py-4 flex flex-col" style={{ borderColor: TEXT + "33" }}>
+        <ul className="max-w-5xl mx-auto px-5 py-2 flex flex-col" style={{ borderColor: TEXT + "33" }}>
           {links.map((link) => (
             <li key={link.href} style={{ borderBottom: `1px solid ${TEXT}33` }}>
               <a
@@ -92,7 +92,7 @@ export function SiteNav({ logoHref, links = LP_NAV_LINKS }: SiteNavProps) {
                 rel="noopener noreferrer"
                 onClick={() => setOpen(false)}
                 style={{ color: TEXT }}
-                className="block py-3.5 font-semibold text-base tracking-wide hover:opacity-70 transition-opacity"
+                className="block py-2 font-semibold text-sm hover:opacity-70 transition-opacity"
               >
                 {link.label}
               </a>
