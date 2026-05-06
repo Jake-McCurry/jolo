@@ -34,10 +34,13 @@ function Router() {
         <Suspense fallback={null}>
           <Switch>
             <Route path="/">
-              <Redirect to="/lp/kingdomnomics-gift-of-heaven" />
+              <Redirect to="/lp/gift-of-heaven" />
             </Route>
 
-            <Route path="/lp/kingdomnomics-gift-of-heaven" component={KingdomnomicsGiftOfHeaven} />
+            <Route path="/lp/gift-of-heaven" component={KingdomnomicsGiftOfHeaven} />
+            <Route path="/lp/kingdomnomics-gift-of-heaven">
+              <Redirect to="/lp/gift-of-heaven" />
+            </Route>
 
             <Route path="/xp/no-i-didnt-pray" component={NoDidntPray} />
             <Route path="/xp/yes-i-received-jesus" component={YesReceivedJesus} />
