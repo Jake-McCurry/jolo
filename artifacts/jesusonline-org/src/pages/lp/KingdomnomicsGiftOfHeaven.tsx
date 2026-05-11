@@ -35,7 +35,7 @@ export default function KingdomnomicsGiftOfHeaven() {
       <SEO
         title="The Gift of Heaven"
         description="Watch The Gift of Heaven and let us know where you are on your journey with God."
-        path="/lp/gift-of-heaven"
+        path="/lp/gift-of-heaven-ttn"
       />
 
       <div className="min-h-screen bg-gray-50">
