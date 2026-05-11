@@ -7,9 +7,8 @@ export interface NavLink {
 
 const LP_NAV_LINKS: NavLink[] = [
   { label: "Discover Evidence",     href: "https://jesusonline.com/discover-evidence/" },
-  { label: "Meet Jesus",            href: "https://jesusonline.com/meet-jesus/" },
+  { label: "Meet Jesus",            href: "https://jesusonline.com/receive-jesus/" },
   { label: "Follow Jesus",          href: "https://jesusonline.com/follow-jesus/" },
-  { label: "Find Hope & Love",      href: "https://jesusonline.com/find-hope-and-love/" },
   { label: "Translate & Resources", href: "https://jesusonline.com/translate-resources/" },
 ];
 
