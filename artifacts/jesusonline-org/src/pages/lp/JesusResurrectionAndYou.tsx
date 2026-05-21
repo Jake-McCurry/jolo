@@ -48,7 +48,7 @@ export default function JesusResurrectionAndYou() {
           </h1>
 
           <div
-            className="fade-up d-150 w-full rounded-xl overflow-hidden shadow-lg bg-gray-900 mb-4 sm:mb-8"
+            className="w-full rounded-xl overflow-hidden shadow-lg bg-gray-900 mb-4 sm:mb-8"
             style={{ aspectRatio: "16/9" }}
             data-testid="video-resurrection"
           >
