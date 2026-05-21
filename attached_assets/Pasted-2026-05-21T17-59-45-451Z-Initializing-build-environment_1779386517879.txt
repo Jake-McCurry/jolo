@@ -1,0 +1,88 @@
+2026-05-21T17:59:45.451Z	Initializing build environment...
+2026-05-21T17:59:48.150Z	Success: Finished initializing build environment
+2026-05-21T17:59:48.581Z	Cloning repository...
+2026-05-21T17:59:49.987Z	Restoring from dependencies cache
+2026-05-21T17:59:49.990Z	Restoring from build output cache
+2026-05-21T17:59:51.594Z	Detected the following tools from environment: pnpm@10.26.1, nodejs@22.16.0
+2026-05-21T17:59:56.716Z	Success: Dependencies restored from build cache.
+2026-05-21T17:59:56.717Z	Installing project dependencies: pnpm install --frozen-lockfile
+2026-05-21T17:59:57.375Z	Scope: all 9 workspace projects
+2026-05-21T17:59:57.471Z	Lockfile is up to date, resolution step is skipped
+2026-05-21T17:59:57.548Z	Progress: resolved 1, reused 0, downloaded 0, added 0
+2026-05-21T17:59:57.618Z	Packages: +517
+2026-05-21T17:59:57.619Z	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2026-05-21T17:59:58.546Z	Progress: resolved 517, reused 429, downloaded 0, added 0
+2026-05-21T17:59:59.546Z	Progress: resolved 517, reused 517, downloaded 0, added 341
+2026-05-21T18:00:00.175Z	Progress: resolved 517, reused 517, downloaded 0, added 517, done
+2026-05-21T18:00:01.760Z	
+2026-05-21T18:00:01.761Z	devDependencies:
+2026-05-21T18:00:01.761Z	+ prettier 3.8.1
+2026-05-21T18:00:01.761Z	+ typescript 5.9.3
+2026-05-21T18:00:01.761Z	
+2026-05-21T18:00:01.830Z	. preinstall$ sh -c 'rm -f package-lock.json yarn.lock; case "$npm_config_user_agent" in pnpm/*) ;; *) echo "Use pnpm instead" >&2; exit 1 ;; esac'
+2026-05-21T18:00:01.861Z	. preinstall: Done
+2026-05-21T18:00:02.100Z	Done in 5.2s using pnpm v10.26.1
+2026-05-21T18:00:02.276Z	Executing user build command: pnpm --filter @workspace/jesusonline-org run build:cf
+2026-05-21T18:00:02.937Z	
+2026-05-21T18:00:02.937Z	> @workspace/jesusonline-org@0.0.0 build:cf /opt/buildhome/repo/artifacts/jesusonline-org
+2026-05-21T18:00:02.937Z	> BASE_PATH=/ PORT=3000 NODE_ENV=production vite build --config vite.config.ts
+2026-05-21T18:00:02.937Z	
+2026-05-21T18:00:04.149Z	vite v7.3.2 building client environment for production...
+2026-05-21T18:00:04.249Z	transforming...
+2026-05-21T18:00:04.808Z	✓ 36 modules transformed.
+2026-05-21T18:00:04.877Z	rendering chunks...
+2026-05-21T18:00:04.919Z	computing gzip size...
+2026-05-21T18:00:04.927Z	dist/public/index.html                                                 1.55 kB │ gzip:  0.72 kB
+2026-05-21T18:00:04.927Z	dist/public/assets/open-sans-greek-ext-wght-normal-Bm9CHu9r.woff2      4.50 kB
+2026-05-21T18:00:04.927Z	dist/public/assets/open-sans-vietnamese-wght-normal-UygKeDyW.woff2    16.50 kB
+2026-05-21T18:00:04.928Z	dist/public/assets/open-sans-hebrew-wght-normal-BjjtG49P.woff2        16.92 kB
+2026-05-21T18:00:04.928Z	dist/public/assets/open-sans-greek-wght-normal-8neIfJ3r.woff2         21.33 kB
+2026-05-21T18:00:04.928Z	dist/public/assets/open-sans-cyrillic-wght-normal-bOs07Rf4.woff2      26.59 kB
+2026-05-21T18:00:04.928Z	dist/public/assets/open-sans-symbols-wght-normal-BAf6-sld.woff2       26.60 kB
+2026-05-21T18:00:04.928Z	dist/public/assets/open-sans-latin-ext-wght-normal-DPNHYqvY.woff2     35.16 kB
+2026-05-21T18:00:04.929Z	dist/public/assets/open-sans-latin-wght-normal-CWNzRldh.woff2         48.32 kB
+2026-05-21T18:00:04.929Z	dist/public/assets/open-sans-cyrillic-ext-wght-normal-D8xHCTEw.woff2  49.27 kB
+2026-05-21T18:00:04.929Z	dist/public/assets/open-sans-math-wght-normal-C1FvUlkR.woff2          51.91 kB
+2026-05-21T18:00:04.930Z	dist/public/assets/index-CbEgBvDy.css                                 97.53 kB │ gzip: 17.25 kB
+2026-05-21T18:00:04.930Z	dist/public/assets/YesReceivedJesus-CtXIt4IG.js                        2.57 kB │ gzip:  1.16 kB
+2026-05-21T18:00:04.930Z	dist/public/assets/NoDidntPray-BkUadO14.js                             3.31 kB │ gzip:  1.08 kB
+2026-05-21T18:00:04.930Z	dist/public/assets/NoAlreadyReceived-rDw5czJE.js                       3.32 kB │ gzip:  1.08 kB
+2026-05-21T18:00:04.930Z	dist/public/assets/YesRededicated-DA-g0YIN.js                          3.52 kB │ gzip:  1.18 kB
+2026-05-21T18:00:04.930Z	dist/public/assets/index-D4A1cUKb.js                                  44.37 kB │ gzip: 16.35 kB
+2026-05-21T18:00:04.930Z	✓ built in 735ms
+2026-05-21T18:00:05.010Z	Success: Build command completed
+2026-05-21T18:00:05.127Z	Executing user deploy command: npx wrangler deploy --config artifacts/jesusonline-org/wrangler.staging.jsonc
+2026-05-21T18:00:07.208Z	
+2026-05-21T18:00:07.208Z	 ⛅️ wrangler 4.93.1
+2026-05-21T18:00:07.209Z	───────────────────
+2026-05-21T18:00:10.289Z	🌀 Building list of assets...
+2026-05-21T18:00:10.292Z	✨ Read 26 files from the assets directory /opt/buildhome/repo/artifacts/jesusonline-org/dist/public
+2026-05-21T18:00:10.305Z	🌀 Starting asset upload...
+2026-05-21T18:00:12.710Z	🌀 Found 4 new or modified static assets to upload. Proceeding with upload...
+2026-05-21T18:00:12.710Z	+ /index.html
+2026-05-21T18:00:12.710Z	+ /thumb-gift-of-heaven.jpg
+2026-05-21T18:00:12.710Z	+ /logo.png
+2026-05-21T18:00:12.710Z	+ /thumb-resurrection.jpg
+2026-05-21T18:00:13.892Z	Uploaded 1 of 4 assets
+2026-05-21T18:00:14.115Z	Uploaded 3 of 4 assets
+2026-05-21T18:00:14.473Z	Uploaded 4 of 4 assets
+2026-05-21T18:00:14.473Z	✨ Success! Uploaded 4 files (21 already uploaded) (1.76 sec)
+2026-05-21T18:00:14.473Z	
+2026-05-21T18:00:14.475Z	Total Upload: 0.33 KiB / gzip: 0.24 KiB
+2026-05-21T18:00:16.212Z	
+2026-05-21T18:00:16.212Z	Cloudflare collects anonymous telemetry about your usage of Wrangler. Learn more at https://github.com/cloudflare/workers-sdk/tree/main/packages/wrangler/telemetry.md
+2026-05-21T18:00:16.214Z	
+2026-05-21T18:00:16.274Z	✘ [ERROR] Received a malformed response from the API
+2026-05-21T18:00:16.274Z	
+2026-05-21T18:00:16.274Z	  <!DOCTYPE html>
+2026-05-21T18:00:16.274Z	  <!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
+2026-05-21T18:00:16.274Z	  <!--[if I... (length = 6471)
+2026-05-21T18:00:16.274Z	
+2026-05-21T18:00:16.274Z	  POST /accounts/f82c7501e7feedf9e3a7a7d0409e932c/workers/scripts/jolo-staging/deployments -> 502 Bad Gateway
+2026-05-21T18:00:16.275Z	  Cloudflare Ray ID: 9ff57acc4a401be5-SJC
+2026-05-21T18:00:16.275Z	  
+2026-05-21T18:00:16.275Z	  If you think this is a bug, please open an issue at: https://github.com/cloudflare/workers-sdk/issues/new/choose
+2026-05-21T18:00:16.275Z	
+2026-05-21T18:00:16.275Z	
+2026-05-21T18:00:16.290Z	🪵  Logs were written to "/opt/buildhome/.config/.wrangler/logs/wrangler-2026-05-21_18-00-06_867.log"
+2026-05-21T18:00:16.354Z	Failed: error occurred while running deploy command
