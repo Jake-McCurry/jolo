@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { SEO } from "@/components/ui/SEO";
-import { Download } from "lucide-react";
+import { IconDownload } from "@/components/ui/Icons";
 
 const STORY_URL = "https://jesusonline.com/comment-jolo-gift/";
 const BOOK_PDF = "https://jesusonline.com/wp-content/uploads/Adventure-of-Living-w-Jesus-161216.pdf";
@@ -55,7 +55,7 @@ export default function YesRededicated() {
             <div className="px-5 pb-4 flex justify-center">
               <a href={BOOK_PDF} target="_blank" rel="noopener noreferrer"
                 className="btn-primary inline-flex items-center gap-2 text-sm" data-testid="link-read-book">
-                <Download size={14} /> Download Book
+                <IconDownload size={14} /> Download Book
               </a>
             </div>
           </div>

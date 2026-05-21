@@ -1,7 +1,7 @@
 import { Link } from "wouter";
 import { SEO } from "@/components/ui/SEO";
 import { YouTubeFacade } from "@/components/ui/YouTubeFacade";
-import { ChevronRight } from "lucide-react";
+import { IconChevronRight } from "@/components/ui/Icons";
 
 const SURVEY_OPTIONS = [
   {
@@ -53,6 +53,7 @@ export default function KingdomnomicsGiftOfHeaven() {
             <YouTubeFacade
               videoId="XB7wGTnYeaE"
               title="The Gift of Heaven — JesusOnline"
+              thumbnailSrc="/thumb-gift-of-heaven.jpg"
             />
           </div>
 
@@ -74,7 +75,7 @@ export default function KingdomnomicsGiftOfHeaven() {
                       className={`w-full flex items-center justify-between gap-2 px-4 py-3 sm:px-5 sm:py-4 rounded-full font-semibold text-xs sm:text-sm text-left transition-all duration-200 bg-white text-secondary border-2 border-gray-200 hover:border-primary hover:text-primary${opt.extraClass ? ` ${opt.extraClass}` : ""}`}
                     >
                       <span>{opt.label}</span>
-                      <ChevronRight size={15} className="flex-shrink-0" />
+                      <IconChevronRight size={15} />
                     </button>
                   </Link>
                 </div>
