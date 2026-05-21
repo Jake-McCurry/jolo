@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { SEO } from "@/components/ui/SEO";
-import { ChevronRight } from "lucide-react";
+import { IconChevronRight } from "@/components/ui/Icons";
 
 const FOLLOW_UPS = [
   { label: "How do I know this is real?", href: "https://app.jesusonline.com/post/88421-how-do-i-know-this-is-real" },
@@ -48,7 +48,7 @@ export default function YesReceivedJesus() {
                     data-testid={`link-followup-${i}`}
                   >
                     <span>"{q.label}"</span>
-                    <ChevronRight size={15} className="flex-shrink-0" />
+                    <IconChevronRight size={15} />
                   </a>
                 ))}
               </div>
