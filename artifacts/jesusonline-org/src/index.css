@@ -1,4 +1,4 @@
-@import "@fontsource-variable/open-sans/wght.css";
+@import "@fontsource-variable/open-sans/wght-latin.css";
 @import "tailwindcss";
 
 @custom-variant dark (&:is(.dark *));

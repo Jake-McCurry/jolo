@@ -46,7 +46,7 @@ export function SiteNav({ logoHref, links = LP_NAV_LINKS }: SiteNavProps) {
             style={{ outlineColor: TEXT }}
             aria-label="JesusOnline — go to main site"
           >
-            <img src="/logo.png" alt="JesusOnline" className="h-10 w-auto" />
+            <img src="/logo.png" alt="JesusOnline" className="h-10 w-auto" width="180" height="40" />
           </a>
 
           <button
