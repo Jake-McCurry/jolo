@@ -35,7 +35,7 @@ export default function JesusResurrectionAndYou() {
   return (
     <>
       <SEO
-        title="Jesus, Resurrection & You"
+        title="Jesus' Resurrection & You"
         description="Watch Jesus, Resurrection & You and let us know where you are on your journey with God."
         path="/lp/jesus-resurrection-and-you-ttn"
       />
@@ -44,7 +44,7 @@ export default function JesusResurrectionAndYou() {
         <div className="max-w-2xl mx-auto px-4 py-5 sm:py-10">
 
           <h1 className="fade-up text-xl sm:text-3xl font-extrabold text-secondary text-center mb-4 sm:mb-6">
-            Jesus, Resurrection & You
+            Jesus' Resurrection & You
           </h1>
 
           <div
