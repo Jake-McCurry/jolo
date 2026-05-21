@@ -4,6 +4,7 @@ import { LPHeader } from "@/components/layout/LPHeader";
 import { XPHeader } from "@/components/layout/XPHeader";
 
 import KingdomnomicsGiftOfHeaven from "@/pages/lp/KingdomnomicsGiftOfHeaven";
+import JesusResurrectionAndYou from "@/pages/lp/JesusResurrectionAndYou";
 
 const NoDidntPray      = lazy(() => import("@/pages/xp/NoDidntPray"));
 const YesReceivedJesus = lazy(() => import("@/pages/xp/YesReceivedJesus"));
@@ -38,6 +39,7 @@ function Router() {
             </Route>
 
             <Route path="/lp/gift-of-heaven-ttn" component={KingdomnomicsGiftOfHeaven} />
+            <Route path="/lp/jesus-resurrection-and-you-ttn" component={JesusResurrectionAndYou} />
             <Route path="/lp/gift-of-heaven">
               <Redirect to="/lp/gift-of-heaven-ttn" />
             </Route>
