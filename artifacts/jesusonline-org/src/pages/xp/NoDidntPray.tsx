@@ -7,7 +7,7 @@ const BOOK_PDF = "https://jesusonline.com/wp-content/uploads/Adventure-of-Living
 export default function NoDidntPray() {
   return (
     <>
-      <SEO title="The Next 3 Steps" description="We're here for you. Share your thoughts and discover what God offers." path="/xp/no-i-didnt-pray" />
+      <SEO title="The Next 3 Steps" description="We're here for you. Share your thoughts and discover what God offers." path="/xp/no-i-didnt-pray" noindex />
 
       <div className="min-h-screen bg-gray-50">
         <div className="max-w-xl mx-auto px-4 py-5 space-y-3">

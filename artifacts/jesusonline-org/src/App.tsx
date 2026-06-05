@@ -27,7 +27,7 @@ function SimpleFooter() {
   );
 }
 
-function Router() {
+export function AppRoutes() {
   return (
     <div className="flex flex-col min-h-[100dvh]">
       <LayoutHeader />
@@ -66,7 +66,7 @@ function Router() {
 export default function App() {
   return (
     <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
-      <Router />
+      <AppRoutes />
     </WouterRouter>
   );
 }

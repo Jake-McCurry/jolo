@@ -7,7 +7,7 @@ const BOOK_PDF = "https://jesusonline.com/wp-content/uploads/Adventure-of-Living
 export default function NoAlreadyReceived() {
   return (
     <>
-      <SEO title="The Next 3 Steps" description="You're already part of God's family. Here are resources to help you grow." path="/xp/no-already-received" />
+      <SEO title="The Next 3 Steps" description="You're already part of God's family. Here are resources to help you grow." path="/xp/no-already-received" noindex />
 
       <div className="min-h-screen bg-gray-50">
         <div className="max-w-xl mx-auto px-4 py-5 space-y-3">

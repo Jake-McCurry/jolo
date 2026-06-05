@@ -7,9 +7,10 @@ interface SEOProps {
   title: string;
   description: string;
   path?: string;
+  noindex?: boolean;
 }
 
-export function SEO({ title, description, path }: SEOProps) {
+export function SEO({ title, description, path, noindex }: SEOProps) {
   const siteTitle = `${title} | JesusOnline`;
   const canonical = path ? `${SITE_URL}${path}` : SITE_URL;
 
@@ -53,7 +54,11 @@ export function SEO({ title, description, path }: SEOProps) {
     setMeta(`meta[name="twitter:title"]`, siteTitle);
     setMeta(`meta[name="twitter:description"]`, description);
     setMeta(`meta[name="twitter:image"]`, OG_IMAGE);
-  }, [siteTitle, description, canonical]);
+
+    if (noindex) {
+      setMeta(`meta[name="robots"]`, "noindex, nofollow");
+    }
+  }, [siteTitle, description, canonical, noindex]);
 
   return null;
 }
