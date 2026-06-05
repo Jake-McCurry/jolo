@@ -25,7 +25,7 @@ export default function YesReceivedJesus() {
 
   return (
     <>
-      <SEO title="You Received Jesus!" description="You just invited Jesus into your life. Discover your next steps." path="/xp/yes-i-received-jesus" />
+      <SEO title="You Received Jesus!" description="You just invited Jesus into your life. Discover your next steps." path="/xp/yes-i-received-jesus" noindex />
 
       <div className="min-h-screen bg-gray-50">
         <div className="max-w-xl mx-auto px-4 py-5">

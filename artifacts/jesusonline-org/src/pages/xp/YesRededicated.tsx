@@ -16,7 +16,7 @@ export default function YesRededicated() {
 
   return (
     <>
-      <SEO title="The Next 3 Steps" description="You rededicated your life to Jesus. Here are your next steps." path="/xp/yes-i-rededicated" />
+      <SEO title="The Next 3 Steps" description="You rededicated your life to Jesus. Here are your next steps." path="/xp/yes-i-rededicated" noindex />
 
       <div className="min-h-screen bg-gray-50">
         <div className="max-w-xl mx-auto px-4 py-5 space-y-3">

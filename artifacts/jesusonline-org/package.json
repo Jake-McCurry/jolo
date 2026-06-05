@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite --config vite.config.ts --host 0.0.0.0",
     "build": "vite build --config vite.config.ts",
-    "build:cf": "BASE_PATH=/ PORT=3000 NODE_ENV=production vite build --config vite.config.ts",
+    "build:cf": "BASE_PATH=/ PORT=3000 NODE_ENV=production vite build --config vite.config.ts && NODE_ENV=production vite build --config vite.ssr.config.ts && node prerender.mjs",
     "serve": "vite preview --config vite.config.ts --host 0.0.0.0",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
@@ -78,6 +78,7 @@
   "dependencies": {
     "@fontsource-variable/open-sans": "^5.2.7",
     "@preact/preset-vite": "^2.10.5",
-    "preact": "^10.29.1"
+    "preact": "^10.29.1",
+    "preact-render-to-string": "^6.7.0"
   }
 }
