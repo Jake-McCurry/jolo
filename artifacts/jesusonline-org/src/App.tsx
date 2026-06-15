@@ -3,6 +3,8 @@ import { Switch, Route, Router as WouterRouter, useLocation, Redirect } from "wo
 import { LPHeader } from "@/components/layout/LPHeader";
 import { XPHeader } from "@/components/layout/XPHeader";
 
+const XP_STYLE_LP_ROUTES = ["/lp/jesus-resurrection-and-you-ttn"];
+
 import KingdomnomicsGiftOfHeaven from "@/pages/lp/KingdomnomicsGiftOfHeaven";
 import JesusResurrectionAndYou from "@/pages/lp/JesusResurrectionAndYou";
 
@@ -13,7 +15,7 @@ const NoAlreadyReceived = lazy(() => import("@/pages/xp/NoAlreadyReceived"));
 
 function LayoutHeader() {
   const [location] = useLocation();
-  if (location.startsWith("/xp")) return <XPHeader />;
+  if (location.startsWith("/xp") || XP_STYLE_LP_ROUTES.includes(location)) return <XPHeader />;
   return <LPHeader />;
 }
 
