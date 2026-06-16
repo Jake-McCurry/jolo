@@ -46,19 +46,6 @@ function WatchOnYouTubeBadge() {
   );
 }
 
-function MenuArrow() {
-  return (
-    <div className="flex justify-end pr-2 pt-1.5 pb-1">
-      <div className="flex items-center gap-1.5 bg-secondary text-white text-[11px] font-bold px-3 py-1 rounded-full shadow-md">
-        <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true">
-          <path d="M5 9V1M5 1L1 5M5 1L9 5" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-        </svg>
-        Tap for Menu
-      </div>
-    </div>
-  );
-}
-
 export default function JesusResurrectionAndYou() {
   return (
     <>
@@ -71,9 +58,7 @@ export default function JesusResurrectionAndYou() {
       <div className="min-h-screen bg-gray-50">
         <div className="max-w-2xl mx-auto px-4">
 
-          <MenuArrow />
-
-          <h1 className="fade-up text-3xl sm:text-5xl font-extrabold text-secondary text-center mb-4 mt-1">
+          <h1 className="fade-up text-3xl sm:text-5xl font-extrabold text-secondary text-center mb-4 mt-1 pt-6">
             Jesus' Resurrection &amp; You
           </h1>
 

@@ -18,9 +18,10 @@ const TEXT = "#063690";
 interface SiteNavProps {
   logoHref: string;
   links?: NavLink[];
+  showMenuArrow?: boolean;
 }
 
-export function SiteNav({ logoHref, links = LP_NAV_LINKS }: SiteNavProps) {
+export function SiteNav({ logoHref, links = LP_NAV_LINKS, showMenuArrow = false }: SiteNavProps) {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -49,6 +50,20 @@ export function SiteNav({ logoHref, links = LP_NAV_LINKS }: SiteNavProps) {
             <img src="/logo.png" alt="JesusOnline" className="h-10 w-auto" width="180" height="40" />
           </a>
 
+          <div className="flex items-center gap-2">
+          {showMenuArrow && !open && (
+            <span className="nudge-right flex items-center" aria-hidden="true">
+              <svg width="26" height="14" viewBox="0 0 26 14" fill="none">
+                <path
+                  d="M1 7h21M16 1l6 6-6 6"
+                  stroke={TEXT}
+                  strokeWidth="2.4"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </span>
+          )}
           <button
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
@@ -61,6 +76,7 @@ export function SiteNav({ logoHref, links = LP_NAV_LINKS }: SiteNavProps) {
             <span style={{ background: TEXT }} className={`block h-0.5 w-6 rounded-full transition-all duration-200 ${open ? "opacity-0 scale-x-0" : ""}`} />
             <span style={{ background: TEXT }} className={`block h-0.5 w-6 rounded-full transition-all duration-200 origin-center ${open ? "-rotate-45 -translate-y-[7px]" : ""}`} />
           </button>
+          </div>
         </div>
       </header>
 
