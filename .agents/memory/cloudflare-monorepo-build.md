@@ -5,17 +5,12 @@ description: Why the CF build command must be artifact-specific (build:cf), not 
 
 # Cloudflare Workers Builds command for static artifacts
 
-When a static artifact (e.g. `@workspace/jesusonline-org`) is deployed via Cloudflare Workers Builds (auto-build on GitHub push), the Cloudflare **build command must target only that artifact**, e.g.:
+Cloudflare Workers Builds (auto-build on GitHub push) runs the root **`pnpm run build`** and you usually cannot rely on the user changing the dashboard build command. So every artifact's `build` script must succeed standalone under root `pnpm run build` with NO env vars provided.
 
-```
-pnpm --filter @workspace/jesusonline-org run build:cf
-```
+**The trap:** the Vite configs for `jesusonline-org` and `mockup-sandbox` **throw** at config-load if `PORT` / `BASE_PATH` are unset (they are unset in CI/Cloudflare). Root `build` = `pnpm run typecheck && pnpm -r --if-present run build`, which (a) gates on typecheck — any type error anywhere aborts the deploy and CF keeps serving the stale version with no visible error — and (b) builds *every* artifact, so any one vite app crashing fails the whole deploy.
 
-Do NOT use the root `pnpm run build` as the Cloudflare build command.
+**The fix that works without any dashboard change:** make each `build` script set its own env inline, e.g.
+- `jesusonline-org` build: `BASE_PATH=/ PORT=3000 NODE_ENV=production vite build ... && vite build --config vite.ssr.config.ts && node prerender.mjs` (full SSR prerender chain; `build:cf` is just an alias to `build`).
+- `mockup-sandbox` build: `BASE_PATH=/__mockup PORT=8081 vite build` (dev-only tool, never deployed, but still runs under `pnpm -r run build`).
 
-**Why:**
-- Root `build` = `pnpm run typecheck && pnpm -r --if-present run build`. The typecheck step gates the whole build; any type error anywhere fails the deploy and CF keeps serving the previous (stale) version with no visible error.
-- `pnpm -r run build` builds *every* artifact, including `mockup-sandbox`. Both `jesusonline-org` and `mockup-sandbox` vite.config.ts **throw** if `PORT` / `BASE_PATH` env vars are missing, which they are in Cloudflare's build environment. So even with typecheck passing, the root build fails.
-- The per-artifact `build:cf` sets `BASE_PATH=/ PORT=3000 NODE_ENV=production`, runs the client build + SSR build + `node prerender.mjs`, and outputs to `dist/public` (the dir the worker serves). It does NOT run tsc, so esbuild/vite build even if types are imperfect — but keep types clean anyway.
-
-**How to apply:** If a CF deploy "shows the old design / no changes," first check the CF build log. A typecheck failure or a "PORT/BASE_PATH required" throw means the build command is the root `build` instead of the artifact `build:cf`. Fix it in the Cloudflare dashboard build settings, not in code.
+**How to apply:** If a CF deploy "shows the old design / no changes," check the CF build log. A typecheck failure or a "PORT/BASE_PATH required" throw means root `pnpm run build` is failing. Fix the offending artifact's `build` script to be self-contained rather than asking the user to change Cloudflare settings. Keep types clean so the typecheck gate passes.

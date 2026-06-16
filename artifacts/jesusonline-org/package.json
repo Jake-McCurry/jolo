@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite --config vite.config.ts --host 0.0.0.0",
-    "build": "vite build --config vite.config.ts",
-    "build:cf": "BASE_PATH=/ PORT=3000 NODE_ENV=production vite build --config vite.config.ts && NODE_ENV=production vite build --config vite.ssr.config.ts && node prerender.mjs",
+    "build": "BASE_PATH=/ PORT=3000 NODE_ENV=production vite build --config vite.config.ts && NODE_ENV=production vite build --config vite.ssr.config.ts && node prerender.mjs",
+    "build:cf": "pnpm run build",
     "serve": "vite preview --config vite.config.ts --host 0.0.0.0",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
