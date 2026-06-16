@@ -50,14 +50,14 @@ export function SiteNav({ logoHref, links = LP_NAV_LINKS, showMenuArrow = false 
             <img src="/logo.png" alt="JesusOnline" className="h-10 w-auto" width="180" height="40" />
           </a>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2.5">
           {showMenuArrow && !open && (
-            <span className="nudge-right flex items-center" aria-hidden="true">
-              <svg width="26" height="14" viewBox="0 0 26 14" fill="none">
+            <span className="nudge-right flex items-center" aria-hidden="true" style={{ filter: "drop-shadow(0 1px 1px rgba(0,0,0,0.25))" }}>
+              <svg width="34" height="18" viewBox="0 0 34 18" fill="none">
                 <path
-                  d="M1 7h21M16 1l6 6-6 6"
-                  stroke={TEXT}
-                  strokeWidth="2.4"
+                  d="M2 9h27M20 2l9 7-9 7"
+                  stroke="#ffffff"
+                  strokeWidth="3.2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 />
