@@ -14,7 +14,8 @@ const YesRededicated   = lazy(() => import("@/pages/xp/YesRededicated"));
 const NoAlreadyReceived = lazy(() => import("@/pages/xp/NoAlreadyReceived"));
 
 function LayoutHeader() {
-  const [location] = useLocation();
+  const [rawLocation] = useLocation();
+  const location = rawLocation !== "/" ? rawLocation.replace(/\/+$/, "") : rawLocation;
   if (XP_STYLE_LP_ROUTES.includes(location)) return <XPHeader showMenuArrow />;
   if (location.startsWith("/xp")) return <XPHeader />;
   return <LPHeader />;
