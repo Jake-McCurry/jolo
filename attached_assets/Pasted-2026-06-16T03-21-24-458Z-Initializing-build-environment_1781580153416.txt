@@ -1,0 +1,94 @@
+2026-06-16T03:21:24.458Z	Initializing build environment...
+2026-06-16T03:21:26.672Z	Success: Finished initializing build environment
+2026-06-16T03:21:27.354Z	Cloning repository...
+2026-06-16T03:21:34.053Z	Detected the following tools from environment: pnpm@10.26.1, nodejs@22.16.0
+2026-06-16T03:21:36.549Z	Installing project dependencies: pnpm install --frozen-lockfile
+2026-06-16T03:21:37.530Z	Scope: all 9 workspace projects
+2026-06-16T03:21:37.701Z	Lockfile is up to date, resolution step is skipped
+2026-06-16T03:21:37.789Z	Progress: resolved 1, reused 0, downloaded 0, added 0
+2026-06-16T03:21:37.888Z	Packages: +518
+2026-06-16T03:21:37.889Z	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2026-06-16T03:21:38.794Z	Progress: resolved 518, reused 0, downloaded 10, added 0
+2026-06-16T03:21:39.792Z	Progress: resolved 518, reused 0, downloaded 113, added 41
+2026-06-16T03:21:40.802Z	Progress: resolved 518, reused 0, downloaded 184, added 69
+2026-06-16T03:21:41.801Z	Progress: resolved 518, reused 0, downloaded 273, added 117
+2026-06-16T03:21:42.801Z	Progress: resolved 518, reused 0, downloaded 311, added 138
+2026-06-16T03:21:43.803Z	Progress: resolved 518, reused 0, downloaded 318, added 140
+2026-06-16T03:21:44.805Z	Progress: resolved 518, reused 0, downloaded 323, added 142
+2026-06-16T03:21:45.806Z	Progress: resolved 518, reused 0, downloaded 326, added 142
+2026-06-16T03:21:46.807Z	Progress: resolved 518, reused 0, downloaded 390, added 166
+2026-06-16T03:21:47.809Z	Progress: resolved 518, reused 0, downloaded 467, added 191
+2026-06-16T03:21:48.811Z	Progress: resolved 518, reused 0, downloaded 518, added 311
+2026-06-16T03:21:49.811Z	Progress: resolved 518, reused 0, downloaded 518, added 424
+2026-06-16T03:21:49.964Z	Progress: resolved 518, reused 0, downloaded 518, added 518, done
+2026-06-16T03:21:50.316Z	.../esbuild@0.27.3/node_modules/esbuild postinstall$ node install.js
+2026-06-16T03:21:50.419Z	.../esbuild@0.27.3/node_modules/esbuild postinstall: Done
+2026-06-16T03:21:50.846Z	
+2026-06-16T03:21:50.846Z	devDependencies:
+2026-06-16T03:21:50.847Z	+ prettier 3.8.1
+2026-06-16T03:21:50.847Z	+ typescript 5.9.3
+2026-06-16T03:21:50.849Z	
+2026-06-16T03:21:50.949Z	. preinstall$ sh -c 'rm -f package-lock.json yarn.lock; case "$npm_config_user_agent" in pnpm/*) ;; *) echo "Use pnpm instead" >&2; exit 1 ;; esac'
+2026-06-16T03:21:50.963Z	. preinstall: Done
+2026-06-16T03:21:51.119Z	Done in 14.3s using pnpm v10.26.1
+2026-06-16T03:21:51.292Z	Executing user build command: pnpm run build
+2026-06-16T03:21:51.835Z	
+2026-06-16T03:21:51.835Z	> workspace@0.0.0 build /opt/buildhome/repo
+2026-06-16T03:21:51.835Z	> pnpm run typecheck && pnpm -r --if-present run build
+2026-06-16T03:21:51.836Z	
+2026-06-16T03:21:52.267Z	
+2026-06-16T03:21:52.269Z	> workspace@0.0.0 typecheck /opt/buildhome/repo
+2026-06-16T03:21:52.270Z	> pnpm run typecheck:libs && pnpm -r --filter "./artifacts/**" --filter "./scripts" --if-present run typecheck
+2026-06-16T03:21:52.270Z	
+2026-06-16T03:21:52.733Z	
+2026-06-16T03:21:52.733Z	> workspace@0.0.0 typecheck:libs /opt/buildhome/repo
+2026-06-16T03:21:52.733Z	> tsc --build
+2026-06-16T03:21:52.733Z	
+2026-06-16T03:21:56.809Z	Scope: 4 of 9 workspace projects
+2026-06-16T03:21:56.826Z	artifacts/api-server typecheck$ tsc -p tsconfig.json --noEmit
+2026-06-16T03:21:56.827Z	artifacts/jesusonline-org typecheck$ tsc -p tsconfig.json --noEmit
+2026-06-16T03:21:59.293Z	artifacts/api-server typecheck: Done
+2026-06-16T03:21:59.294Z	artifacts/mockup-sandbox typecheck$ tsc -p tsconfig.json --noEmit
+2026-06-16T03:22:13.059Z	artifacts/jesusonline-org typecheck: src/entry-server.tsx(8,19): error TS2322: Type '() => readonly [string, (_: string) => void]' is not assignable to type 'BaseLocationHook'.
+2026-06-16T03:22:13.070Z	artifacts/jesusonline-org typecheck:   The type 'readonly [string, (_: string) => void]' is 'readonly' and cannot be assigned to the mutable type '[string, (path: string, ...args: any[]) => any]'.
+2026-06-16T03:22:13.070Z	artifacts/jesusonline-org typecheck: src/pages/Home.tsx(65,25): error TS2322: Type '{ hidden: { opacity: number; y: number; }; show: { opacity: number; y: number; transition: { duration: number; ease: string; }; }; }' is not assignable to type 'Variants'.
+2026-06-16T03:22:13.071Z	artifacts/jesusonline-org typecheck:   Property 'show' is incompatible with index signature.
+2026-06-16T03:22:13.071Z	artifacts/jesusonline-org typecheck:     Type '{ opacity: number; y: number; transition: { duration: number; ease: string; }; }' is not assignable to type 'Variant'.
+2026-06-16T03:22:13.071Z	artifacts/jesusonline-org typecheck:       Type '{ opacity: number; y: number; transition: { duration: number; ease: string; }; }' is not assignable to type 'TargetAndTransition'.
+2026-06-16T03:22:13.071Z	artifacts/jesusonline-org typecheck:         Type '{ opacity: number; y: number; transition: { duration: number; ease: string; }; }' is not assignable to type '{ transition?: Transition<any> | undefined; transitionEnd?: ResolvedValues$1 | undefined; }'.
+2026-06-16T03:22:13.071Z	artifacts/jesusonline-org typecheck:           Types of property 'transition' are incompatible.
+2026-06-16T03:22:13.076Z	artifacts/jesusonline-org typecheck:             Type '{ duration: number; ease: string; }' is not assignable to type 'Transition<any> | undefined'.
+2026-06-16T03:22:13.080Z	artifacts/jesusonline-org typecheck:               Type '{ duration: number; ease: string; }' is not assignable to type 'TransitionWithValueOverrides<any>'.
+2026-06-16T03:22:13.080Z	artifacts/jesusonline-org typecheck:                 Type '{ duration: number; ease: string; }' is not assignable to type 'ValueAnimationTransition<any>'.
+2026-06-16T03:22:13.080Z	artifacts/jesusonline-org typecheck:                   Types of property 'ease' are incompatible.
+2026-06-16T03:22:13.082Z	artifacts/jesusonline-org typecheck:                     Type 'string' is not assignable to type 'Easing | Easing[] | undefined'.
+2026-06-16T03:22:13.082Z	artifacts/jesusonline-org typecheck: src/pages/Home.tsx(86,25): error TS2322: Type '{ hidden: { opacity: number; y: number; }; show: { opacity: number; y: number; transition: { duration: number; ease: string; }; }; }' is not assignable to type 'Variants'.
+2026-06-16T03:22:13.082Z	artifacts/jesusonline-org typecheck:   Property 'show' is incompatible with index signature.
+2026-06-16T03:22:13.082Z	artifacts/jesusonline-org typecheck:     Type '{ opacity: number; y: number; transition: { duration: number; ease: string; }; }' is not assignable to type 'Variant'.
+2026-06-16T03:22:13.082Z	artifacts/jesusonline-org typecheck:       Type '{ opacity: number; y: number; transition: { duration: number; ease: string; }; }' is not assignable to type 'TargetAndTransition'.
+2026-06-16T03:22:13.082Z	artifacts/jesusonline-org typecheck:         Type '{ opacity: number; y: number; transition: { duration: number; ease: string; }; }' is not assignable to type '{ transition?: Transition<any> | undefined; transitionEnd?: ResolvedValues$1 | undefined; }'.
+2026-06-16T03:22:13.082Z	artifacts/jesusonline-org typecheck:           Types of property 'transition' are incompatible.
+2026-06-16T03:22:13.083Z	artifacts/jesusonline-org typecheck:             Type '{ duration: number; ease: string; }' is not assignable to type 'Transition<any> | undefined'.
+2026-06-16T03:22:13.083Z	artifacts/jesusonline-org typecheck:               Type '{ duration: number; ease: string; }' is not assignable to type 'TransitionWithValueOverrides<any>'.
+2026-06-16T03:22:13.083Z	artifacts/jesusonline-org typecheck:                 Type '{ duration: number; ease: string; }' is not assignable to type 'ValueAnimationTransition<any>'.
+2026-06-16T03:22:13.083Z	artifacts/jesusonline-org typecheck:                   Types of property 'ease' are incompatible.
+2026-06-16T03:22:13.085Z	artifacts/jesusonline-org typecheck:                     Type 'string' is not assignable to type 'Easing | Easing[] | undefined'.
+2026-06-16T03:22:13.085Z	artifacts/jesusonline-org typecheck: src/pages/Home.tsx(107,25): error TS2322: Type '{ hidden: { opacity: number; y: number; }; show: { opacity: number; y: number; transition: { duration: number; ease: string; }; }; }' is not assignable to type 'Variants'.
+2026-06-16T03:22:13.086Z	artifacts/jesusonline-org typecheck:   Property 'show' is incompatible with index signature.
+2026-06-16T03:22:13.086Z	artifacts/jesusonline-org typecheck:     Type '{ opacity: number; y: number; transition: { duration: number; ease: string; }; }' is not assignable to type 'Variant'.
+2026-06-16T03:22:13.086Z	artifacts/jesusonline-org typecheck:       Type '{ opacity: number; y: number; transition: { duration: number; ease: string; }; }' is not assignable to type 'TargetAndTransition'.
+2026-06-16T03:22:13.086Z	artifacts/jesusonline-org typecheck:         Type '{ opacity: number; y: number; transition: { duration: number; ease: string; }; }' is not assignable to type '{ transition?: Transition<any> | undefined; transitionEnd?: ResolvedValues$1 | undefined; }'.
+2026-06-16T03:22:13.089Z	artifacts/jesusonline-org typecheck:           Types of property 'transition' are incompatible.
+2026-06-16T03:22:13.089Z	artifacts/jesusonline-org typecheck:             Type '{ duration: number; ease: string; }' is not assignable to type 'Transition<any> | undefined'.
+2026-06-16T03:22:13.089Z	artifacts/jesusonline-org typecheck:               Type '{ duration: number; ease: string; }' is not assignable to type 'TransitionWithValueOverrides<any>'.
+2026-06-16T03:22:13.089Z	artifacts/jesusonline-org typecheck:                 Type '{ duration: number; ease: string; }' is not assignable to type 'ValueAnimationTransition<any>'.
+2026-06-16T03:22:13.089Z	artifacts/jesusonline-org typecheck:                   Types of property 'ease' are incompatible.
+2026-06-16T03:22:13.090Z	artifacts/jesusonline-org typecheck:                     Type 'string' is not assignable to type 'Easing | Easing[] | undefined'.
+2026-06-16T03:22:13.145Z	artifacts/jesusonline-org typecheck: Failed
+2026-06-16T03:22:13.167Z	/opt/buildhome/repo/artifacts/jesusonline-org:
+2026-06-16T03:22:13.167Z	 ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @workspace/jesusonline-org@0.0.0 typecheck: `tsc -p tsconfig.json --noEmit`
+2026-06-16T03:22:13.167Z	Exit status 2
+2026-06-16T03:22:13.167Z	scripts typecheck$ tsc -p tsconfig.json --noEmit
+2026-06-16T03:22:13.222Z	 ELIFECYCLE  Command failed with exit code 2.
+2026-06-16T03:22:13.304Z	 ELIFECYCLE  Command failed with exit code 2.
+2026-06-16T03:22:13.337Z	Failed: error occurred while running build command
