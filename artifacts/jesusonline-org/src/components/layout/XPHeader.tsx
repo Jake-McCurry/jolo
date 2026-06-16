@@ -18,6 +18,6 @@ const XP_NAV_LINKS: NavLink[] = [
   { label: "Help",               href: `${APP_BASE}/help` },
 ];
 
-export function XPHeader() {
-  return <SiteNav logoHref={`${APP_BASE}/find-what-you-want`} links={XP_NAV_LINKS} />;
+export function XPHeader({ showMenuArrow = false }: { showMenuArrow?: boolean }) {
+  return <SiteNav logoHref={`${APP_BASE}/find-what-you-want`} links={XP_NAV_LINKS} showMenuArrow={showMenuArrow} />;
 }

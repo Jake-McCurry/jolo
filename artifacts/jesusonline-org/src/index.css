@@ -131,6 +131,7 @@ body {
 }
 .fade-up  { animation: fadeUp  0.5s ease both; }
 .fade-in  { animation: fadeIn  0.4s ease both; }
+
 .d-100 { animation-delay: 100ms; }
 .d-150 { animation-delay: 150ms; }
 .d-200 { animation-delay: 200ms; }

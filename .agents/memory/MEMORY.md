@@ -1,0 +1,1 @@
+- [Cloudflare monorepo build command](cloudflare-monorepo-build.md) — CF Workers build must be `pnpm --filter @workspace/<artifact> run build:cf`, never root `pnpm run build` (typecheck gate + mockup-sandbox PORT/BASE_PATH throw fail the deploy).

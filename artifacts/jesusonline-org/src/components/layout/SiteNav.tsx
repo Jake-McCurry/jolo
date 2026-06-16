@@ -18,9 +18,10 @@ const TEXT = "#063690";
 interface SiteNavProps {
   logoHref: string;
   links?: NavLink[];
+  showMenuArrow?: boolean;
 }
 
-export function SiteNav({ logoHref, links = LP_NAV_LINKS }: SiteNavProps) {
+export function SiteNav({ logoHref, links = LP_NAV_LINKS, showMenuArrow = false }: SiteNavProps) {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -49,6 +50,25 @@ export function SiteNav({ logoHref, links = LP_NAV_LINKS }: SiteNavProps) {
             <img src="/logo.png" alt="JesusOnline" className="h-10 w-auto" width="180" height="40" />
           </a>
 
+          <div className="flex items-center gap-2.5">
+          {showMenuArrow && !open && (
+            <a
+              href="https://app.jesusonline.com/find-what-you-want"
+              aria-label="Find what you want"
+              className="flex items-center"
+              style={{ filter: "drop-shadow(0 1px 1px rgba(0,0,0,0.25))" }}
+            >
+              <svg width="34" height="18" viewBox="0 0 34 18" fill="none" aria-hidden="true">
+                <path
+                  d="M2 9h27M20 2l9 7-9 7"
+                  stroke="#ffffff"
+                  strokeWidth="3.2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </a>
+          )}
           <button
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
@@ -61,6 +81,7 @@ export function SiteNav({ logoHref, links = LP_NAV_LINKS }: SiteNavProps) {
             <span style={{ background: TEXT }} className={`block h-0.5 w-6 rounded-full transition-all duration-200 ${open ? "opacity-0 scale-x-0" : ""}`} />
             <span style={{ background: TEXT }} className={`block h-0.5 w-6 rounded-full transition-all duration-200 origin-center ${open ? "-rotate-45 -translate-y-[7px]" : ""}`} />
           </button>
+          </div>
         </div>
       </header>
 
