@@ -15,7 +15,8 @@ const NoAlreadyReceived = lazy(() => import("@/pages/xp/NoAlreadyReceived"));
 
 function LayoutHeader() {
   const [location] = useLocation();
-  if (location.startsWith("/xp") || XP_STYLE_LP_ROUTES.includes(location)) return <XPHeader />;
+  if (XP_STYLE_LP_ROUTES.includes(location)) return <XPHeader showMenuArrow />;
+  if (location.startsWith("/xp")) return <XPHeader />;
   return <LPHeader />;
 }
 
