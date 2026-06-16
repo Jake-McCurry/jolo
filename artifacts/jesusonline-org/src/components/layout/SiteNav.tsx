@@ -52,7 +52,7 @@ export function SiteNav({ logoHref, links = LP_NAV_LINKS, showMenuArrow = false 
 
           <div className="flex items-center gap-2.5">
           {showMenuArrow && !open && (
-            <span className="nudge-right flex items-center" aria-hidden="true" style={{ filter: "drop-shadow(0 1px 1px rgba(0,0,0,0.25))" }}>
+            <span className="flex items-center" aria-hidden="true" style={{ filter: "drop-shadow(0 1px 1px rgba(0,0,0,0.25))" }}>
               <svg width="34" height="18" viewBox="0 0 34 18" fill="none">
                 <path
                   d="M2 9h27M20 2l9 7-9 7"
