@@ -3,7 +3,7 @@ import { Switch, Route, Router as WouterRouter, useLocation, Redirect } from "wo
 import { LPHeader } from "@/components/layout/LPHeader";
 import { XPHeader } from "@/components/layout/XPHeader";
 
-const XP_STYLE_LP_ROUTES = ["/lp/jesus-resurrection-and-you-ttn"];
+const XP_STYLE_LP_ROUTES = ["/lp/jesus-resurrection-and-you-ttn", "/lp/gift-of-heaven-ttn"];
 
 import KingdomnomicsGiftOfHeaven from "@/pages/lp/KingdomnomicsGiftOfHeaven";
 import JesusResurrectionAndYou from "@/pages/lp/JesusResurrectionAndYou";
