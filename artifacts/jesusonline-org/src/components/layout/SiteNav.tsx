@@ -60,7 +60,7 @@ export function SiteNav({ links = LP_NAV_LINKS, showMenuArrow = false }: SiteNav
             >
               <svg width="34" height="18" viewBox="0 0 34 18" fill="none" aria-hidden="true">
                 <path
-                  d="M2 9h27M20 2l9 7-9 7"
+                  d="M32 9H5M14 2 5 9l9 7"
                   stroke="#ffffff"
                   strokeWidth="3.2"
                   strokeLinecap="round"
