@@ -17,10 +17,9 @@ const TEXT = "#063690";
 
 interface SiteNavProps {
   links?: NavLink[];
-  showMenuArrow?: boolean;
 }
 
-export function SiteNav({ links = LP_NAV_LINKS, showMenuArrow = false }: SiteNavProps) {
+export function SiteNav({ links = LP_NAV_LINKS }: SiteNavProps) {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -51,24 +50,6 @@ export function SiteNav({ links = LP_NAV_LINKS, showMenuArrow = false }: SiteNav
             <span style={{ background: "#ffffff" }} className={`block h-0.5 w-6 rounded-full transition-all duration-200 ${open ? "opacity-0 scale-x-0" : ""}`} />
             <span style={{ background: "#ffffff" }} className={`block h-0.5 w-6 rounded-full transition-all duration-200 origin-center ${open ? "-rotate-45 -translate-y-[7px]" : ""}`} />
           </button>
-          {showMenuArrow && !open && (
-            <a
-              href="https://app.jesusonline.com/home"
-              aria-label="Go to JesusOnline app"
-              className="flex items-center"
-              style={{ filter: "drop-shadow(0 1px 1px rgba(0,0,0,0.25))" }}
-            >
-              <svg width="34" height="18" viewBox="0 0 34 18" fill="none" aria-hidden="true">
-                <path
-                  d="M32 9H5M14 2 5 9l9 7"
-                  stroke="#ffffff"
-                  strokeWidth="3.2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </a>
-          )}
           </div>
         </div>
       </header>
