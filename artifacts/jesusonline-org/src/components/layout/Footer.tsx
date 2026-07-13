@@ -1,4 +1,5 @@
 import { Link } from "wouter";
+import { MAIN_SITE, APP_BASE } from "@/lib/urls";
 
 export function Footer() {
   return (
@@ -16,7 +17,7 @@ export function Footer() {
 
           <div className="flex flex-col gap-3 items-center md:items-start text-sm">
             <a 
-              href="https://jesusonline.com" 
+              href={MAIN_SITE} 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-white/80 hover:text-primary transition-colors"
@@ -25,7 +26,7 @@ export function Footer() {
               JesusOnline.com
             </a>
             <a 
-              href="https://app.jesusonline.com" 
+              href={APP_BASE} 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-white/80 hover:text-primary transition-colors"

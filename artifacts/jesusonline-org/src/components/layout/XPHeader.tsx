@@ -1,7 +1,6 @@
 import { SiteNav } from "./SiteNav";
 import type { NavLink } from "./SiteNav";
-
-const APP_BASE = "https://app.jesusonline.com";
+import { APP_BASE } from "@/lib/urls";
 
 const XP_NAV_LINKS: NavLink[] = [
   { label: "Dashboard",          href: `${APP_BASE}/home` },

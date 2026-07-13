@@ -80,7 +80,7 @@ const { render } = await import("./dist/server/entry-server.js");
 for (const route of ROUTES) {
   let appHtml = "";
   try {
-    appHtml = render(route.path);
+    appHtml = await render(route.path);
   } catch (err) {
     console.warn(`⚠ SSR failed for ${route.path}, writing meta-only:`, err.message);
   }

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { MAIN_SITE } from "@/lib/urls";
 
 export interface NavLink {
   label: string;
@@ -6,14 +7,11 @@ export interface NavLink {
 }
 
 const LP_NAV_LINKS: NavLink[] = [
-  { label: "Discover Evidence",     href: "https://jesusonline.com/discover-evidence/" },
-  { label: "Meet Jesus",            href: "https://jesusonline.com/receive-jesus/" },
-  { label: "Follow Jesus",          href: "https://jesusonline.com/follow-jesus/" },
-  { label: "Translate & Resources", href: "https://jesusonline.com/translate-resources/" },
+  { label: "Discover Evidence",     href: `${MAIN_SITE}/discover-evidence/` },
+  { label: "Meet Jesus",            href: `${MAIN_SITE}/receive-jesus/` },
+  { label: "Follow Jesus",          href: `${MAIN_SITE}/follow-jesus/` },
+  { label: "Translate & Resources", href: `${MAIN_SITE}/translate-resources/` },
 ];
-
-const TEXT = "#063690";
-
 
 interface SiteNavProps {
   links?: NavLink[];
