@@ -13,6 +13,38 @@ const ROUTES = [
       "Watch short videos that answer life's biggest questions and discover what Jesus means for your life today.",
   },
   {
+    path: "/video/your-life-has-purpose",
+    title: "Your Life Has Purpose | JesusOnline",
+    description:
+      "Do you wonder why you're here — and whether your life was designed for a reason?",
+    image: "https://i.ytimg.com/vi/1ngNjwYu83o/hqdefault.jpg",
+    jsonLd: {
+      "@context": "https://schema.org",
+      "@type": "VideoObject",
+      name: "Your Life Has Purpose",
+      description:
+        "Discover whether your life was designed for a reason and find purpose in Jesus.",
+      thumbnailUrl: "https://i.ytimg.com/vi/1ngNjwYu83o/hqdefault.jpg",
+      embedUrl: "https://www.youtube.com/embed/1ngNjwYu83o",
+    },
+  },
+  {
+    path: "/video/is-jesus-relevant-to-you",
+    title: "Is Jesus Relevant To You? | JesusOnline",
+    description:
+      "Most people search for meaning in success, pleasure, or popularity. What if the answer is something deeper?",
+    image: "https://i.ytimg.com/vi/e0jMauxD1Y0/hqdefault.jpg",
+    jsonLd: {
+      "@context": "https://schema.org",
+      "@type": "VideoObject",
+      name: "Is Jesus Relevant To You?",
+      description:
+        "Explore why Jesus is still relevant to your life and the questions that matter most.",
+      thumbnailUrl: "https://i.ytimg.com/vi/e0jMauxD1Y0/hqdefault.jpg",
+      embedUrl: "https://www.youtube.com/embed/e0jMauxD1Y0",
+    },
+  },
+  {
     path: "/lp/gift-of-heaven-ttn",
     title: "The Gift of Heaven | JesusOnline",
     description:
@@ -94,7 +126,9 @@ for (const route of ROUTES) {
   }
 
   const img = route.image
-    ? `${SITE_URL}${route.image}`
+    ? route.image.startsWith("http")
+      ? route.image
+      : `${SITE_URL}${route.image}`
     : `${SITE_URL}/opengraph.jpg`;
 
   const headTags = [

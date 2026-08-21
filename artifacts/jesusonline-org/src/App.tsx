@@ -17,6 +17,8 @@ const XP_STYLE_LP_ROUTES = [
 import Home from "@/pages/Home";
 import KingdomnomicsGiftOfHeaven from "@/pages/lp/KingdomnomicsGiftOfHeaven";
 import JesusResurrectionAndYou from "@/pages/lp/JesusResurrectionAndYou";
+import IsJesusRelevantToYou from "@/pages/videos/IsJesusRelevantToYou";
+import YourLifeHasPurpose from "@/pages/videos/YourLifeHasPurpose";
 
 const NoDidntPray = lazy(() => import("@/pages/xp/NoDidntPray"));
 const YesReceivedJesus = lazy(() => import("@/pages/xp/YesReceivedJesus"));
@@ -28,6 +30,7 @@ function LayoutHeader() {
   const location =
     rawLocation !== "/" ? rawLocation.replace(/\/+$/, "") : rawLocation;
   if (location === "/") return <LPHeader showBrand />;
+  if (location.startsWith("/video/")) return <LPHeader showBrand />;
   if (XP_STYLE_LP_ROUTES.includes(location)) return <XPHeader />;
   if (location.startsWith("/xp")) return <XPHeader />;
   return <LPHeader />;
@@ -66,6 +69,15 @@ export function AppRoutes() {
             <Route path="/lp/kingdomnomics-gift-of-heaven">
               <Redirect to="/lp/gift-of-heaven-ttn" />
             </Route>
+
+            <Route
+              path="/video/your-life-has-purpose"
+              component={YourLifeHasPurpose}
+            />
+            <Route
+              path="/video/is-jesus-relevant-to-you"
+              component={IsJesusRelevantToYou}
+            />
 
             <Route path="/xp/no-i-didnt-pray" component={NoDidntPray} />
             <Route

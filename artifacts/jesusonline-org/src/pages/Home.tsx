@@ -193,11 +193,9 @@ export default function Home() {
 
             {/* 2. Your Life Has Purpose */}
             <div className="fade-up d-200 flex flex-col group h-full">
-              <a
-                href="https://www.youtube.com/watch?v=1ngNjwYu83o"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Watch Your Life Has Purpose on YouTube"
+              <Link
+                href="/video/your-life-has-purpose"
+                aria-label="Watch Your Life Has Purpose"
                 data-testid="link-video-purpose"
                 className="w-full overflow-hidden rounded-xl bg-card border border-border shadow-md shadow-black/5 hover:shadow-xl hover:border-primary/30 transition-all duration-300 flex-1 flex flex-col"
               >
@@ -225,16 +223,14 @@ export default function Home() {
                     designed for a reason?
                   </p>
                 </div>
-              </a>
+              </Link>
             </div>
 
             {/* 3. Is Jesus Relevant To You? */}
             <div className="fade-up d-300 flex flex-col group h-full">
-              <a
-                href="https://www.youtube.com/watch?v=e0jMauxD1Y0"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Watch Is Jesus Relevant To You? on YouTube"
+              <Link
+                href="/video/is-jesus-relevant-to-you"
+                aria-label="Watch Is Jesus Relevant To You?"
                 data-testid="link-video-relevant"
                 className="w-full overflow-hidden rounded-xl bg-card border border-border shadow-md shadow-black/5 hover:shadow-xl hover:border-primary/30 transition-all duration-300 flex-1 flex flex-col"
               >
@@ -262,7 +258,7 @@ export default function Home() {
                     popularity. What if the answer is something deeper?
                   </p>
                 </div>
-              </a>
+              </Link>
             </div>
           </div>
         </div>

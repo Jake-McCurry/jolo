@@ -6,6 +6,16 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://jesusonline.org/video/your-life-has-purpose</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jesusonline.org/video/is-jesus-relevant-to-you</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://jesusonline.org/lp/gift-of-heaven-ttn</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
