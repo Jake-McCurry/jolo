@@ -7,6 +7,78 @@ const SITE_URL = "https://jesusonline.org";
 
 const ROUTES = [
   {
+    path: "/",
+    title: "Discover the Real Jesus | JesusOnline",
+    description:
+      "Watch short videos that answer life's biggest questions and discover what Jesus means for your life today.",
+  },
+  {
+    path: "/video/the-gift-of-heaven",
+    title: "The Gift of Heaven | JesusOnline",
+    description:
+      "Is heaven a reward for good behavior, or is it a gift? Discover what Jesus really said about eternity.",
+    image: "/thumb-gift-of-heaven.jpg",
+    jsonLd: {
+      "@context": "https://schema.org",
+      "@type": "VideoObject",
+      name: "The Gift of Heaven",
+      description:
+        "Discover what Jesus really said about heaven and the gift God offers.",
+      thumbnailUrl: `${SITE_URL}/thumb-gift-of-heaven.jpg`,
+      embedUrl: "https://www.youtube.com/embed/XB7wGTnYeaE",
+      uploadDate: "2024-01-01",
+    },
+  },
+  {
+    path: "/video/jesus-resurrection-and-you",
+    title: "Jesus' Resurrection & You | JesusOnline",
+    description:
+      "What if the most important event in history is also personal? Explore the resurrection of Jesus.",
+    image: "/thumb-resurrection.jpg",
+    jsonLd: {
+      "@context": "https://schema.org",
+      "@type": "VideoObject",
+      name: "Jesus' Resurrection & You",
+      description:
+        "Explore the resurrection of Jesus and what it means for your life.",
+      thumbnailUrl: `${SITE_URL}/thumb-resurrection.jpg`,
+      embedUrl: "https://www.youtube.com/embed/SEg4a2xaJyw",
+      uploadDate: "2024-01-01",
+    },
+  },
+  {
+    path: "/video/your-life-has-purpose",
+    title: "Your Life Has Purpose | JesusOnline",
+    description:
+      "Do you wonder why you're here — and whether your life was designed for a reason?",
+    image: "https://i.ytimg.com/vi/1ngNjwYu83o/hqdefault.jpg",
+    jsonLd: {
+      "@context": "https://schema.org",
+      "@type": "VideoObject",
+      name: "Your Life Has Purpose",
+      description:
+        "Discover whether your life was designed for a reason and find purpose in Jesus.",
+      thumbnailUrl: "https://i.ytimg.com/vi/1ngNjwYu83o/hqdefault.jpg",
+      embedUrl: "https://www.youtube.com/embed/1ngNjwYu83o",
+    },
+  },
+  {
+    path: "/video/is-jesus-relevant-to-you",
+    title: "Is Jesus Relevant To You? | JesusOnline",
+    description:
+      "Most people search for meaning in success, pleasure, or popularity. What if the answer is something deeper?",
+    image: "https://i.ytimg.com/vi/e0jMauxD1Y0/hqdefault.jpg",
+    jsonLd: {
+      "@context": "https://schema.org",
+      "@type": "VideoObject",
+      name: "Is Jesus Relevant To You?",
+      description:
+        "Explore why Jesus is still relevant to your life and the questions that matter most.",
+      thumbnailUrl: "https://i.ytimg.com/vi/e0jMauxD1Y0/hqdefault.jpg",
+      embedUrl: "https://www.youtube.com/embed/e0jMauxD1Y0",
+    },
+  },
+  {
     path: "/lp/gift-of-heaven-ttn",
     title: "The Gift of Heaven | JesusOnline",
     description:
@@ -16,8 +88,7 @@ const ROUTES = [
       "@context": "https://schema.org",
       "@type": "VideoObject",
       name: "The Gift of Heaven",
-      description:
-        "Watch The Gift of Heaven and discover what God offers you.",
+      description: "Watch The Gift of Heaven and discover what God offers you.",
       thumbnailUrl: `${SITE_URL}/thumb-gift-of-heaven.jpg`,
       embedUrl: "https://www.youtube.com/embed/XB7wGTnYeaE",
       uploadDate: "2024-01-01",
@@ -72,7 +143,7 @@ const ROUTES = [
 
 const template = readFileSync(
   resolve(__dirname, "dist/public/index.html"),
-  "utf-8"
+  "utf-8",
 );
 
 const { render } = await import("./dist/server/entry-server.js");
@@ -80,12 +151,19 @@ const { render } = await import("./dist/server/entry-server.js");
 for (const route of ROUTES) {
   let appHtml = "";
   try {
-    appHtml = render(route.path);
+    appHtml = await render(route.path);
   } catch (err) {
-    console.warn(`⚠ SSR failed for ${route.path}, writing meta-only:`, err.message);
+    console.warn(
+      `⚠ SSR failed for ${route.path}, writing meta-only:`,
+      err.message,
+    );
   }
 
-  const img = route.image ? `${SITE_URL}${route.image}` : `${SITE_URL}/opengraph.jpg`;
+  const img = route.image
+    ? route.image.startsWith("http")
+      ? route.image
+      : `${SITE_URL}${route.image}`
+    : `${SITE_URL}/opengraph.jpg`;
 
   const headTags = [
     `<title>${route.title}</title>`,
@@ -111,16 +189,13 @@ for (const route of ROUTES) {
 
   if (route.jsonLd) {
     headTags.push(
-      `<script type="application/ld+json">${JSON.stringify(route.jsonLd)}</script>`
+      `<script type="application/ld+json">${JSON.stringify(route.jsonLd)}</script>`,
     );
   }
 
   const html = template
     .replace("</head>", `  ${headTags.join("\n  ")}\n</head>`)
-    .replace(
-      '<div id="root"></div>',
-      `<div id="root">${appHtml}</div>`
-    );
+    .replace('<div id="root"></div>', `<div id="root">${appHtml}</div>`);
 
   const outDir = resolve(__dirname, "dist/public", route.path.slice(1));
   mkdirSync(outDir, { recursive: true });

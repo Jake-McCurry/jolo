@@ -1,210 +1,229 @@
 import { Link } from "wouter";
-import { motion, type Variants } from "framer-motion";
 import { SEO } from "@/components/ui/SEO";
-import { ArrowRight, BookOpen, Heart, Users, Shield, Sparkles, ExternalLink } from "lucide-react";
+
+interface PlayIconProps {
+  size?: number;
+  className?: string;
+}
+
+function PlayIcon({ size = 24, className }: PlayIconProps) {
+  return (
+    <svg
+      aria-hidden="true"
+      className={className}
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path d="M8 5.4v13.2L18.5 12 8 5.4Z" />
+    </svg>
+  );
+}
 
 export default function Home() {
-  const containerVars: Variants = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
-
-  const itemVars: Variants = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
-  };
-
   return (
     <>
-      <SEO 
-        title="Examining the Evidence. Growing in Faith." 
-        description="Discover evidence for God, meet Jesus, and grow in your faith journey."
+      <SEO
+        title="Discover the Real Jesus"
+        description="Short videos that answer life's biggest questions. Discover the real Jesus."
+        path="/"
       />
-      
+
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-secondary to-[#241332] pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
-        <div className="container mx-auto px-4 relative z-10">
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="max-w-4xl mx-auto text-center"
-          >
-            <span className="inline-block py-1 px-3 bg-white/10 text-white text-sm font-bold tracking-wider uppercase mb-6 border border-white/20">
+      <section className="relative pt-24 pb-20 overflow-hidden bg-background">
+        {/* Abstract Background Texture */}
+        <div
+          className="absolute inset-0 z-0 opacity-40 mix-blend-multiply pointer-events-none"
+          style={{
+            backgroundImage: `url('/hero-bg.jpg')`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        />
+        <div className="absolute inset-0 z-0 bg-gradient-to-b from-background/40 via-background/80 to-background pointer-events-none" />
+
+        <div className="container mx-auto px-4 relative z-10 w-full max-w-5xl flex flex-col items-center text-center">
+          <div className="fade-up d-100 mb-6">
+            <span className="inline-block py-1.5 px-4 rounded-full bg-primary/10 text-primary text-sm font-bold tracking-widest uppercase border border-primary/20">
               Welcome
             </span>
-            <h1 className="text-5xl md:text-7xl font-extrabold text-white tracking-tight mb-6 leading-tight">
-              A Safe Place to <br className="hidden md:block" />
-              <span className="text-primary">Explore Faith</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-white/80 mb-10 max-w-2xl mx-auto leading-relaxed">
-              Whether you are searching for answers, ready to begin a relationship with Jesus, or looking to grow deeper in your faith.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Main Pathways */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-foreground mb-4">Where are you on your journey?</h2>
           </div>
-          <motion.div 
-            variants={containerVars}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-100px" }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto"
+
+          <h1 className="fade-up d-200 text-5xl md:text-7xl lg:text-8xl font-extrabold text-foreground tracking-tight mb-6 leading-[1.1]">
+            Discover the{" "}
+            <span className="text-primary italic font-serif pr-2">Real</span>{" "}
+            Jesus
+          </h1>
+
+          <p className="fade-up d-300 text-xl md:text-2xl text-foreground/70 mb-16 max-w-2xl mx-auto font-medium">
+            Short videos that answer life's biggest questions.
+          </p>
+
+          {/* Featured Video Section - Gift of Heaven */}
+          <Link
+            href="/video/the-gift-of-heaven"
+            data-testid="link-video-gift-of-heaven"
+            aria-label="Watch The Gift of Heaven"
+            className="fade-up d-400 group w-full max-w-3xl overflow-hidden rounded-2xl border border-border bg-card text-left shadow-2xl shadow-primary/5 transition-all duration-300 hover:border-primary/30 hover:shadow-primary/15"
           >
-            <motion.div variants={itemVars} className="flex h-full">
-              <Link href="/discover-evidence" className="flex-1 block h-full">
-                <div className="group h-full p-8 rounded-lg bg-card border border-white/5 hover:bg-[#1a334d] transition-all duration-300 flex flex-col" data-testid="card-discover-evidence">
-                  <div className="w-14 h-14 rounded-none bg-primary/20 flex items-center justify-center mb-6 group-hover:bg-primary transition-colors duration-300 text-primary group-hover:text-white">
-                    <Shield size={28} />
-                  </div>
-                  <h3 className="text-2xl font-bold text-white mb-3">Discover Evidence</h3>
-                  <p className="text-white/70 mb-8 line-clamp-3">Examine the historical and scientific evidence for God and Jesus. Get answers to life's biggest questions.</p>
-                  
-                  <div className="mt-auto">
-                    <div className="inline-block px-3 py-1 bg-[#3B82C4]/20 text-[#4A9ECC] text-xs font-bold tracking-widest uppercase mb-4 border border-[#3B82C4]/30">
-                      Facts for Faith
-                    </div>
-                    <div className="flex items-center text-primary font-semibold group-hover:translate-x-2 transition-transform">
-                      Explore Evidence <ArrowRight size={18} className="ml-2" />
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            </motion.div>
-
-            <motion.div variants={itemVars} className="flex h-full">
-              <Link href="/receive-jesus" className="flex-1 block h-full">
-                <div className="group h-full p-8 rounded-lg bg-card border border-white/5 hover:bg-[#1a334d] transition-all duration-300 flex flex-col" data-testid="card-meet-jesus">
-                  <div className="w-14 h-14 rounded-none bg-primary/20 flex items-center justify-center mb-6 group-hover:bg-primary transition-colors duration-300 text-primary group-hover:text-white">
-                    <Heart size={28} />
-                  </div>
-                  <h3 className="text-2xl font-bold text-white mb-3">Meet Jesus</h3>
-                  <p className="text-white/70 mb-8 line-clamp-3">Learn about who Jesus claimed to be, His love for you, and how to begin a personal relationship with Him.</p>
-                  
-                  <div className="mt-auto">
-                    <div className="inline-block px-3 py-1 bg-[#3B82C4]/20 text-[#4A9ECC] text-xs font-bold tracking-widest uppercase mb-4 border border-[#3B82C4]/30">
-                      Personal Growth
-                    </div>
-                    <div className="flex items-center text-primary font-semibold group-hover:translate-x-2 transition-transform">
-                      Begin the Journey <ArrowRight size={18} className="ml-2" />
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            </motion.div>
-
-            <motion.div variants={itemVars} className="flex h-full">
-              <Link href="/follow-jesus" className="flex-1 block h-full">
-                <div className="group h-full p-8 rounded-lg bg-card border border-white/5 hover:bg-[#1a334d] transition-all duration-300 flex flex-col" data-testid="card-follow-jesus">
-                  <div className="w-14 h-14 rounded-none bg-primary/20 flex items-center justify-center mb-6 group-hover:bg-primary transition-colors duration-300 text-primary group-hover:text-white">
-                    <Users size={28} />
-                  </div>
-                  <h3 className="text-2xl font-bold text-white mb-3">Follow Jesus</h3>
-                  <p className="text-white/70 mb-8 line-clamp-3">Find practical resources to help you grow in your faith, connect with others, and live a purposeful life.</p>
-                  
-                  <div className="mt-auto">
-                    <div className="inline-block px-3 py-1 bg-[#3B82C4]/20 text-[#4A9ECC] text-xs font-bold tracking-widest uppercase mb-4 border border-[#3B82C4]/30">
-                      Personal Growth
-                    </div>
-                    <div className="flex items-center text-primary font-semibold group-hover:translate-x-2 transition-transform">
-                      Grow Deep <ArrowRight size={18} className="ml-2" />
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Grow in Faith Section */}
-      <section className="py-24 bg-[#E8EDEF]">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-foreground mb-4">Grow in Your Faith</h2>
-            <p className="text-lg text-foreground/70 max-w-2xl mx-auto">Specific resources for wherever you are in life right now.</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            <Link href="/forever-loved" className="block">
-              <div className="group flex items-center p-6 bg-card rounded-lg hover:bg-[#1a334d] transition-all border border-white/5 cursor-pointer" data-testid="link-forever-loved">
-                <div className="w-12 h-12 rounded-none bg-primary/20 text-primary flex items-center justify-center mr-4 group-hover:bg-primary group-hover:text-white transition-colors">
-                  <Heart size={24} />
-                </div>
-                <div className="flex-1">
-                  <h4 className="text-lg font-bold text-white">Experience God's Love</h4>
-                  <p className="text-sm text-white/70">For when you feel unloved or unworthy.</p>
-                </div>
-                <ArrowRight size={20} className="text-white/30 group-hover:text-primary transition-colors" />
+            <div className="p-6 md:p-8">
+              <div className="flex items-center gap-3 mb-2">
+                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/20 text-primary">
+                  <PlayIcon size={12} className="ml-0.5" />
+                </span>
+                <span className="text-sm font-bold uppercase tracking-widest text-primary">
+                  Featured Video
+                </span>
               </div>
-            </Link>
+              <h2 className="text-2xl md:text-3xl font-extrabold text-foreground mb-2 transition-colors group-hover:text-primary">
+                The Gift of Heaven
+              </h2>
+              <p className="text-foreground/70">
+                Is heaven a reward for good behavior, or is it a gift? Discover
+                what Jesus really said about eternity.
+              </p>
+            </div>
 
-            <Link href="/god-is-hope" className="block">
-              <div className="group flex items-center p-6 bg-card rounded-lg hover:bg-[#1a334d] transition-all border border-white/5 cursor-pointer" data-testid="link-god-is-hope">
-                <div className="w-12 h-12 rounded-none bg-primary/20 text-primary flex items-center justify-center mr-4 group-hover:bg-primary group-hover:text-white transition-colors">
-                  <Sparkles size={24} />
-                </div>
-                <div className="flex-1">
-                  <h4 className="text-lg font-bold text-white">Find Hope in Crisis</h4>
-                  <p className="text-sm text-white/70">When circumstances feel overwhelming.</p>
-                </div>
-                <ArrowRight size={20} className="text-white/30 group-hover:text-primary transition-colors" />
-              </div>
-            </Link>
-
-            <a href="https://jesusonline.com/resources/" target="_blank" rel="noopener noreferrer" className="group flex items-center p-6 bg-card rounded-lg hover:bg-[#1a334d] transition-all border border-white/5" data-testid="link-external-resources">
-              <div className="w-12 h-12 rounded-none bg-primary/20 text-primary flex items-center justify-center mr-4 group-hover:bg-primary group-hover:text-white transition-colors">
-                <BookOpen size={24} />
-              </div>
-              <div className="flex-1">
-                <h4 className="text-lg font-bold text-white">Explore Free Media</h4>
-                <p className="text-sm text-white/70">Articles, videos, and study guides.</p>
-              </div>
-              <ExternalLink size={20} className="text-white/30 group-hover:text-primary transition-colors" />
-            </a>
-
-            <a href="https://jesusonline.com/community/" target="_blank" rel="noopener noreferrer" className="group flex items-center p-6 bg-card rounded-lg hover:bg-[#1a334d] transition-all border border-white/5" data-testid="link-external-community">
-              <div className="w-12 h-12 rounded-none bg-primary/20 text-primary flex items-center justify-center mr-4 group-hover:bg-primary group-hover:text-white transition-colors">
-                <Users size={24} />
-              </div>
-              <div className="flex-1">
-                <h4 className="text-lg font-bold text-white">Join the Community</h4>
-                <p className="text-sm text-white/70">Connect with believers worldwide.</p>
-              </div>
-              <ExternalLink size={20} className="text-white/30 group-hover:text-primary transition-colors" />
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* App CTA */}
-      <section className="py-24 bg-secondary">
-        <div className="container mx-auto px-4 text-center">
-          <div className="max-w-3xl mx-auto text-white">
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">Ready to go deeper?</h2>
-            <p className="text-white/80 text-lg md:text-xl mb-10 max-w-xl mx-auto">
-              Download the JesusOnline App for daily inspiration, structured journeys, and a personalized experience.
-            </p>
-            <a 
-              href="https://app.jesusonline.com" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="inline-flex items-center px-8 py-4 bg-primary text-white font-bold rounded-none text-lg hover:bg-primary/90 transition-all border-2 border-primary"
-              data-testid="cta-app-home"
+            <div
+              className="relative aspect-video w-full overflow-hidden bg-black"
+              data-testid="video-gift-of-heaven"
             >
-              Explore the App <ExternalLink size={20} className="ml-2" />
-            </a>
+              <img
+                src="/thumb-gift-of-heaven.jpg"
+                alt=""
+                width="1280"
+                height="720"
+                className="h-full w-full object-cover opacity-95 transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary text-white shadow-lg transition-transform duration-300 group-hover:scale-110">
+                  <PlayIcon size={28} className="ml-1" />
+                </div>
+              </div>
+            </div>
+          </Link>
+        </div>
+      </section>
+
+      {/* More Videos Section */}
+      <section className="py-24 bg-muted/30 border-t border-border">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <div className="text-center mb-16 fade-up">
+            <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
+              More Videos
+            </h2>
+            <p className="text-lg text-foreground/70 max-w-2xl mx-auto">
+              Explore these short films addressing purpose, relevance, history,
+              and eternity.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* 1. Jesus' Resurrection & You */}
+            <div className="fade-up d-100 flex flex-col group h-full">
+              <Link
+                href="/video/jesus-resurrection-and-you"
+                aria-label="Watch Jesus' Resurrection & You"
+                data-testid="link-video-resurrection"
+                className="block w-full overflow-hidden rounded-xl bg-card border border-border shadow-md shadow-black/5 hover:shadow-xl hover:border-primary/30 transition-all duration-300 flex-1 flex flex-col"
+              >
+                <div className="relative aspect-video overflow-hidden bg-black">
+                  <img
+                    src="/thumb-resurrection.jpg"
+                    alt="Jesus' Resurrection & You"
+                    width="640"
+                    height="360"
+                    loading="lazy"
+                    className="w-full h-full object-cover opacity-90 group-hover:scale-105 group-hover:opacity-100 transition-all duration-500"
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-14 h-14 rounded-full bg-primary/90 text-white flex items-center justify-center backdrop-blur-sm shadow-lg group-hover:scale-110 transition-transform duration-300">
+                      <PlayIcon size={24} className="ml-1" />
+                    </div>
+                  </div>
+                </div>
+                <div className="p-6 flex flex-col flex-1">
+                  <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
+                    Jesus' Resurrection &amp; You
+                  </h3>
+                  <p className="text-foreground/70 text-sm leading-relaxed flex-1">
+                    What if the most important event in history is also
+                    personal?
+                  </p>
+                </div>
+              </Link>
+            </div>
+
+            {/* 2. Your Life Has Purpose */}
+            <div className="fade-up d-200 flex flex-col group h-full">
+              <Link
+                href="/video/your-life-has-purpose"
+                aria-label="Watch Your Life Has Purpose"
+                data-testid="link-video-purpose"
+                className="w-full overflow-hidden rounded-xl bg-card border border-border shadow-md shadow-black/5 hover:shadow-xl hover:border-primary/30 transition-all duration-300 flex-1 flex flex-col"
+              >
+                <div className="relative aspect-video overflow-hidden bg-muted">
+                  <img
+                    src="https://i.ytimg.com/vi/1ngNjwYu83o/hqdefault.jpg"
+                    alt="Your Life Has Purpose"
+                    width="640"
+                    height="360"
+                    loading="lazy"
+                    className="w-full h-full object-cover opacity-90 group-hover:scale-105 group-hover:opacity-100 transition-all duration-500"
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-14 h-14 rounded-full bg-primary/90 text-white flex items-center justify-center backdrop-blur-sm shadow-lg group-hover:scale-110 transition-transform duration-300">
+                      <PlayIcon size={24} className="ml-1" />
+                    </div>
+                  </div>
+                </div>
+                <div className="p-6 flex flex-col flex-1">
+                  <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
+                    Your Life Has Purpose
+                  </h3>
+                  <p className="text-foreground/70 text-sm leading-relaxed flex-1">
+                    Do you wonder why you're here — and whether your life was
+                    designed for a reason?
+                  </p>
+                </div>
+              </Link>
+            </div>
+
+            {/* 3. Is Jesus Relevant To You? */}
+            <div className="fade-up d-300 flex flex-col group h-full">
+              <Link
+                href="/video/is-jesus-relevant-to-you"
+                aria-label="Watch Is Jesus Relevant To You?"
+                data-testid="link-video-relevant"
+                className="w-full overflow-hidden rounded-xl bg-card border border-border shadow-md shadow-black/5 hover:shadow-xl hover:border-primary/30 transition-all duration-300 flex-1 flex flex-col"
+              >
+                <div className="relative aspect-video overflow-hidden bg-muted">
+                  <img
+                    src="https://i.ytimg.com/vi/e0jMauxD1Y0/hqdefault.jpg"
+                    alt="Is Jesus Relevant To You?"
+                    width="640"
+                    height="360"
+                    loading="lazy"
+                    className="w-full h-full object-cover opacity-90 group-hover:scale-105 group-hover:opacity-100 transition-all duration-500"
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-14 h-14 rounded-full bg-primary/90 text-white flex items-center justify-center backdrop-blur-sm shadow-lg group-hover:scale-110 transition-transform duration-300">
+                      <PlayIcon size={24} className="ml-1" />
+                    </div>
+                  </div>
+                </div>
+                <div className="p-6 flex flex-col flex-1">
+                  <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
+                    Is Jesus Relevant To You?
+                  </h3>
+                  <p className="text-foreground/70 text-sm leading-relaxed flex-1">
+                    Most people search for meaning in success, pleasure, or
+                    popularity. What if the answer is something deeper?
+                  </p>
+                </div>
+              </Link>
+            </div>
           </div>
         </div>
       </section>

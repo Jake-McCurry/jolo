@@ -1,5 +1,9 @@
 import { SiteNav } from "./SiteNav";
 
-export function LPHeader() {
-  return <SiteNav />;
+interface LPHeaderProps {
+  showBrand?: boolean;
+}
+
+export function LPHeader({ showBrand = false }: LPHeaderProps) {
+  return <SiteNav showBrand={showBrand} />;
 }

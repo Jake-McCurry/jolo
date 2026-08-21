@@ -2,6 +2,7 @@ import { Link } from "wouter";
 import { SEO } from "@/components/ui/SEO";
 import { YouTubeFacade } from "@/components/ui/YouTubeFacade";
 import { WatchOnYouTubeBadge } from "@/components/ui/WatchOnYouTubeBadge";
+import { MAIN_SITE } from "@/lib/urls";
 
 const LP = "resurrection-ttn";
 
@@ -85,7 +86,7 @@ export default function JesusResurrectionAndYou() {
             <p className="mt-6 text-sm text-gray-600">
               Read the{" "}
               <a
-                href="https://jesusonline.com/jesus-resurrection-and-you/"
+                href={`${MAIN_SITE}/jesus-resurrection-and-you/`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-primary underline"

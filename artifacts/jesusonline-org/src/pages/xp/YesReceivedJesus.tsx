@@ -1,26 +1,24 @@
 import { useEffect } from "react";
 import { SEO } from "@/components/ui/SEO";
 import { IconChevronRight } from "@/components/ui/Icons";
+import { APP_BASE, APP_FIND_URL } from "@/lib/urls";
+import { trackConversion } from "@/lib/track";
 
 const FOLLOW_UPS = [
-  { label: "How do I know this is real?", href: "https://app.jesusonline.com/post/88421-how-do-i-know-this-is-real" },
-  { label: "What do I do now?", href: "https://app.jesusonline.com/post/88422-what-do-i-do-now" },
-  { label: "I want to know Jesus better.", href: "https://app.jesusonline.com/post/88423-i-want-to-know-jesus-more" },
-  { label: "How should I handle my current relationships?", href: "https://app.jesusonline.com/post/88424-how-should-i-handle-my-current-relationships" },
-  { label: "I'm afraid...", href: "https://app.jesusonline.com/post/88425-im-afraid" },
-  { label: "I have questions about church.", href: "https://app.jesusonline.com/post/88426-i-have-questions-about-church" },
-  { label: "More Questions?", href: "https://app.jesusonline.com/post/88427-more-questions" },
+  { label: "How do I know this is real?", href: `${APP_BASE}/post/88421-how-do-i-know-this-is-real` },
+  { label: "What do I do now?", href: `${APP_BASE}/post/88422-what-do-i-do-now` },
+  { label: "I want to know Jesus better.", href: `${APP_BASE}/post/88423-i-want-to-know-jesus-more` },
+  { label: "How should I handle my current relationships?", href: `${APP_BASE}/post/88424-how-should-i-handle-my-current-relationships` },
+  { label: "I'm afraid...", href: `${APP_BASE}/post/88425-im-afraid` },
+  { label: "I have questions about church.", href: `${APP_BASE}/post/88426-i-have-questions-about-church` },
+  { label: "More Questions?", href: `${APP_BASE}/post/88427-more-questions` },
 ];
 
 const DELAYS = ["d-300", "d-350", "d-400", "d-450", "d-500", "d-550", "d-600"];
 
 export default function YesReceivedJesus() {
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const w = window as any;
-      if (w.gtag) w.gtag("event", "conversion", { event_category: "funnel", event_label: "yes_received_jesus" });
-      if (w.fbq) w.fbq("track", "Lead", { content_name: "yes_received_jesus" });
-    }
+    trackConversion("yes_received_jesus");
   }, []);
 
   return (
@@ -57,7 +55,7 @@ export default function YesReceivedJesus() {
 
           <div className="text-center mt-4">
             <a
-              href="https://app.jesusonline.com/find-what-you-want"
+              href={APP_FIND_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary"
