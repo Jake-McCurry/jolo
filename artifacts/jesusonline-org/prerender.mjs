@@ -7,6 +7,12 @@ const SITE_URL = "https://jesusonline.org";
 
 const ROUTES = [
   {
+    path: "/",
+    title: "Discover the Real Jesus | JesusOnline",
+    description:
+      "Watch short videos that answer life's biggest questions and discover what Jesus means for your life today.",
+  },
+  {
     path: "/lp/gift-of-heaven-ttn",
     title: "The Gift of Heaven | JesusOnline",
     description:
@@ -16,8 +22,7 @@ const ROUTES = [
       "@context": "https://schema.org",
       "@type": "VideoObject",
       name: "The Gift of Heaven",
-      description:
-        "Watch The Gift of Heaven and discover what God offers you.",
+      description: "Watch The Gift of Heaven and discover what God offers you.",
       thumbnailUrl: `${SITE_URL}/thumb-gift-of-heaven.jpg`,
       embedUrl: "https://www.youtube.com/embed/XB7wGTnYeaE",
       uploadDate: "2024-01-01",
@@ -72,7 +77,7 @@ const ROUTES = [
 
 const template = readFileSync(
   resolve(__dirname, "dist/public/index.html"),
-  "utf-8"
+  "utf-8",
 );
 
 const { render } = await import("./dist/server/entry-server.js");
@@ -82,10 +87,15 @@ for (const route of ROUTES) {
   try {
     appHtml = await render(route.path);
   } catch (err) {
-    console.warn(`⚠ SSR failed for ${route.path}, writing meta-only:`, err.message);
+    console.warn(
+      `⚠ SSR failed for ${route.path}, writing meta-only:`,
+      err.message,
+    );
   }
 
-  const img = route.image ? `${SITE_URL}${route.image}` : `${SITE_URL}/opengraph.jpg`;
+  const img = route.image
+    ? `${SITE_URL}${route.image}`
+    : `${SITE_URL}/opengraph.jpg`;
 
   const headTags = [
     `<title>${route.title}</title>`,
@@ -111,16 +121,13 @@ for (const route of ROUTES) {
 
   if (route.jsonLd) {
     headTags.push(
-      `<script type="application/ld+json">${JSON.stringify(route.jsonLd)}</script>`
+      `<script type="application/ld+json">${JSON.stringify(route.jsonLd)}</script>`,
     );
   }
 
   const html = template
     .replace("</head>", `  ${headTags.join("\n  ")}\n</head>`)
-    .replace(
-      '<div id="root"></div>',
-      `<div id="root">${appHtml}</div>`
-    );
+    .replace('<div id="root"></div>', `<div id="root">${appHtml}</div>`);
 
   const outDir = resolve(__dirname, "dist/public", route.path.slice(1));
   mkdirSync(outDir, { recursive: true });

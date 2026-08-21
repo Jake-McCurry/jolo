@@ -3,11 +3,11 @@ import { Router as WouterRouter } from "wouter";
 import type { BaseLocationHook } from "wouter";
 import { AppRoutes } from "./App";
 
-export function render(url: string): Promise<string> {
+export async function render(url: string): Promise<string> {
   const staticHook: BaseLocationHook = () => [url, () => url];
-  return renderToStringAsync(
+  return await renderToStringAsync(
     <WouterRouter hook={staticHook} base="">
       <AppRoutes />
-    </WouterRouter>
+    </WouterRouter>,
   );
 }
