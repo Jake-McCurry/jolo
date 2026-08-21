@@ -1,7 +1,5 @@
 import { Link } from "wouter";
 import { SEO } from "@/components/ui/SEO";
-import { YouTubeFacade } from "@/components/ui/YouTubeFacade";
-import { WatchOnYouTubeBadge } from "@/components/ui/WatchOnYouTubeBadge";
 
 interface PlayIconProps {
   size?: number;
@@ -22,33 +20,6 @@ function PlayIcon({ size = 24, className }: PlayIconProps) {
     </svg>
   );
 }
-
-const SURVEY_OPTIONS = [
-  {
-    label: "No, I didn't pray the prayer.",
-    href: "/xp/no-i-didnt-pray",
-    testid: "survey-no-didnt-pray",
-    extraClass: "",
-  },
-  {
-    label: "Yes, I received Jesus into my life.",
-    href: "/xp/yes-i-received-jesus",
-    testid: "survey-yes-received-jesus",
-    extraClass: "gtm-conversion-received-christ",
-  },
-  {
-    label: "Yes, I rededicated my life to Jesus.",
-    href: "/xp/yes-i-rededicated",
-    testid: "survey-yes-rededicated",
-    extraClass: "",
-  },
-  {
-    label: "No, I have already received Jesus in my life.",
-    href: "/xp/no-already-received",
-    testid: "survey-no-already-received",
-    extraClass: "",
-  },
-];
 
 export default function Home() {
   return (
@@ -90,8 +61,13 @@ export default function Home() {
           </p>
 
           {/* Featured Video Section - Gift of Heaven */}
-          <div className="fade-up d-400 w-full max-w-3xl bg-card rounded-2xl shadow-2xl shadow-primary/5 border border-border overflow-hidden">
-            <div className="p-6 md:p-8 text-left border-b border-border bg-gradient-to-br from-card to-muted/30">
+          <Link
+            href="/video/the-gift-of-heaven"
+            data-testid="link-video-gift-of-heaven"
+            aria-label="Watch The Gift of Heaven"
+            className="fade-up d-400 group w-full max-w-3xl overflow-hidden rounded-2xl border border-border bg-card text-left shadow-2xl shadow-primary/5 transition-all duration-300 hover:border-primary/30 hover:shadow-primary/15"
+          >
+            <div className="p-6 md:p-8">
               <div className="flex items-center gap-3 mb-2">
                 <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/20 text-primary">
                   <PlayIcon size={12} className="ml-0.5" />
@@ -100,7 +76,7 @@ export default function Home() {
                   Featured Video
                 </span>
               </div>
-              <h2 className="text-2xl md:text-3xl font-extrabold text-foreground mb-2">
+              <h2 className="text-2xl md:text-3xl font-extrabold text-foreground mb-2 transition-colors group-hover:text-primary">
                 The Gift of Heaven
               </h2>
               <p className="text-foreground/70">
@@ -110,37 +86,23 @@ export default function Home() {
             </div>
 
             <div
-              className="relative w-full bg-black"
-              style={{ aspectRatio: "16/9" }}
+              className="relative aspect-video w-full overflow-hidden bg-black"
               data-testid="video-gift-of-heaven"
             >
-              <YouTubeFacade
-                videoId="XB7wGTnYeaE"
-                title="The Gift of Heaven — JesusOnline"
-                thumbnailSrc="/thumb-gift-of-heaven.jpg"
+              <img
+                src="/thumb-gift-of-heaven.jpg"
+                alt=""
+                width="1280"
+                height="720"
+                className="h-full w-full object-cover opacity-95 transition-transform duration-500 group-hover:scale-105"
               />
-              <WatchOnYouTubeBadge />
-            </div>
-
-            <div className="p-6 md:p-8 bg-card" data-testid="section-survey">
-              <p className="font-bold text-lg md:text-xl text-foreground mb-6">
-                After watching the video, please share your response below.
-              </p>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
-                {SURVEY_OPTIONS.map((opt) => (
-                  <Link
-                    key={opt.href}
-                    href={opt.href}
-                    data-testid={opt.testid}
-                    className={`flex items-center justify-center text-center px-4 py-3 sm:py-4 rounded-xl bg-muted/50 hover:bg-primary hover:text-white border border-border hover:border-primary text-foreground font-semibold text-sm sm:text-base transition-all duration-300 ${opt.extraClass ? ` ${opt.extraClass}` : ""}`}
-                  >
-                    {opt.label}
-                  </Link>
-                ))}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary text-white shadow-lg transition-transform duration-300 group-hover:scale-110">
+                  <PlayIcon size={28} className="ml-1" />
+                </div>
               </div>
             </div>
-          </div>
+          </Link>
         </div>
       </section>
 
@@ -152,16 +114,18 @@ export default function Home() {
               More Videos
             </h2>
             <p className="text-lg text-foreground/70 max-w-2xl mx-auto">
-              Explore these short films addressing purpose, relevance, and
-              history.
+              Explore these short films addressing purpose, relevance, history,
+              and eternity.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* 1. Jesus' Resurrection & You (Interactive LP link/facade) */}
+            {/* 1. Jesus' Resurrection & You */}
             <div className="fade-up d-100 flex flex-col group h-full">
               <Link
-                href="/lp/jesus-resurrection-and-you-ttn"
+                href="/video/jesus-resurrection-and-you"
+                aria-label="Watch Jesus' Resurrection & You"
+                data-testid="link-video-resurrection"
                 className="block w-full overflow-hidden rounded-xl bg-card border border-border shadow-md shadow-black/5 hover:shadow-xl hover:border-primary/30 transition-all duration-300 flex-1 flex flex-col"
               >
                 <div className="relative aspect-video overflow-hidden bg-black">

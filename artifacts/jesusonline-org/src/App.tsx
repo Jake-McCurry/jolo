@@ -18,6 +18,8 @@ import Home from "@/pages/Home";
 import KingdomnomicsGiftOfHeaven from "@/pages/lp/KingdomnomicsGiftOfHeaven";
 import JesusResurrectionAndYou from "@/pages/lp/JesusResurrectionAndYou";
 import IsJesusRelevantToYou from "@/pages/videos/IsJesusRelevantToYou";
+import JesusResurrectionAndYouVideo from "@/pages/videos/JesusResurrectionAndYou";
+import TheGiftOfHeaven from "@/pages/videos/TheGiftOfHeaven";
 import YourLifeHasPurpose from "@/pages/videos/YourLifeHasPurpose";
 
 const NoDidntPray = lazy(() => import("@/pages/xp/NoDidntPray"));
@@ -70,6 +72,14 @@ export function AppRoutes() {
               <Redirect to="/lp/gift-of-heaven-ttn" />
             </Route>
 
+            <Route
+              path="/video/the-gift-of-heaven"
+              component={TheGiftOfHeaven}
+            />
+            <Route
+              path="/video/jesus-resurrection-and-you"
+              component={JesusResurrectionAndYouVideo}
+            />
             <Route
               path="/video/your-life-has-purpose"
               component={YourLifeHasPurpose}

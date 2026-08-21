@@ -13,6 +13,40 @@ const ROUTES = [
       "Watch short videos that answer life's biggest questions and discover what Jesus means for your life today.",
   },
   {
+    path: "/video/the-gift-of-heaven",
+    title: "The Gift of Heaven | JesusOnline",
+    description:
+      "Is heaven a reward for good behavior, or is it a gift? Discover what Jesus really said about eternity.",
+    image: "/thumb-gift-of-heaven.jpg",
+    jsonLd: {
+      "@context": "https://schema.org",
+      "@type": "VideoObject",
+      name: "The Gift of Heaven",
+      description:
+        "Discover what Jesus really said about heaven and the gift God offers.",
+      thumbnailUrl: `${SITE_URL}/thumb-gift-of-heaven.jpg`,
+      embedUrl: "https://www.youtube.com/embed/XB7wGTnYeaE",
+      uploadDate: "2024-01-01",
+    },
+  },
+  {
+    path: "/video/jesus-resurrection-and-you",
+    title: "Jesus' Resurrection & You | JesusOnline",
+    description:
+      "What if the most important event in history is also personal? Explore the resurrection of Jesus.",
+    image: "/thumb-resurrection.jpg",
+    jsonLd: {
+      "@context": "https://schema.org",
+      "@type": "VideoObject",
+      name: "Jesus' Resurrection & You",
+      description:
+        "Explore the resurrection of Jesus and what it means for your life.",
+      thumbnailUrl: `${SITE_URL}/thumb-resurrection.jpg`,
+      embedUrl: "https://www.youtube.com/embed/SEg4a2xaJyw",
+      uploadDate: "2024-01-01",
+    },
+  },
+  {
     path: "/video/your-life-has-purpose",
     title: "Your Life Has Purpose | JesusOnline",
     description:

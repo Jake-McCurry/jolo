@@ -8,6 +8,15 @@ interface WatchVideoPageProps {
   description: string;
   path: string;
   videoId: string;
+  thumbnailSrc?: string;
+  responseOptions?: VideoResponseOption[];
+}
+
+export interface VideoResponseOption {
+  label: string;
+  href: string;
+  testid: string;
+  extraClass?: string;
 }
 
 export function WatchVideoPage({
@@ -15,6 +24,8 @@ export function WatchVideoPage({
   description,
   path,
   videoId,
+  thumbnailSrc,
+  responseOptions,
 }: WatchVideoPageProps) {
   return (
     <>
@@ -38,9 +49,36 @@ export function WatchVideoPage({
             className="relative mt-9 aspect-video overflow-hidden rounded-xl bg-black shadow-lg"
             data-testid={`video-${videoId}`}
           >
-            <YouTubeFacade videoId={videoId} title={`${title} — JesusOnline`} />
+            <YouTubeFacade
+              videoId={videoId}
+              title={`${title} — JesusOnline`}
+              thumbnailSrc={thumbnailSrc}
+            />
             <WatchOnYouTubeBadge />
           </div>
+
+          {responseOptions && (
+            <section
+              className="mt-8 rounded-xl border border-border bg-white p-6 text-center shadow-sm sm:p-8"
+              data-testid="section-survey"
+            >
+              <h2 className="text-xl font-bold text-secondary sm:text-2xl">
+                After watching the video, please share your response below.
+              </h2>
+              <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
+                {responseOptions.map((option) => (
+                  <Link
+                    key={option.href}
+                    href={option.href}
+                    data-testid={option.testid}
+                    className={`flex min-h-14 items-center justify-center rounded-xl border border-border bg-muted/50 px-4 py-3 text-center text-sm font-semibold text-foreground transition-all hover:border-primary hover:bg-primary hover:text-white sm:text-base ${option.extraClass ?? ""}`}
+                  >
+                    {option.label}
+                  </Link>
+                ))}
+              </div>
+            </section>
+          )}
 
           <div className="mt-8 flex justify-center">
             <Link
