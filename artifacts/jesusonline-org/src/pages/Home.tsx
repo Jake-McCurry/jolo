@@ -191,25 +191,33 @@ export default function Home() {
               </Link>
             </div>
 
-            {/* 2. Your Life Has Purpose (Presentational) */}
-            <div className="fade-up d-200 flex flex-col h-full">
-              <div className="w-full overflow-hidden rounded-xl bg-card border border-border shadow-md shadow-black/5 flex-1 flex flex-col">
+            {/* 2. Your Life Has Purpose */}
+            <div className="fade-up d-200 flex flex-col group h-full">
+              <a
+                href="https://www.youtube.com/watch?v=1ngNjwYu83o"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Watch Your Life Has Purpose on YouTube"
+                data-testid="link-video-purpose"
+                className="w-full overflow-hidden rounded-xl bg-card border border-border shadow-md shadow-black/5 hover:shadow-xl hover:border-primary/30 transition-all duration-300 flex-1 flex flex-col"
+              >
                 <div className="relative aspect-video overflow-hidden bg-muted">
                   <img
-                    src="/thumb-purpose.jpg"
+                    src="https://i.ytimg.com/vi/1ngNjwYu83o/hqdefault.jpg"
                     alt="Your Life Has Purpose"
                     width="640"
                     height="360"
                     loading="lazy"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover opacity-90 group-hover:scale-105 group-hover:opacity-100 transition-all duration-500"
                   />
-                  {/* Presentational visual hint */}
-                  <div className="absolute top-3 right-3 px-3 py-1 bg-black/60 backdrop-blur-md rounded-full text-white text-xs font-bold uppercase tracking-wider">
-                    Coming Soon
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-14 h-14 rounded-full bg-primary/90 text-white flex items-center justify-center backdrop-blur-sm shadow-lg group-hover:scale-110 transition-transform duration-300">
+                      <PlayIcon size={24} className="ml-1" />
+                    </div>
                   </div>
                 </div>
                 <div className="p-6 flex flex-col flex-1">
-                  <h3 className="text-xl font-bold text-foreground mb-3">
+                  <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
                     Your Life Has Purpose
                   </h3>
                   <p className="text-foreground/70 text-sm leading-relaxed flex-1">
@@ -217,28 +225,36 @@ export default function Home() {
                     designed for a reason?
                   </p>
                 </div>
-              </div>
+              </a>
             </div>
 
-            {/* 3. Is Jesus Relevant To You? (Presentational) */}
-            <div className="fade-up d-300 flex flex-col h-full">
-              <div className="w-full overflow-hidden rounded-xl bg-card border border-border shadow-md shadow-black/5 flex-1 flex flex-col">
+            {/* 3. Is Jesus Relevant To You? */}
+            <div className="fade-up d-300 flex flex-col group h-full">
+              <a
+                href="https://www.youtube.com/watch?v=e0jMauxD1Y0"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Watch Is Jesus Relevant To You? on YouTube"
+                data-testid="link-video-relevant"
+                className="w-full overflow-hidden rounded-xl bg-card border border-border shadow-md shadow-black/5 hover:shadow-xl hover:border-primary/30 transition-all duration-300 flex-1 flex flex-col"
+              >
                 <div className="relative aspect-video overflow-hidden bg-muted">
                   <img
-                    src="/thumb-relevant.jpg"
+                    src="https://i.ytimg.com/vi/e0jMauxD1Y0/hqdefault.jpg"
                     alt="Is Jesus Relevant To You?"
                     width="640"
                     height="360"
                     loading="lazy"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover opacity-90 group-hover:scale-105 group-hover:opacity-100 transition-all duration-500"
                   />
-                  {/* Presentational visual hint */}
-                  <div className="absolute top-3 right-3 px-3 py-1 bg-black/60 backdrop-blur-md rounded-full text-white text-xs font-bold uppercase tracking-wider">
-                    Coming Soon
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-14 h-14 rounded-full bg-primary/90 text-white flex items-center justify-center backdrop-blur-sm shadow-lg group-hover:scale-110 transition-transform duration-300">
+                      <PlayIcon size={24} className="ml-1" />
+                    </div>
                   </div>
                 </div>
                 <div className="p-6 flex flex-col flex-1">
-                  <h3 className="text-xl font-bold text-foreground mb-3">
+                  <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
                     Is Jesus Relevant To You?
                   </h3>
                   <p className="text-foreground/70 text-sm leading-relaxed flex-1">
@@ -246,7 +262,7 @@ export default function Home() {
                     popularity. What if the answer is something deeper?
                   </p>
                 </div>
-              </div>
+              </a>
             </div>
           </div>
         </div>
