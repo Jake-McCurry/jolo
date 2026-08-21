@@ -15,13 +15,9 @@ const LP_NAV_LINKS: NavLink[] = [
 
 interface SiteNavProps {
   links?: NavLink[];
-  showBrand?: boolean;
 }
 
-export function SiteNav({
-  links = LP_NAV_LINKS,
-  showBrand = false,
-}: SiteNavProps) {
+export function SiteNav({ links = LP_NAV_LINKS }: SiteNavProps) {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -42,29 +38,23 @@ export function SiteNav({
   return (
     <>
       <header
-        style={{
-          background: "linear-gradient(90deg, #2360c6 0%, #5ea1e6 100%)",
-        }}
+        style={{ background: "#0095FF" }}
         className="w-full sticky top-0 z-40 shadow-md"
       >
-        <div
-          className={`max-w-5xl mx-auto px-5 h-14 flex items-center ${showBrand ? "justify-between" : "justify-start"}`}
-        >
-          {showBrand && (
-            <a
-              href="/"
-              aria-label="JesusOnline home"
-              className="inline-flex items-center"
-            >
-              <img
-                src="/logo.png"
-                alt="JesusOnline"
-                width="180"
-                height="38"
-                className="h-7 w-auto"
-              />
-            </a>
-          )}
+        <div className="mx-auto flex h-16 max-w-[1800px] items-center justify-between px-5 sm:px-8 md:h-[70px]">
+          <a
+            href="/"
+            aria-label="JesusOnline home"
+            className="inline-flex items-center"
+          >
+            <img
+              src="/jesusonline-wordmark.png"
+              alt="JesusOnline"
+              width="320"
+              height="57"
+              className="h-8 w-auto sm:h-11"
+            />
+          </a>
           <div className="flex items-center gap-2.5">
             <button
               onClick={() => setOpen((v) => !v)}
@@ -105,10 +95,9 @@ export function SiteNav({
         role="navigation"
         aria-label="Site navigation"
         style={{
-          background: "linear-gradient(90deg, #2360c6 0%, #5ea1e6 100%)",
-          top: "56px",
+          background: "#0095FF",
         }}
-        className={`fixed left-0 right-0 z-30 shadow-xl transition-all duration-200 ease-out overflow-hidden ${
+        className={`fixed left-0 right-0 top-16 z-30 overflow-hidden shadow-xl transition-all duration-200 ease-out md:top-[70px] ${
           open
             ? "max-h-[600px] opacity-100"
             : "max-h-0 opacity-0 pointer-events-none"

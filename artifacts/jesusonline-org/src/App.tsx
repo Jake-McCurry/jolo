@@ -31,8 +31,6 @@ function LayoutHeader() {
   const [rawLocation] = useLocation();
   const location =
     rawLocation !== "/" ? rawLocation.replace(/\/+$/, "") : rawLocation;
-  if (location === "/") return <LPHeader showBrand />;
-  if (location.startsWith("/video/")) return <LPHeader showBrand />;
   if (XP_STYLE_LP_ROUTES.includes(location)) return <XPHeader />;
   if (location.startsWith("/xp")) return <XPHeader />;
   return <LPHeader />;

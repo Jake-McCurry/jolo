@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import { SEO } from "@/components/ui/SEO";
+import { APP_BASE } from "@/lib/urls";
 
 interface PlayIconProps {
   size?: number;
@@ -60,11 +61,11 @@ export default function Home() {
             Short videos that answer life's biggest questions.
           </p>
 
-          {/* Featured Video Section - Gift of Heaven */}
+          {/* Featured Video Section - Jesus' Resurrection & You */}
           <Link
-            href="/video/the-gift-of-heaven"
-            data-testid="link-video-gift-of-heaven"
-            aria-label="Watch The Gift of Heaven"
+            href="/video/jesus-resurrection-and-you"
+            data-testid="link-video-resurrection"
+            aria-label="Watch Jesus' Resurrection & You"
             className="fade-up d-400 group w-full max-w-3xl overflow-hidden rounded-2xl border border-border bg-card text-left shadow-2xl shadow-primary/5 transition-all duration-300 hover:border-primary/30 hover:shadow-primary/15"
           >
             <div className="p-6 md:p-8">
@@ -77,20 +78,19 @@ export default function Home() {
                 </span>
               </div>
               <h2 className="text-2xl md:text-3xl font-extrabold text-foreground mb-2 transition-colors group-hover:text-primary">
-                The Gift of Heaven
+                Jesus' Resurrection &amp; You
               </h2>
               <p className="text-foreground/70">
-                Is heaven a reward for good behavior, or is it a gift? Discover
-                what Jesus really said about eternity.
+                What if the most important event in history is also personal?
               </p>
             </div>
 
             <div
               className="relative aspect-video w-full overflow-hidden bg-black"
-              data-testid="video-gift-of-heaven"
+              data-testid="video-resurrection"
             >
               <img
-                src="/thumb-gift-of-heaven.jpg"
+                src="/thumb-resurrection.jpg"
                 alt=""
                 width="1280"
                 height="720"
@@ -120,18 +120,18 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* 1. Jesus' Resurrection & You */}
+            {/* 1. The Gift of Heaven */}
             <div className="fade-up d-100 flex flex-col group h-full">
               <Link
-                href="/video/jesus-resurrection-and-you"
-                aria-label="Watch Jesus' Resurrection & You"
-                data-testid="link-video-resurrection"
+                href="/video/the-gift-of-heaven"
+                aria-label="Watch The Gift of Heaven"
+                data-testid="link-video-gift-of-heaven"
                 className="block w-full overflow-hidden rounded-xl bg-card border border-border shadow-md shadow-black/5 hover:shadow-xl hover:border-primary/30 transition-all duration-300 flex-1 flex flex-col"
               >
                 <div className="relative aspect-video overflow-hidden bg-black">
                   <img
-                    src="/thumb-resurrection.jpg"
-                    alt="Jesus' Resurrection & You"
+                    src="/thumb-gift-of-heaven.jpg"
+                    alt="The Gift of Heaven"
                     width="640"
                     height="360"
                     loading="lazy"
@@ -145,11 +145,10 @@ export default function Home() {
                 </div>
                 <div className="p-6 flex flex-col flex-1">
                   <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
-                    Jesus' Resurrection &amp; You
+                    The Gift of Heaven
                   </h3>
                   <p className="text-foreground/70 text-sm leading-relaxed flex-1">
-                    What if the most important event in history is also
-                    personal?
+                    Is heaven a reward for good behavior, or is it a gift?
                   </p>
                 </div>
               </Link>
@@ -225,6 +224,33 @@ export default function Home() {
               </Link>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="bg-secondary px-4 py-20 sm:py-24">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary-foreground/70">
+            Keep exploring
+          </p>
+          <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-white sm:text-5xl">
+            Take the next step in your journey with Jesus.
+          </h2>
+          <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-white/80 sm:text-xl">
+            Discover practical resources, answers to your questions, and ways to
+            grow in your faith at the JesusOnline app.
+          </p>
+          <a
+            href={APP_BASE}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-testid="link-jesusonline-app"
+            className="mt-8 inline-flex items-center justify-center rounded-full bg-white px-7 py-3.5 text-base font-bold text-secondary shadow-lg transition-transform hover:-translate-y-0.5 focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-white"
+          >
+            Visit the JesusOnline App
+            <span aria-hidden="true" className="ml-2">
+              →
+            </span>
+          </a>
         </div>
       </section>
     </>
