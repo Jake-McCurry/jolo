@@ -112,6 +112,12 @@ const ROUTES = [
     },
   },
   {
+    path: "/contact",
+    title: "Contact Us | JesusOnline",
+    description:
+      "Send a message to the JesusOnline team. A real person will read what you send.",
+  },
+  {
     path: "/xp/no-i-didnt-pray",
     title: "The Next 3 Steps | JesusOnline",
     description:

@@ -15,6 +15,7 @@ const XP_STYLE_LP_ROUTES = [
 ];
 
 import Home from "@/pages/Home";
+import Contact from "@/pages/Contact";
 import KingdomnomicsGiftOfHeaven from "@/pages/lp/KingdomnomicsGiftOfHeaven";
 import JesusResurrectionAndYou from "@/pages/lp/JesusResurrectionAndYou";
 import IsJesusRelevantToYou from "@/pages/videos/IsJesusRelevantToYou";
@@ -54,6 +55,7 @@ export function AppRoutes() {
         <Suspense fallback={null}>
           <Switch>
             <Route path="/" component={Home} />
+            <Route path="/contact" component={Contact} />
 
             <Route
               path="/lp/gift-of-heaven-ttn"
