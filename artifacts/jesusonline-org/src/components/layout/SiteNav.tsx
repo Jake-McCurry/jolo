@@ -61,21 +61,24 @@ export function SiteNav({ links = LP_NAV_LINKS }: SiteNavProps) {
               aria-expanded={open}
               aria-controls="site-nav-drawer"
               aria-label={open ? "Close menu" : "Open menu"}
-              className="flex flex-col justify-center items-center w-10 h-10 gap-[5px] rounded"
+              className="flex h-10 items-center justify-center gap-2.5 rounded px-1 text-white"
               style={{ outlineColor: "#ffffff" }}
             >
-              <span
-                style={{ background: "#ffffff" }}
-                className={`block h-0.5 w-6 rounded-full transition-all duration-200 origin-center ${open ? "rotate-45 translate-y-[7px]" : ""}`}
-              />
-              <span
-                style={{ background: "#ffffff" }}
-                className={`block h-0.5 w-6 rounded-full transition-all duration-200 ${open ? "opacity-0 scale-x-0" : ""}`}
-              />
-              <span
-                style={{ background: "#ffffff" }}
-                className={`block h-0.5 w-6 rounded-full transition-all duration-200 origin-center ${open ? "-rotate-45 -translate-y-[7px]" : ""}`}
-              />
+              <span className="text-sm font-semibold tracking-wide">Menu</span>
+              <span className="flex w-6 flex-col items-center justify-center gap-[5px]">
+                <span
+                  style={{ background: "#ffffff" }}
+                  className={`block h-0.5 w-6 rounded-full transition-all duration-200 origin-center ${open ? "rotate-45 translate-y-[7px]" : ""}`}
+                />
+                <span
+                  style={{ background: "#ffffff" }}
+                  className={`block h-0.5 w-6 rounded-full transition-all duration-200 ${open ? "opacity-0 scale-x-0" : ""}`}
+                />
+                <span
+                  style={{ background: "#ffffff" }}
+                  className={`block h-0.5 w-6 rounded-full transition-all duration-200 origin-center ${open ? "-rotate-45 -translate-y-[7px]" : ""}`}
+                />
+              </span>
             </button>
           </div>
         </div>
@@ -94,28 +97,24 @@ export function SiteNav({ links = LP_NAV_LINKS }: SiteNavProps) {
         id="site-nav-drawer"
         role="navigation"
         aria-label="Site navigation"
-        style={{
-          background: "#0095FF",
-        }}
-        className={`fixed left-0 right-0 top-16 z-30 overflow-hidden shadow-xl transition-all duration-200 ease-out md:top-[70px] ${
+        className={`fixed left-0 right-0 top-16 z-30 overflow-hidden border-t border-slate-200 bg-white shadow-xl transition-all duration-200 ease-out sm:left-auto sm:right-8 sm:w-[360px] md:top-[70px] 2xl:right-[max(2rem,calc((100vw-1800px)/2+2rem))] ${
           open
             ? "max-h-[600px] opacity-100"
             : "max-h-0 opacity-0 pointer-events-none"
         }`}
       >
-        <ul className="max-w-5xl mx-auto px-5 py-2 flex flex-col">
+        <ul className="flex flex-col">
           {links.map((link) => (
             <li
               key={link.href}
-              style={{ borderBottom: "1px solid rgba(255,255,255,0.25)" }}
+              className="border-b border-slate-200 last:border-b-0"
             >
               <a
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setOpen(false)}
-                style={{ color: "#ffffff" }}
-                className="block py-2 font-semibold text-sm hover:opacity-70 transition-opacity"
+                className="block px-6 py-5 text-lg font-semibold text-[#063690] transition-colors hover:bg-sky-50 hover:text-[#0095FF] focus-visible:bg-sky-50 focus-visible:outline-none"
               >
                 {link.label}
               </a>
