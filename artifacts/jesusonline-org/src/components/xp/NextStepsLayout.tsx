@@ -41,11 +41,20 @@ export function XPBookCard({ subtext, delay = "d-200" }: { subtext: string, dela
       <div className="p-6 md:p-8 flex flex-col md:flex-row gap-8 items-center md:items-start">
         <div className="flex-shrink-0 relative">
           <div className="absolute inset-0 bg-primary/5 blur-2xl rounded-full transform -translate-y-4" />
-          <img
-            src="/img/adventure-cover.jpg"
-            alt="The Adventure of Living with Jesus"
-            className="w-40 md:w-48 h-auto rounded-lg shadow-lg relative z-10"
-          />
+          <a
+            href={BOOK_PDF_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="relative z-10 block rounded-lg focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-primary"
+            data-testid="link-guide-cover"
+            aria-label="Open The Adventure of Living with Jesus PDF"
+          >
+            <img
+              src="/img/adventure-cover.jpg"
+              alt="The Adventure of Living with Jesus"
+              className="w-40 md:w-48 h-auto rounded-lg shadow-lg transition-transform duration-200 hover:-translate-y-1"
+            />
+          </a>
         </div>
         <div className="flex flex-col flex-1 text-center md:text-left pt-2">
           <a
