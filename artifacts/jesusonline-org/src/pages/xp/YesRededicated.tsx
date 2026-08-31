@@ -1,12 +1,56 @@
-import { NextStepsPage } from "@/components/xp/NextStepsPage";
+import { useEffect } from "react";
+import { SEO } from "@/components/ui/SEO";
+import { trackConversion } from "@/lib/track";
+import {
+  XPPageLayout,
+  XPHeroSection,
+  XPBookCard,
+  XPVideoSection,
+  XPQuestionsSection,
+  XPContactSection,
+} from "@/components/xp/NextStepsLayout";
+
+const FEELINGS_QUESTIONS = [
+  { label: "How do I start walking closely with Him again?", href: "https://follow.jesusonline.com/" },
+  { label: "I feel ashamed or distant…", href: "https://follow.jesusonline.com/" },
+  { label: "How should I handle the relationships and patterns I left behind?", href: "https://follow.jesusonline.com/" },
+  { label: "What practical steps can I take right now?", href: "https://follow.jesusonline.com/" },
+  { label: "I have questions about getting connected again", href: "https://follow.jesusonline.com/" },
+  { label: "I want to know Jesus more deeply", href: "https://follow.jesusonline.com/" },
+  { label: "More questions?", href: "https://follow.jesusonline.com/" },
+];
 
 export default function YesRededicated() {
+  useEffect(() => {
+    trackConversion("yes_rededicated");
+  }, []);
+
   return (
-    <NextStepsPage
-      title="The Next 3 Steps"
-      description="You rededicated your life to Jesus. Here are your next steps."
-      path="/xp/yes-i-rededicated"
-      conversionLabel="yes_rededicated"
-    />
+    <>
+      <SEO title="Welcome Back" description="Turning toward Jesus again matters. He receives you with open arms." path="/xp/yes-i-rededicated" noindex />
+
+      <XPPageLayout>
+        <XPHeroSection
+          title="Welcome Back"
+          description="You just took a meaningful step. Turning toward Jesus again matters. What you did is real, and He receives you with open arms. These simple next steps will help you renew your walk with Him and move forward with clarity and confidence."
+          delay="d-100"
+        />
+
+        <XPBookCard
+          subtext="8 short readings · written in order · start anywhere"
+          delay="d-200"
+        />
+
+        <XPVideoSection delay="d-300" />
+
+        <XPQuestionsSection
+          title="You're Not the Only One Feeling This Way…"
+          links={FEELINGS_QUESTIONS}
+          delay="d-400"
+        />
+
+        <XPContactSection delay="d-500" showExtraComfort={true} />
+      </XPPageLayout>
+    </>
   );
 }

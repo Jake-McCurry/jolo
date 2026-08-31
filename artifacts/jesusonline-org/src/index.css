@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 @import "@fontsource-variable/open-sans/wght.css";
 @import "tailwindcss";
 
@@ -39,6 +40,7 @@
   --color-destructive-border: var(--destructive-border);
 
   --font-sans: 'Open Sans Variable', 'Open Sans', sans-serif;
+  --font-display: 'Playfair Display', serif;
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -92,10 +94,15 @@
 }
 
 body {
-  font-family: 'Open Sans Variable', 'Open Sans', sans-serif;
+  font-family: var(--font-sans);
   color: hsl(var(--foreground));
   background: hsl(var(--background));
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.font-display {
+  font-family: var(--font-display);
 }
 
 .btn-primary {
@@ -115,47 +122,87 @@ body {
   transform: translateY(-1px);
 }
 
-/* Respect reduced-motion preference */
-@media (prefers-reduced-motion: reduce) {
-  .fade-up, .fade-in { animation: none; opacity: 1; }
+.xp-page {
+  --background: 40 33% 98%;
+  --foreground: 222 47% 15%;
+  --border: 40 20% 90%;
+  --card: 0 0% 100%;
+  --card-foreground: 222 47% 15%;
+  --card-border: 40 20% 92%;
+  --primary: 222 91% 25%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 40 80% 85%;
+  --muted: 40 20% 95%;
+  --muted-foreground: 222 20% 45%;
+  --radius: 12px;
+}
+.xp-page .btn-primary {
+  background: hsl(var(--primary));
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(5, 27, 74, 0.15);
+}
+.xp-page .btn-primary:hover {
+  background: hsl(222 91% 20%);
+  box-shadow: 0 6px 20px rgba(5, 27, 74, 0.2);
+}
+.xp-page .btn-disabled {
+  background: hsl(var(--muted));
+  color: hsl(var(--muted-foreground) / 0.7);
+  border-radius: 40px;
+  font-weight: 600;
+  padding: 12px 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: not-allowed;
+  border: 1px solid hsl(var(--border));
 }
 
-/* Lightweight CSS animations — replaces framer-motion */
+/* Respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .fade-up, .fade-in { animation: none !important; opacity: 1 !important; transform: none !important; }
+}
+
+/* Lightweight CSS animations */
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(14px); }
+  from { opacity: 0; transform: translateY(16px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 @keyframes fadeIn {
   from { opacity: 0; }
   to   { opacity: 1; }
 }
-.fade-up  { animation: fadeUp  0.5s ease both; }
-.fade-in  { animation: fadeIn  0.4s ease both; }
+.fade-up  { animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.fade-in  { animation: fadeIn 0.6s ease both; }
 
 .d-100 { animation-delay: 100ms; }
-.d-150 { animation-delay: 150ms; }
 .d-200 { animation-delay: 200ms; }
-.d-250 { animation-delay: 250ms; }
 .d-300 { animation-delay: 300ms; }
-.d-350 { animation-delay: 350ms; }
 .d-400 { animation-delay: 400ms; }
-.d-450 { animation-delay: 450ms; }
 .d-500 { animation-delay: 500ms; }
-.d-550 { animation-delay: 550ms; }
 .d-600 { animation-delay: 600ms; }
+.d-700 { animation-delay: 700ms; }
 
 /* YouTube lite facade */
 .yt-facade {
   position: relative;
   cursor: pointer;
   background: #000;
+  overflow: hidden;
+  border-radius: var(--radius);
 }
 .yt-facade img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  opacity: 0.85;
+  opacity: 0.9;
+  transition: opacity 0.3s ease, transform 0.7s ease;
+}
+.yt-facade:hover img {
+  opacity: 0.8;
+  transform: scale(1.03);
 }
 .yt-facade .yt-play {
   position: absolute;
@@ -164,14 +211,24 @@ body {
   align-items: center;
   justify-content: center;
 }
-.yt-facade .yt-play svg {
-  filter: drop-shadow(0 2px 12px rgba(0,0,0,0.5));
-  transition: transform 0.15s ease;
+.yt-facade .yt-play-icon {
+  width: 60px;
+  height: 60px;
+  background: rgba(0,0,0,0.7);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  backdrop-filter: blur(4px);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
 }
-.yt-facade:hover .yt-play svg {
+.yt-facade:hover .yt-play-icon {
+  background: hsl(var(--primary));
   transform: scale(1.1);
 }
 .yt-facade:focus-visible {
-  outline: 3px solid #0095FF;
+  outline: 3px solid hsl(var(--primary));
   outline-offset: 2px;
 }
