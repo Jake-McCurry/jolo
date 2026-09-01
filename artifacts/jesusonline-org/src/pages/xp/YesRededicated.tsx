@@ -11,13 +11,13 @@ import {
 } from "@/components/xp/NextStepsLayout";
 
 const FEELINGS_QUESTIONS = [
-  { label: "How do I start walking closely with Him again?", href: "https://follow.jesusonline.com/" },
-  { label: "I feel ashamed or distant…", href: "https://follow.jesusonline.com/" },
-  { label: "How should I handle the relationships and patterns I left behind?", href: "https://follow.jesusonline.com/" },
-  { label: "What practical steps can I take right now?", href: "https://follow.jesusonline.com/" },
-  { label: "I have questions about getting connected again", href: "https://follow.jesusonline.com/" },
-  { label: "I want to know Jesus more deeply", href: "https://follow.jesusonline.com/" },
-  { label: "More questions?", href: "https://follow.jesusonline.com/" },
+  { label: "How do I start walking closely with Him again?", href: "https://follow.jesusonline.com/more-returning-how-do-i-start-walking-closely-with-him-again" },
+  { label: "I feel ashamed or distant…", href: "https://follow.jesusonline.com/more-returning-i-feel-ashamed-or-distant" },
+  { label: "How should I handle the relationships and patterns I left behind?", href: "https://follow.jesusonline.com/more-returning-how-should-i-handle-the-relationships-and-patterns-i-left-behind" },
+  { label: "What practical steps can I take right now?", href: "https://follow.jesusonline.com/more-returning-what-practical-steps-can-i-take-right-now" },
+  { label: "I have questions about getting connected again", href: "https://follow.jesusonline.com/more-returning-i-have-questions-about-getting-connected-again" },
+  { label: "I want to know Jesus more deeply", href: "https://follow.jesusonline.com/more-returning-i-want-to-know-jesus-more-deeply" },
+  { label: "More questions?", href: "https://follow.jesusonline.com/more-returning-other-questions" },
 ];
 
 export default function YesRededicated() {
