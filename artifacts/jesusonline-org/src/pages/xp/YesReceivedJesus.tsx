@@ -11,13 +11,13 @@ import {
 } from "@/components/xp/NextStepsLayout";
 
 const FOLLOW_UPS = [
-  { label: "How do I know this is real?", href: "https://app.jesusonline.com/post/88421-how-do-i-know-this-is-real" },
-  { label: "I'm afraid...", href: "https://app.jesusonline.com/post/88425-im-afraid" },
-  { label: "How should I handle my current relationships?", href: "https://app.jesusonline.com/post/88424-how-should-i-handle-my-current-relationships" },
-  { label: "What do I do now?", href: "https://app.jesusonline.com/post/88422-what-do-i-do-now" },
-  { label: "I have questions about church", href: "https://app.jesusonline.com/post/88426-i-have-questions-about-church" },
-  { label: "I want to know Jesus more", href: "https://app.jesusonline.com/post/88423-i-want-to-know-jesus-more" },
-  { label: "More questions?", href: "https://app.jesusonline.com/post/88427-more-questions" },
+  { label: "How do I know this is real?", href: "https://follow.jesusonline.com/more-received-how-do-i-know-this-is-real" },
+  { label: "I'm afraid...", href: "https://follow.jesusonline.com/more-received-i-am-afraid" },
+  { label: "How should I handle my current relationships?", href: "https://follow.jesusonline.com/more-received-how-should-i-handle-my-current-relationships" },
+  { label: "What do I do now?", href: "https://follow.jesusonline.com/more-received-what-do-i-do-now" },
+  { label: "I have questions about church", href: "https://follow.jesusonline.com/more-received-i-have-questions-about-church" },
+  { label: "I want to know Jesus more", href: "https://follow.jesusonline.com/more-received-i-want-to-know-jesus-better" },
+  { label: "More questions?", href: "https://follow.jesusonline.com/more-received-other-questions" },
 ];
 
 export default function YesReceivedJesus() {
