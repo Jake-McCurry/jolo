@@ -1,20 +1,24 @@
 import { useEffect } from "react";
 import { SEO } from "@/components/ui/SEO";
-import { IconChevronRight } from "@/components/ui/Icons";
-import { APP_BASE, APP_FIND_URL } from "@/lib/urls";
 import { trackConversion } from "@/lib/track";
+import {
+  XPPageLayout,
+  XPHeroSection,
+  XPBookCard,
+  XPVideoSection,
+  XPQuestionsSection,
+  XPContactSection,
+} from "@/components/xp/NextStepsLayout";
 
 const FOLLOW_UPS = [
-  { label: "How do I know this is real?", href: `${APP_BASE}/post/88421-how-do-i-know-this-is-real` },
-  { label: "What do I do now?", href: `${APP_BASE}/post/88422-what-do-i-do-now` },
-  { label: "I want to know Jesus better.", href: `${APP_BASE}/post/88423-i-want-to-know-jesus-more` },
-  { label: "How should I handle my current relationships?", href: `${APP_BASE}/post/88424-how-should-i-handle-my-current-relationships` },
-  { label: "I'm afraid...", href: `${APP_BASE}/post/88425-im-afraid` },
-  { label: "I have questions about church.", href: `${APP_BASE}/post/88426-i-have-questions-about-church` },
-  { label: "More Questions?", href: `${APP_BASE}/post/88427-more-questions` },
+  { label: "How do I know this is real?", href: "https://follow.jesusonline.com/" },
+  { label: "I'm afraid...", href: "https://follow.jesusonline.com/" },
+  { label: "How should I handle my current relationships?", href: "https://follow.jesusonline.com/" },
+  { label: "What do I do now?", href: "https://follow.jesusonline.com/" },
+  { label: "I have questions about church", href: "https://follow.jesusonline.com/" },
+  { label: "I want to know Jesus more", href: "https://follow.jesusonline.com/" },
+  { label: "More questions?", href: "https://follow.jesusonline.com/" },
 ];
-
-const DELAYS = ["d-300", "d-350", "d-400", "d-450", "d-500", "d-550", "d-600"];
 
 export default function YesReceivedJesus() {
   useEffect(() => {
@@ -23,49 +27,30 @@ export default function YesReceivedJesus() {
 
   return (
     <>
-      <SEO title="You Received Jesus!" description="You just invited Jesus into your life. Discover your next steps." path="/xp/yes-i-received-jesus" noindex />
+      <SEO title="Something Real Has Begun" description="You just took a step of faith. What happened is real." path="/xp/yes-i-received-jesus" noindex />
 
-      <div className="min-h-screen bg-gray-50">
-        <div className="max-w-xl mx-auto px-4 py-5">
-          <div className="fade-up d-200 bg-white rounded-xl shadow-sm overflow-hidden">
-            <div className="bg-[#e8f4ff] px-5 pt-4 pb-3 border-b border-blue-100">
-              <p className="text-secondary font-semibold text-sm">
-                Select the statement below that best matches your current thoughts and feelings —
-              </p>
-              <p className="text-gray-400 text-xs mt-0.5">You'll discover answers to your questions!</p>
-            </div>
-            <div className="px-5 py-4">
-              <div className="flex flex-col gap-2">
-                {FOLLOW_UPS.map((q, i) => (
-                  <a
-                    key={q.href}
-                    href={q.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`fade-up ${DELAYS[i]} flex items-center justify-between gap-3 px-4 py-3 rounded-full border-2 border-gray-200 text-secondary font-semibold hover:border-primary hover:text-primary transition-colors text-sm`}
-                    data-testid={`link-followup-${i}`}
-                  >
-                    <span>"{q.label}"</span>
-                    <IconChevronRight size={15} />
-                  </a>
-                ))}
-              </div>
-            </div>
-          </div>
+      <XPPageLayout>
+        <XPHeroSection
+          title="Something Real Has Begun"
+          description="You just took a step of faith. What happened is real. These eight short readings will help you see what this new life looks like in ordinary days—clearly, gently, and at your own pace."
+          delay="d-100"
+        />
 
-          <div className="text-center mt-4">
-            <a
-              href={APP_FIND_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-primary"
-              data-testid="link-explore-app"
-            >
-              Want More?
-            </a>
-          </div>
-        </div>
-      </div>
+        <XPBookCard
+          subtext="8 short readings · start in order, or start where you need to begin"
+          delay="d-200"
+        />
+
+        <XPVideoSection delay="d-300" />
+
+        <XPQuestionsSection
+          title="You're Not the Only One Wondering…"
+          links={FOLLOW_UPS}
+          delay="d-400"
+        />
+
+        <XPContactSection delay="d-500" showExtraComfort={true} />
+      </XPPageLayout>
     </>
   );
 }

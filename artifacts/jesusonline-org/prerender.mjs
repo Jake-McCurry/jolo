@@ -112,31 +112,37 @@ const ROUTES = [
     },
   },
   {
-    path: "/xp/no-i-didnt-pray",
-    title: "The Next 3 Steps | JesusOnline",
+    path: "/contact",
+    title: "Contact Us | JesusOnline",
     description:
-      "We're here for you. Share your thoughts and discover what God offers.",
+      "Send a message to the JesusOnline team. A real person will read what you send.",
+  },
+  {
+    path: "/xp/no-i-didnt-pray",
+    title: "Thanks for Watching | JesusOnline",
+    description:
+      "Whether you are still considering Jesus or have questions, you are welcome here.",
     noindex: true,
   },
   {
     path: "/xp/yes-i-received-jesus",
-    title: "You Received Jesus! | JesusOnline",
+    title: "Something Real Has Begun | JesusOnline",
     description:
-      "You just invited Jesus into your life. Discover your next steps.",
+      "You just took a step of faith. What happened is real.",
     noindex: true,
   },
   {
     path: "/xp/yes-i-rededicated",
-    title: "The Next 3 Steps | JesusOnline",
+    title: "Welcome Back | JesusOnline",
     description:
-      "You rededicated your life to Jesus. Here are your next steps.",
+      "Turning toward Jesus again matters. He receives you with open arms.",
     noindex: true,
   },
   {
     path: "/xp/no-already-received",
-    title: "The Next 3 Steps | JesusOnline",
+    title: "Good to See You Here | JesusOnline",
     description:
-      "You're already part of God's family. Here are resources to help you grow.",
+      "Keep growing or be refreshed in the basics of walking with Jesus.",
     noindex: true,
   },
 ];
