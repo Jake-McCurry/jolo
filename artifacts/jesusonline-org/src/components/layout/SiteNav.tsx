@@ -64,7 +64,7 @@ export function SiteNav({ links = LP_NAV_LINKS }: SiteNavProps) {
               className="flex h-10 items-center justify-center gap-2.5 rounded px-1 text-white"
               style={{ outlineColor: "#ffffff" }}
             >
-              <span className="text-sm font-semibold tracking-wide">Menu</span>
+              <span className="text-sm font-semibold tracking-wide">MENU</span>
               <span className="flex w-6 flex-col items-center justify-center gap-[5px]">
                 <span
                   style={{ background: "#ffffff" }}
