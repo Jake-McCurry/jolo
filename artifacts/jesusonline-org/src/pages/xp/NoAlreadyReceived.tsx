@@ -10,10 +10,10 @@ import {
 
 const WAYS_TO_USE = [
   { label: "Refresh the foundations of your own walk with Jesus", href: "https://follow.jesusonline.com/" },
-  { label: "Find clear language for conversations with others", href: "https://follow.jesusonline.com/" },
-  { label: "Help someone who is new in their faith", href: "https://follow.jesusonline.com/" },
-  { label: "Revisit a specific area (identity, prayer, Scripture, purpose)", href: "https://follow.jesusonline.com/" },
-  { label: "More options?", href: "https://follow.jesusonline.com/" },
+  { label: "Find clear language for conversations with others", href: "https://follow.jesusonline.com/more-believer-find-clear-language-for-conversations-with-others?journey=believer&entry=jesusonline.org&from=xp&step=faq" },
+  { label: "Help someone who is new in their faith", href: "https://follow.jesusonline.com/more-believer-help-someone-new-in-faith?journey=believer&entry=jesusonline.org&from=xp&step=faq" },
+  { label: "Revisit a specific area (identity, prayer, Scripture, purpose)", href: "https://follow.jesusonline.com/more-believer-revisit-a-specific-area-of-spiritual-growth?journey=believer&entry=jesusonline.org&from=xp&step=faq" },
+  { label: "More options?", href: "https://follow.jesusonline.com/more-believer-more-options?journey=believer&entry=jesusonline.org&from=xp&step=faq" },
 ];
 
 export default function NoAlreadyReceived() {
