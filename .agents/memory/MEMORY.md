@@ -1,2 +1,3 @@
 - [Cloudflare monorepo build command](cloudflare-monorepo-build.md) — CF Workers build must be `pnpm --filter @workspace/<artifact> run build:cf`, never root `pnpm run build` (typecheck gate + mockup-sandbox PORT/BASE_PATH throw fail the deploy).
 - [JesusOnline scaling roadmap](scaling-roadmap.md) — approved-but-deferred plan (page registry, build safety rails, typed tracking, wrangler envs, brand tokens); propose items 1–2 before adding more LPs.
+- [Security override versioning](security-override-versioning.md) — pin patched versions on the existing compatibility line; do not use open-ended minimums that can cross majors.
