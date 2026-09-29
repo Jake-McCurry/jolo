@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { IconChevronRight, IconDownload, IconMail, IconBrandWhatsapp } from "@/components/ui/Icons";
+import { IconDownload, IconMail, IconBrandWhatsapp } from "@/components/ui/Icons";
 import { BOOK_PDF_URL } from "@/lib/urls";
 
 interface XPPageLayoutProps {
@@ -140,15 +140,12 @@ export function XPQuestionsSection({ title, links, delay = "d-400" }: { title: s
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-between p-5 hover:bg-muted/50 transition-colors group"
+              className="block p-5 hover:bg-muted/50 transition-colors group"
               data-testid={`link-xp-resource-${i}`}
             >
               <span className="font-medium text-foreground group-hover:text-primary transition-colors">
                 {link.label}
               </span>
-              <div className="w-8 h-8 rounded-full bg-primary/5 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all">
-                <IconChevronRight size={18} className="translate-x-[1px]" />
-              </div>
             </a>
           ))}
         </div>
