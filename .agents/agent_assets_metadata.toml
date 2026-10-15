@@ -1,0 +1,16 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "kF7e25b_5IiJGb1VLlmuq"
+uri = "file://.local/reports/JesusOnline_Changes_2026-10-01_to_2026-10-15.xlsx"
+type = "table"
+title = "JesusOnline — Two-week change log"
+description = "Excel backup of the Google Drive spreadsheet, newest first, with page summaries, before/after details, and Follow link inventory."
+logical_id = "53d0f70d-1f0e-4ac7-a455-58391557cdf6"
+content_hash = "sha256:dec271a736a367f3c52a533cb00630b5fbac8d5facdb6b07bd03e214855c3f6b"
+size = 17011
+mtime_ms = 1792095340567
+storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:5f11af9c-a93f-4b61-ac10-190e6d08ea23/53d0f70d-1f0e-4ac7-a455-58391557cdf6/fbba0a8c-fa3f-4192-9269-264cd2db8248"
+storage_version_token = "1792095367864113"
+content_type = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
