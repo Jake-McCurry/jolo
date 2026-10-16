@@ -14,3 +14,9 @@ Keep existing XP URLs unchanged because campaign conversion events depend on the
 **Why:** The user explicitly required URL preservation and selected content updates without redirects.
 
 **How to apply:** Preserve route paths and existing conversion calls when changing XP content. Treat automatic redirects as separate work requiring an explicit request.
+
+Keep XP introductions compact so visitors can see a resource link without scrolling on common desktop and mobile screens. The user asked to remove the book image and shorten the text using their supplied references.
+
+**Why:** Their review meeting found that none of the resource links appeared above the fold.
+
+**How to apply:** Do not reintroduce a large cover or lengthy guide explanations before the first action. Check the smallest common phone layout when changing the opening content.
