@@ -21,7 +21,6 @@ export interface XPContentProps {
   type: XPType;
   /** "" keeps resource links on this project; an origin keeps them on another site. */
   resourceBaseUrl: string;
-  guideCoverSrc: string;
   /** Override this if the new project uses a different contact destination. */
   messageHref?: string;
   entry?: string;
@@ -40,7 +39,7 @@ function Icon({ name }: { name: "heart" | "play" | "message" }) {
 }
 
 /** Main content only: no app shell, site header, navigation, footer or backend. */
-export function XPContent({ type, resourceBaseUrl, guideCoverSrc, messageHref, entry = "direct", shareUrl }: XPContentProps) {
+export function XPContent({ type, resourceBaseUrl, messageHref, entry = "direct", shareUrl }: XPContentProps) {
   const [shareStatus, setShareStatus] = useState("");
   const page = pages[type];
   if (!page) throw new Error("Unknown XP page type: " + type);
@@ -76,19 +75,16 @@ export function XPContent({ type, resourceBaseUrl, guideCoverSrc, messageHref, e
         <div className="follow-xp-intro-text">{page.intro.map((text, index) => <p key={index}>{text}</p>)}</div>
       </div>
 
-      {page.guideHeading && (
-        <section className="follow-xp-card follow-xp-guide" aria-labelledby={"xp-guide-" + type}>
-          <div className="follow-xp-guide-columns">
-            <img className="follow-xp-cover" src={guideCoverSrc} alt="The Adventure of Living with Jesus" />
+      {page.guideLabel && (
+        <section className="follow-xp-card follow-xp-guide" aria-label="Your next step">
             <div className="follow-xp-guide-copy">
-              <h2 id={"xp-guide-" + type}>{page.guideHeading}</h2>
+              {page.guideHeading && <h2>{page.guideHeading}</h2>}
               {page.guideText.map((text, index) => <p key={index}>{text}</p>)}
               <a className="follow-xp-button" data-resource-path="/adv/begin-the-adventure" href={resourceHref("/adv/begin-the-adventure")}>{page.guideLabel ?? "Begin This Short Guide"}</a>
               <a className="follow-xp-listen" data-resource-path="/videos/Gods-Vision" href={resourceHref("/videos/Gods-Vision")}>
                 <Icon name="play" /><span>Prefer to listen?  3 minutes — How God sees you now</span>
               </a>
             </div>
-          </div>
           <div className="follow-xp-save">
             <span>Want to come back easily later?</span>
             <button className="follow-xp-button follow-xp-button-secondary" type="button" data-xp-share onClick={share}>Save or Send this page</button>
