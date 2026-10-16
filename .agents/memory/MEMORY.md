@@ -2,3 +2,4 @@
 - [JesusOnline scaling roadmap](scaling-roadmap.md) — approved-but-deferred plan (page registry, build safety rails, typed tracking, wrangler envs, brand tokens); propose items 1–2 before adding more LPs.
 - [Security override versioning](security-override-versioning.md) — pin patched versions on the existing compatibility line; do not use open-ended minimums that can cross majors.
 - [XP content scope](xp-content-scope.md) — .org only; preserve campaign URLs; supplied Follow content stays on XP without automatic redirects.
+- [Change-log spreadsheet safety](changelog-spreadsheet-safety.md) — Drive conversion replaces the whole workbook; preserve every tab and prior entry, then verify the re-export.
