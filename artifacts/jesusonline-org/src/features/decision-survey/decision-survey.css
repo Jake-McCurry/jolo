@@ -1,0 +1,25 @@
+/* Pilot styles are opt-in: no changes to other surveys or landing pages. */
+.jol-decision-controls { width: 100%; margin: 0 0 12px; }
+.jol-decision-controls .jol-decision-answer,
+.jol-decision-controls .jol-decision-answer:visited {
+  box-sizing: border-box; display: flex; align-items: center;
+  width: 100%; min-height: 48px; margin: 8px 0; padding: 12px 16px;
+  border: 1px solid #0b3c5d; border-radius: 6px;
+  background: #fff; color: #0b3c5d; text-align: left;
+  font: inherit; font-weight: 600; line-height: 1.45; text-decoration: none;
+}
+.jol-decision-controls .jol-decision-answer:hover {
+  background: #edf6fc; color: #0b3c5d;
+}
+.jol-decision-controls .jol-decision-answer:focus {
+  outline: 3px solid #de5b00; outline-offset: 3px;
+}
+.jol-decision-controls .jol-decision-answer[aria-disabled="true"] {
+  opacity: .7; cursor: wait;
+}
+.jol-decision-controls .jol-decision-answer[data-jol-selected="true"] {
+  background: #0b3c5d; color: #fff; opacity: 1;
+}
+.jol-decision-controls .jol-decision-status {
+  min-height: 1.5em; margin: 8px 0 0; color: #0b3c5d; font-size: 14px;
+}
