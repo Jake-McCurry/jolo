@@ -1,39 +1,44 @@
-import { Link } from "wouter";
+import { useEffect } from "react";
 import { SEO } from "@/components/ui/SEO";
 import { YouTubeFacade } from "@/components/ui/YouTubeFacade";
 import { WatchOnYouTubeBadge } from "@/components/ui/WatchOnYouTubeBadge";
 import { MAIN_SITE } from "@/lib/urls";
-
-const LP = "resurrection-ttn";
+import { initializeDecisionControls } from "@/features/decision-survey/decision-controls";
+import "@/features/decision-survey/decision-survey.css";
 
 const SURVEY_OPTIONS = [
   {
-    label: "No, I didn't pray the prayer.",
-    href: `/xp/no-i-didnt-pray?lp=${LP}`,
+    label: "I didn't pray the prayer",
+    decision: "did-not-pray",
+    href: "https://follow.jesusonline.com/xp/did-not-pray",
     testid: "survey-no-didnt-pray",
-    extraClass: "",
   },
   {
-    label: "Yes, I prayed and received Jesus into my life.",
-    href: `/xp/yes-i-received-jesus?lp=${LP}`,
-    testid: "survey-yes-received-jesus",
-    extraClass: "gtm-conversion-received-christ",
-  },
-  {
-    label: "Yes, I prayed and rededicated my life to Jesus.",
-    href: `/xp/yes-i-rededicated?lp=${LP}`,
+    label: "I prayed and rededicated my life to Jesus",
+    decision: "rededicated",
+    href: "https://follow.jesusonline.com/xp/rededicated",
     testid: "survey-yes-rededicated",
-    extraClass: "",
   },
   {
-    label: "No, I have already received Jesus in my life.",
-    href: `/xp/no-already-received?lp=${LP}`,
+    label: "I prayed the prayer and invited Jesus into my life",
+    decision: "received",
+    href: "https://follow.jesusonline.com/xp/received",
+    testid: "survey-yes-received-jesus",
+  },
+  {
+    label: "I have already invited Jesus into my life",
+    decision: "believer",
+    href: "https://follow.jesusonline.com/xp/believer",
     testid: "survey-no-already-received",
-    extraClass: "",
   },
 ];
 
 export default function JesusResurrectionAndYou() {
+  useEffect(() => {
+    // Reuse the pilot's globally guarded delegated handler, not another listener.
+    initializeDecisionControls();
+  }, []);
+
   return (
     <>
       <SEO
@@ -70,17 +75,30 @@ export default function JesusResurrectionAndYou() {
               After watching the video, please share your response below.
             </p>
 
-            <div className="flex flex-col gap-3 sm:gap-4">
+            <div
+              className="jol-decision-controls"
+              data-jol-decision-group=""
+              role="group"
+              aria-label="Your response"
+            >
               {SURVEY_OPTIONS.map((opt) => (
-                <Link
+                <a
                   key={opt.href}
                   href={opt.href}
                   data-testid={opt.testid}
-                  className={`text-primary underline font-semibold text-sm sm:text-base hover:opacity-70 transition-opacity block${opt.extraClass ? ` ${opt.extraClass}` : ""}`}
+                  className="jol-decision-answer"
+                  data-jol-decision={opt.decision}
                 >
                   {opt.label}
-                </Link>
+                </a>
               ))}
+              <p
+                className="jol-decision-status"
+                data-jol-decision-status=""
+                role="status"
+                aria-live="polite"
+                aria-atomic="true"
+              />
             </div>
 
             <p className="mt-6 text-sm text-gray-600">

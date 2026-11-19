@@ -300,8 +300,9 @@ test("adapted initializer is safe during server rendering", () => {
   assert.doesNotThrow(() => context.exports.initializeDecisionControls());
 });
 
-test("JSX keeps the supplied answers, destinations, order, opt-in and scoped CSS", () => {
-  const page = readFileSync(new URL("../src/pages/lp/KingdomnomicsGiftOfHeaven.tsx", import.meta.url), "utf8");
+for (const pageFile of ["KingdomnomicsGiftOfHeaven", "JesusResurrectionAndYou"]) {
+test(`${pageFile}: JSX keeps the supplied answers, destinations, order, opt-in and scoped CSS`, () => {
+  const page = readFileSync(new URL(`../src/pages/lp/${pageFile}.tsx`, import.meta.url), "utf8");
   const css = readFileSync(new URL("../src/features/decision-survey/decision-survey.css", import.meta.url), "utf8");
   const normalize = (text) => text.replace(/\/\*[\s\S]*?\*\//g, "").replace(/\s+/g, "");
   assert.equal(normalize(css), normalize(pilot.match(/<style>([\s\S]*?)<\/style>/)[1]));
@@ -311,5 +312,7 @@ test("JSX keeps the supplied answers, destinations, order, opt-in and scoped CSS
   assert.match(page, /data-jol-decision-group=""/);
   assert.match(page, /data-jol-decision=\{opt\.decision\}/);
   assert.match(page, /data-jol-decision-status=""/);
+  assert.match(page, /useEffect\(\(\) => \{[\s\S]*?initializeDecisionControls\(\);[\s\S]*?\}, \[\]\)/);
   assert.doesNotMatch(page, /gtm-conversion|<Link|onClick|dangerouslySetInnerHTML|trackConversion|dataLayer|gtag/);
 });
+}
