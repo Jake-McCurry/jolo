@@ -1,3 +1,6 @@
+@import "@fontsource-variable/playfair-display/wght.css";
+@import "@fontsource-variable/playfair-display/wght-italic.css";
+
 /* Scoped styles only. No body, header, footer, navigation or global resets. */
 .follow-xp {
   --xp-page: #fffdfb;
@@ -24,7 +27,7 @@
 .follow-xp a:focus-visible, .follow-xp button:focus-visible { outline: 3px solid #009bff; outline-offset: 4px; }
 .follow-xp-introduction { text-align: center; margin-bottom: 16px; }
 .follow-xp-accent { width: 64px; height: 4px; background: var(--xp-accent); border-radius: 999px; margin: 0 auto 12px; }
-.follow-xp h1 { font-family: "Playfair Display", Georgia, serif; font-size: 32px; font-weight: 700; line-height: 1.1; letter-spacing: -.025em; margin-bottom: 12px; }
+.follow-xp h1 { font-family: "Playfair Display Variable", "Playfair Display", Georgia, serif; font-size: 32px; font-weight: 700; line-height: 1.1; letter-spacing: -.025em; margin-bottom: 12px; }
 .follow-xp-intro-text, .follow-xp-subtitle { max-width: 672px; margin: 0 auto; font-size: 18px; color: var(--xp-muted); line-height: 1.5; }
 .follow-xp-intro-text p + p { margin-top: 12px; }
 .follow-xp-subtitle { margin-bottom: 24px; }

@@ -14,8 +14,17 @@ const compiled = ts.transpileModule(source, {
 const supplied = pilot.match(/<script>([\s\S]*?)<\/script>/)[1];
 const responses = ["did-not-pray", "rededicated", "received", "believer"];
 const origin = "https://follow.jesusonline.com/xp/";
+const legacyDestinations = {
+  "did-not-pray": "https://jesusonline.org/xp/no-i-didnt-pray",
+  rededicated: "https://jesusonline.org/xp/yes-i-rededicated",
+  received: "https://jesusonline.org/xp/yes-i-received-jesus",
+  believer: "https://jesusonline.org/xp/no-already-received",
+};
 
 function fixture(implementation) {
+  const destinations = implementation === "supplied"
+    ? Object.fromEntries(responses.map((response) => [response, origin + response]))
+    : legacyDestinations;
   const listeners = new Map();
   const windowListeners = new Map();
   const timers = new Map();
@@ -55,7 +64,7 @@ function fixture(implementation) {
   function group() {
     const wrapper = new Element("DIV", { "data-jol-decision-group": "" }, document);
     const links = Object.fromEntries(responses.map((response) => {
-      const link = new Element("A", { "data-jol-decision": response, href: origin + response }, wrapper);
+      const link = new Element("A", { "data-jol-decision": response, href: destinations[response] }, wrapper);
       controls.push(link);
       return [response, link];
     }));
@@ -112,14 +121,14 @@ function fixture(implementation) {
   }
   init();
   return {
-    ...first, events, navigations, controls, statuses, window, document, Element, group,
+    ...first, events, navigations, controls, statuses, window, document, Element, group, destinations, timers,
     activate, advance, lifecycle, init, listeners, windowListeners,
     onPush: (callback) => { onPush = callback; },
     failNavigation: () => { navigationThrows = true; },
   };
 }
 
-// Every behavioral check runs against both the supplied pilot and the adaptation.
+// Preserve pilot regressions; the temporary adaptation uses legacy URLs and a grace period.
 for (const implementation of ["supplied", "adapted"]) {
   const check = (name, fn) => test(`${implementation}: ${name}`, () => fn(fixture(implementation)));
 
@@ -142,7 +151,7 @@ for (const implementation of ["supplied", "adapted"]) {
       f.events[0].eventCallback("GTM-PKJQNCS");
       f.events[0].eventCallback("GTM-PKJQNCS");
       f.advance(2000);
-      assert.deepEqual(f.navigations, [origin + response]);
+      assert.deepEqual(f.navigations, [f.destinations[response]]);
     });
   }
   for (const response of ["did-not-pray", "believer"]) {
@@ -151,7 +160,7 @@ for (const implementation of ["supplied", "adapted"]) {
       f.advance(2000);
       assert.equal(f.events.length, 0);
       assert.equal(f.navigations.length, 0); // The browser owns native navigation.
-      assert.equal(f.links[response].href, origin + response);
+      assert.equal(f.links[response].href, f.destinations[response]);
       assert.equal(f.status.textContent, "");
     });
   }
@@ -171,7 +180,7 @@ for (const implementation of ["supplied", "adapted"]) {
     f.advance(1199);
     assert.equal(f.navigations.length, 0);
     f.advance(1);
-    assert.deepEqual(f.navigations, [origin + "received"]);
+    assert.deepEqual(f.navigations, [f.destinations.received]);
   });
   check("wrong container cannot navigate before watchdog; late callbacks cannot duplicate", (f) => {
     f.activate("received");
@@ -186,8 +195,8 @@ for (const implementation of ["supplied", "adapted"]) {
   check("callback without a container ID remains supported", (f) => {
     f.activate("rededicated");
     f.events[0].eventCallback();
-    f.advance(0);
-    assert.deepEqual(f.navigations, [origin + "rededicated"]);
+    f.advance(implementation === "supplied" ? 0 : 1000);
+    assert.deepEqual(f.navigations, [f.destinations.rededicated]);
   });
   check("linker decoration after synchronous callback is retained", (f) => {
     f.onPush((payload) => payload.eventCallback("GTM-PKJQNCS"));
@@ -196,26 +205,26 @@ for (const implementation of ["supplied", "adapted"]) {
     });
     f.activate("received");
     assert.equal(f.navigations.length, 0);
-    f.advance(0);
-    assert.equal(f.navigations[0], origin + "received?_gl=fixture-linker&_ga=fixture-client&_gac=fixture-campaign");
+    f.advance(implementation === "supplied" ? 0 : 1000);
+    assert.equal(f.navigations[0], f.destinations.received + "?_gl=fixture-linker&_ga=fixture-client&_gac=fixture-campaign");
   });
   check("watchdog retains decorated query parameters too", (f) => {
     f.links.rededicated.href += "/?_gl=fixture";
     f.activate("rededicated");
     f.advance(1200);
-    assert.equal(f.navigations[0], origin + "rededicated/?_gl=fixture");
+    assert.equal(f.navigations[0], f.destinations.rededicated + "/?_gl=fixture");
   });
   check("invalidated destination falls back to the supplied safe destination", (f) => {
     f.activate("received");
     f.links.received.href = "https://invalid.example/";
     f.advance(1200);
-    assert.deepEqual(f.navigations, [origin + "received"]);
+    assert.deepEqual(f.navigations, [f.destinations.received]);
   });
   check("throwing tracking queue cannot strand the visitor", (f) => {
     f.window.dataLayer.push = () => { throw new Error("Blocked"); };
     f.activate("received");
-    f.advance(0);
-    assert.deepEqual(f.navigations, [origin + "received"]);
+    f.advance(implementation === "supplied" ? 0 : 1000);
+    assert.deepEqual(f.navigations, [f.destinations.received]);
   });
   check("absent dataLayer is initialized by the supplied handler", (f) => {
     delete f.window.dataLayer;
@@ -300,15 +309,128 @@ test("adapted initializer is safe during server rendering", () => {
   assert.doesNotThrow(() => context.exports.initializeDecisionControls());
 });
 
+for (const response of ["received", "rededicated"]) {
+  for (const listenerOrder of ["before", "after"]) {
+    test(`legacy simulation: ${response}, GTM listener ${listenerOrder} decision listener`, () => {
+      const f = fixture("adapted");
+      const legacyHits = [];
+      const queue = f.window.dataLayer;
+      let legacyTagFinished = false;
+      // Model the user-supplied LINK_CLICK filters and checkValidation=false.
+      // No real GTM container, tag, GA4 request, or Google Ads request is executed.
+      const legacyListener = (event) => {
+        assert.equal(f.navigations.length, 0);
+        const url = new URL(event.target.href);
+        if (url.hostname.includes("jesusonline.org") &&
+            url.href.includes(response === "received" ? "/xp/yes-i-received-jesus" : "/xp/yes-i-rededicated")) {
+          legacyHits.push(url.href);
+          f.window.setTimeout(() => { legacyTagFinished = true; }, 500);
+        }
+      };
+      if (listenerOrder === "before") f.listeners.get("click").unshift(legacyListener);
+      else f.document.addEventListener("click", legacyListener);
+      // An early decision callback must not cut off the original click or legacy tag.
+      f.onPush((payload) => payload.eventCallback("GTM-PKJQNCS"));
+      f.activate(response, { detail: 0 }); // Keyboard-generated anchor click also works.
+      assert.equal(legacyHits.length, 1);
+      assert.equal(f.events.length, 1);
+      assert.equal(f.events[0].decision_type, response);
+      assert.equal(f.window.dataLayer, queue);
+      f.advance(999);
+      assert.equal(legacyTagFinished, true);
+      assert.equal(f.navigations.length, 0);
+      f.advance(1);
+      assert.deepEqual(f.navigations, [legacyDestinations[response]]);
+      f.advance(2000);
+      assert.equal(f.navigations.length, 1);
+      assert.equal(f.events.length, 1);
+    });
+  }
+}
+
+test("temporary handler waits for a late decision callback but remains bounded", () => {
+  const f = fixture("adapted");
+  f.activate("received");
+  f.advance(1100);
+  assert.equal(f.navigations.length, 0);
+  f.events[0].eventCallback("GTM-PKJQNCS");
+  f.advance(0);
+  assert.deepEqual(f.navigations, [legacyDestinations.received]);
+  f.advance(1000);
+  assert.equal(f.navigations.length, 1);
+});
+
+test("a throwing queue still gives the original click its grace period", () => {
+  const f = fixture("adapted");
+  let originalClickObserved = false;
+  f.window.dataLayer.push = () => { throw new Error("Blocked"); };
+  f.document.addEventListener("click", () => { originalClickObserved = true; });
+  f.activate("received");
+  assert.equal(originalClickObserved, true);
+  f.advance(999);
+  assert.equal(f.navigations.length, 0);
+  f.advance(1);
+  assert.deepEqual(f.navigations, [legacyDestinations.received]);
+});
+
+for (const response of ["did-not-pray", "believer"]) {
+  test(`Resurrection ${response} keeps its original query and native navigation`, () => {
+    const f = fixture("adapted");
+    f.links[response].href += "?lp=resurrection-ttn";
+    assert.equal(f.activate(response).defaultPrevented, false);
+    assert.equal(f.links[response].href, legacyDestinations[response] + "?lp=resurrection-ttn");
+    assert.equal(f.events.length, 0);
+    assert.equal(f.timers.size, 0);
+  });
+}
+
+test("Back cancels the grace timer and stale callbacks cannot affect the next decision", () => {
+  const f = fixture("adapted");
+  f.activate("received");
+  const oldCallback = f.events[0].eventCallback;
+  f.lifecycle("pagehide");
+  assert.equal(f.timers.size, 0);
+  f.lifecycle("pageshow", true);
+  f.activate("rededicated");
+  oldCallback("GTM-PKJQNCS");
+  f.events[1].eventCallback("GTM-PKJQNCS");
+  f.advance(1000);
+  assert.deepEqual(f.navigations, [legacyDestinations.rededicated]);
+  assert.equal(f.events.length, 2);
+  f.lifecycle("pagehide");
+  assert.equal(f.timers.size, 0);
+  assert.ok(f.controls.every((link) => !link.hasAttribute("aria-disabled")));
+});
+
+test("temporary handler rejects external follow destinations and mismatched old answers", () => {
+  const f = fixture("adapted");
+  for (const href of [origin + "received", "https://jesusonline.com/xp/yes-received-christ", legacyDestinations.rededicated]) {
+    f.links.received.href = href;
+    assert.equal(f.activate("received").defaultPrevented, false);
+  }
+  assert.equal(f.events.length, 0);
+});
+
+test("shared handler has no competing trackers or propagation cancellation", () => {
+  assert.doesNotMatch(source, /stopPropagation|stopImmediatePropagation|gtag\s*\(|fbq\s*\(|JOLO-V|Yes_Received|Yes_Rededicated/);
+  const imports = ["KingdomnomicsGiftOfHeaven", "JesusResurrectionAndYou"].map((pageFile) =>
+    readFileSync(new URL(`../src/pages/lp/${pageFile}.tsx`, import.meta.url), "utf8"));
+  for (const page of imports) assert.equal((page.match(/data-jol-decision-group=""/g) || []).length, 1);
+});
+
 for (const pageFile of ["KingdomnomicsGiftOfHeaven", "JesusResurrectionAndYou"]) {
-test(`${pageFile}: JSX keeps the supplied answers, destinations, order, opt-in and scoped CSS`, () => {
+test(`${pageFile}: JSX preserves appearance and restores legacy anchor destinations`, () => {
   const page = readFileSync(new URL(`../src/pages/lp/${pageFile}.tsx`, import.meta.url), "utf8");
   const css = readFileSync(new URL("../src/features/decision-survey/decision-survey.css", import.meta.url), "utf8");
   const normalize = (text) => text.replace(/\/\*[\s\S]*?\*\//g, "").replace(/\s+/g, "");
   assert.equal(normalize(css), normalize(pilot.match(/<style>([\s\S]*?)<\/style>/)[1]));
   const options = [...page.matchAll(/decision: "([^"]+)",\s*href: "([^"]+)"/g)];
   assert.deepEqual(options.map((match) => match[1]), responses);
-  for (const [, response, href] of options) assert.equal(href, origin + response);
+  for (const [, response, href] of options) {
+    const query = pageFile === "JesusResurrectionAndYou" &&
+      ["did-not-pray", "believer"].includes(response) ? "?lp=resurrection-ttn" : "";
+    assert.equal(href, legacyDestinations[response] + query);
+  }
   assert.match(page, /data-jol-decision-group=""/);
   assert.match(page, /data-jol-decision=\{opt\.decision\}/);
   assert.match(page, /data-jol-decision-status=""/);

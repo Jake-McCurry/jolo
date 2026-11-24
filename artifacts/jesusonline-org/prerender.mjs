@@ -152,18 +152,32 @@ const template = readFileSync(
   "utf-8",
 );
 
-const { render } = await import("./dist/server/entry-server.js");
+const { render, pageModuleForPath } = await import("./dist/server/entry-server.js");
+const manifest = JSON.parse(readFileSync(
+  resolve(__dirname, "dist/public/.vite/manifest.json"), "utf-8",
+));
+
+function pageAssetTags(path) {
+  const modules = new Set();
+  const styles = new Set();
+  function visit(id) {
+    const chunk = manifest[id];
+    if (!chunk) throw new Error(`Missing build manifest entry: ${id}`);
+    if (modules.has(chunk.file)) return;
+    modules.add(chunk.file);
+    for (const css of chunk.css ?? []) styles.add(css);
+    for (const dependency of chunk.imports ?? []) visit(dependency);
+  }
+  visit(pageModuleForPath(path));
+  return [
+    ...[...modules].map((file) => `<link rel="modulepreload" crossorigin href="/${file}">`),
+    ...[...styles].map((file) => `<link rel="stylesheet" crossorigin href="/${file}">`),
+  ].filter((tag) => !template.includes(tag));
+}
 
 for (const route of ROUTES) {
-  let appHtml = "";
-  try {
-    appHtml = await render(route.path);
-  } catch (err) {
-    console.warn(
-      `⚠ SSR failed for ${route.path}, writing meta-only:`,
-      err.message,
-    );
-  }
+  // Never ship an empty page when a lazy import or server render fails.
+  const appHtml = await render(route.path);
 
   const img = route.image
     ? route.image.startsWith("http")
@@ -172,6 +186,7 @@ for (const route of ROUTES) {
     : `${SITE_URL}/opengraph.jpg`;
 
   const headTags = [
+    ...pageAssetTags(route.path),
     `<title>${route.title}</title>`,
     `<meta name="description" content="${route.description}">`,
     `<link rel="canonical" href="${SITE_URL}${route.path}">`,

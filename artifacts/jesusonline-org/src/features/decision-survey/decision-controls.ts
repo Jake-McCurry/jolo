@@ -17,6 +17,7 @@ interface DecisionWindow extends Window {
 interface Selection {
   link: HTMLAnchorElement;
   timer: number | null;
+  minimumWait: number | null;
   navigationTask: number | null;
   navigationQueued: boolean;
   navigated: boolean;
@@ -33,10 +34,10 @@ export function initializeDecisionControls() {
 
   let activeSelection: Selection | null = null;
   const destinations: Record<string, string> = {
-    "did-not-pray": "https://follow.jesusonline.com/xp/did-not-pray",
-    received: "https://follow.jesusonline.com/xp/received",
-    rededicated: "https://follow.jesusonline.com/xp/rededicated",
-    believer: "https://follow.jesusonline.com/xp/believer",
+    "did-not-pray": "https://jesusonline.org/xp/no-i-didnt-pray",
+    received: "https://jesusonline.org/xp/yes-i-received-jesus",
+    rededicated: "https://jesusonline.org/xp/yes-i-rededicated",
+    believer: "https://jesusonline.org/xp/no-already-received",
   };
 
   function answerLink(target: EventTarget | null): HTMLAnchorElement | null {
@@ -66,10 +67,8 @@ export function initializeDecisionControls() {
     try {
       const url = new URL(link.href, document.baseURI);
       const path = url.pathname.replace(/\/$/, "");
-      if (url.origin === "https://follow.jesusonline.com" && path === "/xp/" + response) return url.href;
-      if (url.origin === "https://jesusonline.com" &&
-          ((response === "received" && path === "/xp/yes-received-christ") ||
-           (response === "rededicated" && path === "/xp/yes-rededicated-christ"))) return url.href;
+      const expected = new URL(destinations[response]);
+      if (url.origin === expected.origin && path === expected.pathname) return url.href;
     } catch { /* Invalid links must not activate the handler. */ }
     return null;
   }
@@ -77,6 +76,7 @@ export function initializeDecisionControls() {
   function restore(selection: Selection | null) {
     if (!selection) return;
     if (selection.timer !== null) window.clearTimeout(selection.timer);
+    if (selection.minimumWait !== null) window.clearTimeout(selection.minimumWait);
     if (selection.navigationTask !== null) window.clearTimeout(selection.navigationTask);
     for (const saved of selection.controls) {
       if (saved.disabled === null) saved.link.removeAttribute("aria-disabled");
@@ -96,7 +96,7 @@ export function initializeDecisionControls() {
 
   function lock(link: HTMLAnchorElement) {
     const selection: Selection = {
-      link, timer: null, navigationTask: null,
+      link, timer: null, minimumWait: null, navigationTask: null,
       navigationQueued: false, navigated: false, controls: [], statuses: [],
     };
     activeSelection = selection;
@@ -157,7 +157,10 @@ export function initializeDecisionControls() {
     // Negative answers are ordinary links, including when JavaScript is absent.
     if (!isDecision) return;
     event.preventDefault();
+    // Do not stop propagation: legacy GTM LINK_CLICK triggers inspect this anchor's
+    // href. Their checkValidation=false permits this prevented native navigation.
     const selection = lock(link);
+    let decisionProcessed = false;
     function navigate() {
       if (activeSelection !== selection || selection.navigationQueued || selection.navigated) return;
       selection.navigationQueued = true;
@@ -172,14 +175,25 @@ export function initializeDecisionControls() {
       }, 0);
     }
 
-    // This watchdog is independent of GTM and cannot strand a visitor if it is blocked.
+    // A decision callback can run synchronously, before GTM sees the original click.
+    // Always give that click and its legacy tags a 1000ms grace period as well.
+    selection.minimumWait = window.setTimeout(() => {
+      selection.minimumWait = null;
+      if (decisionProcessed) navigate();
+    }, 1000);
+    function decisionComplete() {
+      decisionProcessed = true;
+      if (selection.minimumWait === null) navigate();
+    }
+
+    // Independent of GTM: missing/blocked tracking still navigates at 1200ms.
     selection.timer = window.setTimeout(navigate, 1200);
     try {
       pushDecision(response, (containerId) => {
         if (containerId && containerId !== "GTM-PKJQNCS") return;
-        navigate();
+        decisionComplete();
       });
-    } catch { navigate(); }
+    } catch { decisionComplete(); }
   }
 
   document.addEventListener("click", activate);
