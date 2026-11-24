@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { OptimizedImage } from "./OptimizedImage";
 
 interface Props {
   videoId: string;
@@ -32,7 +33,7 @@ export function YouTubeFacade({ videoId, title, thumbnailSrc, className = "" }: 
       onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && setActive(true)}
       aria-label={`Play video: ${title}`}
     >
-      <img
+      <OptimizedImage
         src={thumb}
         alt={title}
         loading="eager"

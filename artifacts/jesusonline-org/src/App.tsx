@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import { Suspense } from "react";
 import {
   Switch,
   Route,
@@ -8,25 +8,12 @@ import {
 } from "wouter";
 import { LPHeader } from "@/components/layout/LPHeader";
 import { XPHeader } from "@/components/layout/XPHeader";
+import { pages } from "./page-loaders";
 
 const XP_STYLE_LP_ROUTES = [
   "/lp/jesus-resurrection-and-you-ttn",
   "/lp/gift-of-heaven-ttn",
 ];
-
-import Home from "@/pages/Home";
-import Contact from "@/pages/Contact";
-import KingdomnomicsGiftOfHeaven from "@/pages/lp/KingdomnomicsGiftOfHeaven";
-import JesusResurrectionAndYou from "@/pages/lp/JesusResurrectionAndYou";
-import IsJesusRelevantToYou from "@/pages/videos/IsJesusRelevantToYou";
-import JesusResurrectionAndYouVideo from "@/pages/videos/JesusResurrectionAndYou";
-import TheGiftOfHeaven from "@/pages/videos/TheGiftOfHeaven";
-import YourLifeHasPurpose from "@/pages/videos/YourLifeHasPurpose";
-
-const NoDidntPray = lazy(() => import("@/pages/xp/NoDidntPray"));
-const YesReceivedJesus = lazy(() => import("@/pages/xp/YesReceivedJesus"));
-const YesRededicated = lazy(() => import("@/pages/xp/YesRededicated"));
-const NoAlreadyReceived = lazy(() => import("@/pages/xp/NoAlreadyReceived"));
 
 function LayoutHeader() {
   const [rawLocation] = useLocation();
@@ -54,16 +41,16 @@ export function AppRoutes() {
       <main className="flex-1">
         <Suspense fallback={null}>
           <Switch>
-            <Route path="/" component={Home} />
-            <Route path="/contact" component={Contact} />
+            <Route path="/" component={pages.Home.Component} />
+            <Route path="/contact" component={pages.Contact.Component} />
 
             <Route
               path="/lp/gift-of-heaven-ttn"
-              component={KingdomnomicsGiftOfHeaven}
+              component={pages.Gift.Component}
             />
             <Route
               path="/lp/jesus-resurrection-and-you-ttn"
-              component={JesusResurrectionAndYou}
+              component={pages.Resurrection.Component}
             />
             <Route path="/lp/gift-of-heaven">
               <Redirect to="/lp/gift-of-heaven-ttn" />
@@ -74,30 +61,30 @@ export function AppRoutes() {
 
             <Route
               path="/video/the-gift-of-heaven"
-              component={TheGiftOfHeaven}
+              component={pages.GiftVideo.Component}
             />
             <Route
               path="/video/jesus-resurrection-and-you"
-              component={JesusResurrectionAndYouVideo}
+              component={pages.ResurrectionVideo.Component}
             />
             <Route
               path="/video/your-life-has-purpose"
-              component={YourLifeHasPurpose}
+              component={pages.Purpose.Component}
             />
             <Route
               path="/video/is-jesus-relevant-to-you"
-              component={IsJesusRelevantToYou}
+              component={pages.Relevant.Component}
             />
 
-            <Route path="/xp/no-i-didnt-pray" component={NoDidntPray} />
+            <Route path="/xp/no-i-didnt-pray" component={pages.DidNotPray.Component} />
             <Route
               path="/xp/yes-i-received-jesus"
-              component={YesReceivedJesus}
+              component={pages.Received.Component}
             />
-            <Route path="/xp/yes-i-rededicated" component={YesRededicated} />
+            <Route path="/xp/yes-i-rededicated" component={pages.Rededicated.Component} />
             <Route
               path="/xp/no-already-received"
-              component={NoAlreadyReceived}
+              component={pages.Believer.Component}
             />
 
             <Route>

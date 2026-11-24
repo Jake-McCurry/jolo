@@ -1,6 +1,7 @@
 import { Link } from "wouter";
 import { SEO } from "@/components/ui/SEO";
 import { APP_BASE } from "@/lib/urls";
+import { OptimizedImage } from "@/components/ui/OptimizedImage";
 
 interface PlayIconProps {
   size?: number;
@@ -35,9 +36,8 @@ export default function Home() {
       <section className="relative pt-24 pb-20 overflow-hidden bg-background">
         {/* Abstract Background Texture */}
         <div
-          className="absolute inset-0 z-0 opacity-40 mix-blend-multiply pointer-events-none"
+          className="home-hero-texture absolute inset-0 z-0 opacity-40 mix-blend-multiply pointer-events-none"
           style={{
-            backgroundImage: `url('/hero-bg.jpg')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -89,7 +89,7 @@ export default function Home() {
               className="relative aspect-video w-full overflow-hidden bg-black"
               data-testid="video-resurrection"
             >
-              <img
+              <OptimizedImage
                 src="/thumb-resurrection.jpg"
                 alt=""
                 width="1280"
@@ -129,7 +129,7 @@ export default function Home() {
                 className="block w-full overflow-hidden rounded-xl bg-card border border-border shadow-md shadow-black/5 hover:shadow-xl hover:border-primary/30 transition-all duration-300 flex-1 flex flex-col"
               >
                 <div className="relative aspect-video overflow-hidden bg-black">
-                  <img
+                  <OptimizedImage
                     src="/thumb-gift-of-heaven.jpg"
                     alt="The Gift of Heaven"
                     width="640"
