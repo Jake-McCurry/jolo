@@ -34,10 +34,10 @@ export function initializeDecisionControls() {
 
   let activeSelection: Selection | null = null;
   const destinations: Record<string, string> = {
-    "did-not-pray": "https://jesusonline.org/xp/no-i-didnt-pray",
-    received: "https://jesusonline.org/xp/yes-i-received-jesus",
-    rededicated: "https://jesusonline.org/xp/yes-i-rededicated",
-    believer: "https://jesusonline.org/xp/no-already-received",
+    "did-not-pray": "https://follow.jesusonline.com/xp/did-not-pray",
+    received: "https://follow.jesusonline.com/xp/received",
+    rededicated: "https://follow.jesusonline.com/xp/rededicated",
+    believer: "https://follow.jesusonline.com/xp/believer",
   };
 
   function answerLink(target: EventTarget | null): HTMLAnchorElement | null {
@@ -157,8 +157,8 @@ export function initializeDecisionControls() {
     // Negative answers are ordinary links, including when JavaScript is absent.
     if (!isDecision) return;
     event.preventDefault();
-    // Do not stop propagation: legacy GTM LINK_CLICK triggers inspect this anchor's
-    // href. Their checkValidation=false permits this prevented native navigation.
+    // Preserve click propagation for Google's cross-domain linker. Follow URLs
+    // intentionally do not match the old .org XP conversion link triggers.
     const selection = lock(link);
     let decisionProcessed = false;
     function navigate() {
@@ -175,8 +175,8 @@ export function initializeDecisionControls() {
       }, 0);
     }
 
-    // A decision callback can run synchronously, before GTM sees the original click.
-    // Always give that click and its legacy tags a 1000ms grace period as well.
+    // Keep the existing delivery window for the new decision event, even if a
+    // container callback runs synchronously. There is no legacy conversion path.
     selection.minimumWait = window.setTimeout(() => {
       selection.minimumWait = null;
       if (decisionProcessed) navigate();

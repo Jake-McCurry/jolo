@@ -10,25 +10,25 @@ const SURVEY_OPTIONS = [
   {
     label: "I didn't pray the prayer",
     decision: "did-not-pray",
-    href: "https://jesusonline.org/xp/no-i-didnt-pray?lp=resurrection-ttn",
+    href: "https://follow.jesusonline.com/xp/did-not-pray?lp=resurrection-ttn",
     testid: "survey-no-didnt-pray",
   },
   {
     label: "I prayed and rededicated my life to Jesus",
     decision: "rededicated",
-    href: "https://jesusonline.org/xp/yes-i-rededicated",
+    href: "https://follow.jesusonline.com/xp/rededicated",
     testid: "survey-yes-rededicated",
   },
   {
     label: "I prayed the prayer and invited Jesus into my life",
     decision: "received",
-    href: "https://jesusonline.org/xp/yes-i-received-jesus",
+    href: "https://follow.jesusonline.com/xp/received",
     testid: "survey-yes-received-jesus",
   },
   {
     label: "I have already invited Jesus into my life",
     decision: "believer",
-    href: "https://jesusonline.org/xp/no-already-received?lp=resurrection-ttn",
+    href: "https://follow.jesusonline.com/xp/believer?lp=resurrection-ttn",
     testid: "survey-no-already-received",
   },
 ];
