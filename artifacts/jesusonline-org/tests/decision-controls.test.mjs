@@ -22,9 +22,7 @@ const legacyDestinations = {
 };
 
 function fixture(implementation) {
-  const destinations = implementation === "supplied"
-    ? Object.fromEntries(responses.map((response) => [response, origin + response]))
-    : legacyDestinations;
+  const destinations = Object.fromEntries(responses.map((response) => [response, origin + response]));
   const listeners = new Map();
   const windowListeners = new Map();
   const timers = new Map();
@@ -128,7 +126,7 @@ function fixture(implementation) {
   };
 }
 
-// Preserve pilot regressions; the temporary adaptation uses legacy URLs and a grace period.
+// Preserve pilot regressions; the adaptation retains a bounded event delivery window.
 for (const implementation of ["supplied", "adapted"]) {
   const check = (name, fn) => test(`${implementation}: ${name}`, () => fn(fixture(implementation)));
 
@@ -315,7 +313,6 @@ for (const response of ["received", "rededicated"]) {
       const f = fixture("adapted");
       const legacyHits = [];
       const queue = f.window.dataLayer;
-      let legacyTagFinished = false;
       // Model the user-supplied LINK_CLICK filters and checkValidation=false.
       // No real GTM container, tag, GA4 request, or Google Ads request is executed.
       const legacyListener = (event) => {
@@ -324,23 +321,21 @@ for (const response of ["received", "rededicated"]) {
         if (url.hostname.includes("jesusonline.org") &&
             url.href.includes(response === "received" ? "/xp/yes-i-received-jesus" : "/xp/yes-i-rededicated")) {
           legacyHits.push(url.href);
-          f.window.setTimeout(() => { legacyTagFinished = true; }, 500);
         }
       };
       if (listenerOrder === "before") f.listeners.get("click").unshift(legacyListener);
       else f.document.addEventListener("click", legacyListener);
-      // An early decision callback must not cut off the original click or legacy tag.
+      // The original click still propagates, but its URL must not match old tags.
       f.onPush((payload) => payload.eventCallback("GTM-PKJQNCS"));
       f.activate(response, { detail: 0 }); // Keyboard-generated anchor click also works.
-      assert.equal(legacyHits.length, 1);
+      assert.equal(legacyHits.length, 0);
       assert.equal(f.events.length, 1);
       assert.equal(f.events[0].decision_type, response);
       assert.equal(f.window.dataLayer, queue);
       f.advance(999);
-      assert.equal(legacyTagFinished, true);
       assert.equal(f.navigations.length, 0);
       f.advance(1);
-      assert.deepEqual(f.navigations, [legacyDestinations[response]]);
+      assert.deepEqual(f.navigations, [origin + response]);
       f.advance(2000);
       assert.equal(f.navigations.length, 1);
       assert.equal(f.events.length, 1);
@@ -348,14 +343,14 @@ for (const response of ["received", "rededicated"]) {
   }
 }
 
-test("temporary handler waits for a late decision callback but remains bounded", () => {
+test("handler waits for a late decision callback but remains bounded", () => {
   const f = fixture("adapted");
   f.activate("received");
   f.advance(1100);
   assert.equal(f.navigations.length, 0);
   f.events[0].eventCallback("GTM-PKJQNCS");
   f.advance(0);
-  assert.deepEqual(f.navigations, [legacyDestinations.received]);
+  assert.deepEqual(f.navigations, [origin + "received"]);
   f.advance(1000);
   assert.equal(f.navigations.length, 1);
 });
@@ -370,7 +365,7 @@ test("a throwing queue still gives the original click its grace period", () => {
   f.advance(999);
   assert.equal(f.navigations.length, 0);
   f.advance(1);
-  assert.deepEqual(f.navigations, [legacyDestinations.received]);
+  assert.deepEqual(f.navigations, [origin + "received"]);
 });
 
 for (const response of ["did-not-pray", "believer"]) {
@@ -378,7 +373,7 @@ for (const response of ["did-not-pray", "believer"]) {
     const f = fixture("adapted");
     f.links[response].href += "?lp=resurrection-ttn";
     assert.equal(f.activate(response).defaultPrevented, false);
-    assert.equal(f.links[response].href, legacyDestinations[response] + "?lp=resurrection-ttn");
+    assert.equal(f.links[response].href, origin + response + "?lp=resurrection-ttn");
     assert.equal(f.events.length, 0);
     assert.equal(f.timers.size, 0);
   });
@@ -395,16 +390,16 @@ test("Back cancels the grace timer and stale callbacks cannot affect the next de
   oldCallback("GTM-PKJQNCS");
   f.events[1].eventCallback("GTM-PKJQNCS");
   f.advance(1000);
-  assert.deepEqual(f.navigations, [legacyDestinations.rededicated]);
+  assert.deepEqual(f.navigations, [origin + "rededicated"]);
   assert.equal(f.events.length, 2);
   f.lifecycle("pagehide");
   assert.equal(f.timers.size, 0);
   assert.ok(f.controls.every((link) => !link.hasAttribute("aria-disabled")));
 });
 
-test("temporary handler rejects external follow destinations and mismatched old answers", () => {
+test("handler rejects legacy conversion URLs and mismatched Follow answers", () => {
   const f = fixture("adapted");
-  for (const href of [origin + "received", "https://jesusonline.com/xp/yes-received-christ", legacyDestinations.rededicated]) {
+  for (const href of [...Object.values(legacyDestinations), "https://jesusonline.com/xp/yes-received-christ", origin + "rededicated"]) {
     f.links.received.href = href;
     assert.equal(f.activate("received").defaultPrevented, false);
   }
@@ -419,7 +414,7 @@ test("shared handler has no competing trackers or propagation cancellation", () 
 });
 
 for (const pageFile of ["KingdomnomicsGiftOfHeaven", "JesusResurrectionAndYou"]) {
-test(`${pageFile}: JSX preserves appearance and restores legacy anchor destinations`, () => {
+test(`${pageFile}: JSX preserves appearance and uses only Follow destinations`, () => {
   const page = readFileSync(new URL(`../src/pages/lp/${pageFile}.tsx`, import.meta.url), "utf8");
   const css = readFileSync(new URL("../src/features/decision-survey/decision-survey.css", import.meta.url), "utf8");
   const normalize = (text) => text.replace(/\/\*[\s\S]*?\*\//g, "").replace(/\s+/g, "");
@@ -429,7 +424,7 @@ test(`${pageFile}: JSX preserves appearance and restores legacy anchor destinati
   for (const [, response, href] of options) {
     const query = pageFile === "JesusResurrectionAndYou" &&
       ["did-not-pray", "believer"].includes(response) ? "?lp=resurrection-ttn" : "";
-    assert.equal(href, legacyDestinations[response] + query);
+    assert.equal(href, origin + response + query);
   }
   assert.match(page, /data-jol-decision-group=""/);
   assert.match(page, /data-jol-decision=\{opt\.decision\}/);

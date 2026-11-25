@@ -56,7 +56,7 @@ test("route aliases and trailing slashes retain the Gift destination", () => {
   }
 });
 
-test("landing surveys retain their old URLs, attributes, and native fallbacks", () => {
+test("landing surveys send directly to Follow without legacy conversion URLs", () => {
   for (const slug of ["gift-of-heaven-ttn", "jesus-resurrection-and-you-ttn"]) {
     const html = read(`lp/${slug}/index.html`);
     const answers = [...html.matchAll(/<a\b[^>]*data-jol-decision="([^"]+)"[^>]*>/g)];
@@ -64,9 +64,10 @@ test("landing surveys retain their old URLs, attributes, and native fallbacks", 
     assert.equal((html.match(/\bdata-jol-decision-group(?=[\s=>])/g) ?? []).length, 1);
     for (const answer of answers) {
       const href = answer[0].match(/href="([^"]+)"/)[1];
-      assert.ok(href.startsWith("https://jesusonline.org/xp/"));
-      if (answer[1] === "received") assert.equal(href, "https://jesusonline.org/xp/yes-i-received-jesus");
-      if (answer[1] === "rededicated") assert.equal(href, "https://jesusonline.org/xp/yes-i-rededicated");
+      const destination = new URL(href);
+      assert.equal(destination.origin, "https://follow.jesusonline.com");
+      assert.equal(destination.pathname, `/xp/${answer[1]}`);
+      assert.doesNotMatch(href, /\/xp\/yes-i-/);
     }
     assert.match(html, /<picture\b/);
     assert.match(html, /type="image\/webp"/);
